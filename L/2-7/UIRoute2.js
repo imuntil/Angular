@@ -34,5 +34,6 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
                     controller: 'Controller'
                 }
             }
-        })
+        });
+    //this is changes
 })
