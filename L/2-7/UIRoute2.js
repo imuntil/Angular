@@ -34,6 +34,52 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
                     controller: 'Controller'
                 }
             }
+        })
+        .state('others', {
+            url:'/others',
+            views:{
+                '': {
+                    templateUrl:'tpls2/others.html'
+                },
+                'rowOne@others':{
+                    template:'这里是第一行的内容'
+                },
+                'rowTwo@others':{
+                    templateUrl:'tpls2/others-data.html',
+                    controller:'OtherCtrl'
+                },
+                'rowThree@others':{
+                    template:'もうないよ'
+                }
+            }
         });
-    //this is changes-.-
-})
+});
+routerApp.controller('Controller', function ($scope) {
+    $scope.message = 'test';
+    $scope.topics = [{
+        name: 'Butterscotch',
+        price: 50
+    }, {
+        name: 'Black Current',
+        price: 100
+    }, {
+        name: 'Mango',
+        price: 20
+    }];
+});
+routerApp.controller('OtherCtrl', function ($scope) {
+    $scope.scores = [
+        {
+            name: 'Butterscotch',
+            score: 9
+        },
+        {
+            name: 'Black Current',
+            score: 8.7
+        },
+        {
+            name: 'Mango',
+            score: 8.5
+        }
+    ]
+});

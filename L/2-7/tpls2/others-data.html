@@ -1,0 +1,15 @@
+<div class="panel-heading">scores</div>
+<table class="table table-hover table-striped table-bordered">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Socre</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="score in scores">
+            <td>{{score.name}}</td>
+            <td>{{score.score}}</td>
+        </tr>
+    </tbody>
+</table>
