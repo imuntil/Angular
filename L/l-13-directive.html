@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body ng-controller="SomeController">
+<button ng-click="clickUnfocused()">Not focused</button>
+<button ngbk-focus ng-click="clickFocused()">
+    I'm very focused!
+</button>
+<div>{{message.text}}</div>
+<script src="../Angular.js"></script>
+<script>
+    var appModule = angular.module('myApp', []);
+    appModule.directive('ngbkFocus', function() {
+        return {
+            link: function(scope, element, attrs, controller) {
+                element[0].focus();
+            }
+        };
+    });
+
+    function SomeController($scope) {
+        $scope.message = {text: 'nothing clicked yet'};
+
+        $scope.clickUnfocused = function() {
+            $scope.message.text = 'unfocused button clicked';
+        };
+
+        $scope.clickFocused = function() {
+            $scope.message.text = 'focus button clicked';
+        };
+    }
+</script>
+</body>
+</html>

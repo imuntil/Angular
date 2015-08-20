@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="AMail">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../../Angular.js"></script>
+    <script>
+        var aMailServices = angular.module('AMail', []);
+        function emailRouteConfig($routeProvider) {
+            $routeProvider.
+                    when('/', {
+                        controller:ListController,
+                        templateUrl:'list.html'
+                    }).
+                    when('/view/:id', {
+                        controller:DetailController,
+                        templateUrl:'detail.html'
+                    }).
+                    otherwise({
+                        redirectTo:'/'
+                    });
+        }
+
+        aMailServices.config(emailRouteConfig);
+
+        messages = [
+            {id:0, sender:'jean@somecompany.com', subject:'Hi there, old friend', date:'Dec 7, 2013 12:32:00', recipients:['greg@somecompany.com'],
+                message:'Hey, we should get together for lunch sometime and catch up. There are many things we should collaborate on this year.'},
+            {id:1, sender:'tim@somecompany.com', subject:'merry ...', date:'Dec 8, 2013 12:05:20', recipients:['greg@somecompany.com','marry@somepany.com', 'jeans@somecompany.com'],
+                message:'Hey, we should get together for lunch sometime and catch up. There are many things we should collaborate on this year.'},
+            {id:2, sender:'bill@somecompany.com', subject:'lost python', date:'Dec 9, 2013 15:12:03', recipients:['greg@somecompany.com'],
+                message:'Hey, we should get together for lunch sometime and catch up. There are many things we should collaborate on this year.'}
+        ];
+
+        function ListController($scope) {
+            $scope.messages = messages;
+        }
+
+        function DetailController($scope, $routeParams) {
+            $scope.message = messages[$routeParams.id];
+        }
+    </script>
+</head>
+<body>
+<h1>AMail</h1>
+<div ng-view></div>
+</body>
+</html>
