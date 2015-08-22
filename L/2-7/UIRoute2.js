@@ -7,7 +7,8 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
             url:'/home',
-            templateUrl:'tpls2/home.html'
+            templateUrl:'tpls2/home.html',
+            controller:'aniControl-1'
         })
         .state('home.list', {
             url:'/list',
@@ -54,7 +55,7 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
             }
         });
 });
-routerApp.controller('Controller', function ($scope) {
+routerApp.controller('Controller', function ($scope, $rootScope) {
     $scope.message = 'test';
     $scope.topics = [{
         name: 'Butterscotch',
@@ -66,8 +67,9 @@ routerApp.controller('Controller', function ($scope) {
         name: 'Mango',
         price: 20
     }];
+    $rootScope.pageClass = 'aniControl-2';
 });
-routerApp.controller('OtherCtrl', function ($scope) {
+routerApp.controller('OtherCtrl', function ($scope, $rootScope) {
     $scope.scores = [
         {
             name: 'Butterscotch',
@@ -81,8 +83,14 @@ routerApp.controller('OtherCtrl', function ($scope) {
             name: 'Mango',
             score: 8.5
         }
-    ]
+    ];
+    $rootScope.pageClass = 'aniControl-3';
 });
+
+routerApp.controller('aniControl-1', function ($scope) {
+    $scope.pageClass = 'aniControl-1';
+});
+
 
 
 //a little change
