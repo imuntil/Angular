@@ -1,7 +1,7 @@
 /**
  * Created by jtun02 on 15/8/19.
  */
-var routerApp = angular.module('routerApp', ['ui.router']);
+var routerApp = angular.module('routerApp', ['ui.router', 'ngAnimate']);
 routerApp.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
     $stateProvider
