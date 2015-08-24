@@ -78,3 +78,12 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
             }
         });
 });
+
+var canvas = document.getElementById('canvas'),
+    img = new Image(),  //照片
+    img2 = new Image();  //挂件
+//canvas.width = img.naturalWidth;
+//canvas.height = img.naturalHeight;
+var context = canvas.getContext('2d');
+context.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, canvas.width, canvas.ehig);
+context.drawImage(img2, 0, 0, img2.naturalWidth, img2.naturalHeight, 0, 0, canvas.width, canvas.ehig);
