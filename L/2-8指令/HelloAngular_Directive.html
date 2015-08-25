@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="MyModule">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<hello></hello>
+<div hello></div>
+<div class="hello"></div>
+<!-- directive:hello -->
+<div></div>
+
+<hi></hi>
+
+<transclude>
+    <div>这里是指令内部的内容.</div>
+</transclude>
+
+<script src="../../framework/1.3.0.14/angular.js"></script>
+<script>
+    var myModule = angular.module('MyModule', []);
+    myModule.directive('hello', function () {
+        return {
+            restrict: 'AEMC',
+            template: '<div>Hello everyone!</div>',
+            replace: true
+        }
+    });
+
+//    restrict: A->attribute, E->element, M->comments, C->class
+
+    /**
+     * $templateCache
+     */
+    //注射器加载完成所有模块时，此方法会执行一次;
+    myModule.run(function ($templateCache) {
+        $templateCache.put('hi.html', '<div>Hi everyone!</div>');
+    });
+
+    myModule.directive('hi', function ($templateCache) {
+        return {
+            restrict:'AECM',
+            template:$templateCache.get('hi.html'),
+            replace: true
+        }
+    });
+
+    /**
+     * transclude
+     */
+    myModule.directive('transclude', function () {
+        return {
+            restrict:'AE',
+            transclude:true,
+            template:'<div>Hello everyone!<div ng-transclude></div></div> '
+        }
+    });
+</script>
+</body>
+</html>
