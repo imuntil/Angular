@@ -9,9 +9,9 @@
     <div ng-controller="Controller">
         <form name="form" class="css-form" novalidate>
             Name:
-            <input type="text" ng-model="user.name" name="uName" required/>
+            <input type="text" ng-model="user.name" name="uName" required/><br/>
             E-mail:
-            <input type="email" ng-model="user.email" name="uEmail" required/>
+            <input type="email" ng-model="user.email" name="uEmail" required/><br/>
             <div ng-show="form.uEmail.$dirty && form.uEmail.$invalid">
                 Invalid:
                 <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
@@ -29,6 +29,12 @@
             <br/>
             <button ng-click="reset()" ng-disabled="isUnchanged(user)">RESET</button>
             <button ng-click="update(user)" ng-disabled="form.$invalid || isUnchanged(user)">SAVE</button>
+            <br/>
+            <tt>form.uEmail.$vaild = {{form.uEmail.$valid}}</tt><br/>
+            <tt>form.uEmail.$invalid = {{form.uEmail.$invalid}}</tt><br/>
+            <tt>form.uEmail.$dirty = {{form.uEmail.$dirty}}</tt><br/>
+            <tt>form.uEmail.$error = {{form.uEmail.$error}}</tt><BR>
+            <!--<tt>form.uEmail.$error.email = {{form.uEmail.$error.email}}</tt><br/>-->
         </form>
     </div>
 
@@ -36,8 +42,22 @@
     <script>
         var myApp = angular.module('myApp', []);
         myApp.controller('Controller', ['$scope', function ($scope) {
+            $scope.infos = {};
 
-        }])
+            $scope.update = function (user) {
+                $scope.infos = angular.copy(user);
+            };
+
+            $scope.reset = function () {
+                $scope.user = angular.copy($scope.infos);
+            };
+
+            $scope.isUnchanged = function (user) {
+                return angular.equals(user, $scope.infos);
+            };
+
+            $scope.reset();
+        }]);
     </script>
 </body>
 </html>

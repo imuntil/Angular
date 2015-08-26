@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+
+<div contenteditable="true" ng-model="content" title="Click to edit">some</div>
+<pre>model = {{content}}</pre>
+
+<tt>$render():<br/>&nbsp;&nbsp;当视图需要更新的时候会被调用。使用ng-model的指令应该自行实现这个方法。</tt>
+<br/>
+<tt>$setViewValue(value, trigger)方法 <br/>
+    &nbsp;&nbsp;该方法用来更新视图值。这个方法应该在一个视图值发生变化时被调用，一般来说是在一个DOM事件处理函数中。例如，input和select指令就调用了这个函数。
+    <br/>&nbsp;&nbsp;这个方法将会更新$viewValue属性，然后在$pasers中通将这个值传递给每一个函数，其中包括了验证器。这个值从$parsers输出后，将会被用于$modelValue以及ng-model属性中的表达式。
+    最后，所有位于$viewChangeListeners列表中注册的监听器将会被调用。</tt>
+<script src="../../framework/1.3.0.14/angular.js"></script>
+<script>
+
+    angular.module('myApp', []).directive('contenteditable', function () {
+        return {
+            require: 'ngModel',
+            link: function (scope, element, attrs, ctrl) {
+
+                element.bind('keyup', function () {
+                    scope.$apply(function () {
+                        ctrl.$setViewValue(element.text());
+                        console.log(scope.content);
+                    });
+//                    ctrl.$setViewValue(element.text());
+//                    console.log(scope.content);
+//                    console.log(ctrl);
+//
+                });
+
+                ctrl.$render = function () {
+                    console.log('...:' + scope.content);
+                    element.html(ctrl.$viewValue);
+                };
+
+                ctrl.$setViewValue(element.html());
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>
