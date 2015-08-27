@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+    <script src="../../framework/1.3.0.14/angular.js"></script>
+    <script src="../../framework/1.3.0.14/angular-sanitize.js"></script>
+    <script>
+        var app = angular.module('myApp', ['ngSanitize']);
+        app.controller('mainController', function ($scope, $sce) {
+            $scope.myHtml =
+                    '<p style="color:blue"> an html\n' +
+                    '<em onclick="this.textContent=\'code_bunny\'">click here</em>\n' +
+                    'snippet</p>';
+            $scope.trustHtml = $sce.trustAsHtml($scope.myHtml);
+        });
+    </script>
+</head>
+<body>
+
+    <div class="container" ng-controller="mainController">
+        <table class="table table-bordered">
+            <caption>通过ngSanitize模块的0sanitize服务解析html</caption>
+            <thead>
+            <tr>
+                <th>使用的指令</th>
+                <th>格式化方法</th>
+                <th>指令的写法</th>
+                <th>解析的结果</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>ng-bind-html</td>
+                <td>使用内置的$sanitize <br/>(不需要出现在js里，只要模块添加了ngSanitize模块，<br/>然后使用
+                ng-bind-html,它的值就会自动通过$sanitize编译)</td>
+                <td>
+                    <pre>&lt;div ng-bind-html="myHtml" &gt; <br/> &lt;/div&gt;</pre>
+                </td>
+                <td>
+                    <div ng-bind-html="myHtml"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>ng-bind-html</td>
+                <td>使用$sce的trustAsHtml方法编译</td>
+                <td><pre>&lt;div ng-bind-html="trustAsHtml"&gt;<br/>&lt;/div&gt;</pre></td>
+                <td>
+                    <div ng-bind-html="trustHtml"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>ng-bind</td>
+                <td>不编译</td>
+                <td><pre>&lt;div ng-bind="myHtml"&gt;<br/>&lt;/div&gt;</pre></td>
+                <td><div ng-bind="myHtml"></div></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

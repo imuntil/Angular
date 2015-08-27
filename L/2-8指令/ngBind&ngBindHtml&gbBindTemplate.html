@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div ng-controller="ngBindCtrl">
+    Enter name: <input type="text" ng-model="name"/>
+    <br/>
+    Hello <span ng-bind="name"></span>!
+</div>
+<br/>
+<div ng-controller="ngBindHtmlCtrl">
+    <p ng-bind-html="myHtml"></p>
+</div>
+<br/>
+<div ng-controller="ngBindTemplateCtrl">
+    Salutation: <input type="text" ng-model="salutation"/>
+    <br/>
+    Name: <input type="text" ng-model="name"/>
+    <br/>
+    <pre ng-bind-template="{{salutation}} {{name}} !"></pre>
+
+    <br/>
+    <pre style="color: deepskyblue">
+        Unlike ngBind, the ngBindTemplate can contain multiple {{ }} expressions.
+        <br/>
+        <em>This directive is needed since some HTML elements (such as TITLE and OPTION)
+            <br/>
+            cannot contain SPAN elements.</em>
+    </pre>
+</div>
+<script src="../../framework/1.3.0.14/angular.js"></script>
+<script src="../../framework/1.3.0.14/angular-sanitize.js"></script>
+<script>
+    var app = angular.module('myApp', ['ngSanitize']);
+    app.controller('ngBindCtrl', ['$scope', function ($scope) {
+        $scope.name = 'zhin';
+    }]);
+    app.controller('ngBindHtmlCtrl', ['$scope', function ($scope) {
+        $scope.myHtml =
+                'I am a <code>HTML</code> string with  <a href="#">links!</a> and other <em>stuff</em> ';
+    }]);
+    app.controller('ngBindTemplateCtrl', ['$scope', function ($scope) {
+        $scope.salutation = 'Hello';
+        $scope.name = 'World';
+    }]);
+</script>
+</body>
+</html>
