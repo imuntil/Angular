@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+    <style>
+        .dropdown-menu{
+            display: block;
+            overflow: hidden;
+        }
+        .animate-switch-container {
+            position: relative;
+            background: white;
+            border: 1px solid black;
+            height: 40px;
+            overflow: hidden;
+            top: 40px;
+        }
+        .animate-switch {
+            padding: 10px;
+        }
+        .animate-switch.ng-animate {
+            -webkit-transition: all cubic-bezier(.25, .46, .45, .94) .5s;
+            -moz-transition: all cubic-bezier(.25, .46, .45, .94) .5s;
+            -ms-transition: all cubic-bezier(.25, .46, .45, .94) .5s;
+            -o-transition: all cubic-bezier(.25, .46, .45, .94) .5s;
+            transition: all cubic-bezier(.25, .46, .45, .94) .5s;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .animate-switch.ng-leave.ng-leave-active,
+        .animate-switch.ng-enter {
+            top: -50px;
+        }
+        .animate-switch.ng-leave,
+        .animate-switch.ng-enter.ng-enter-active {
+            top: 0;
+        }
+
+        .dropdown-menu.ng-animate {
+            -webkit-transition: all cubic-bezier(.25, .46, .45, .94) .5s;
+            -moz-transition: all cubic-bezier(.25, .46, .45, .94) .5s;
+            -ms-transition: all cubic-bezier(.25, .46, .45, .94) .5s;
+            -o-transition: all cubic-bezier(.25, .46, .45, .94) .5s;
+            transition: all cubic-bezier(.25, .46, .45, .94) .5s;
+        }
+        .dropdown-menu.ng-hide-remove.ng-hide-remove-active,
+        .dropdown-menu.ng-hide-add {
+            height: 116px;
+        }
+        .dropdown-menu.ng-hide-add.ng-hide-add-active,
+        .dropdown-menu.ng-hide-remove{
+            height: 0;
+        }
+
+
+    </style>
+    <script src="../../framework/1.3.0.14/angular.js"></script>
+    <script src="../../framework/1.3.0.14/angular-animate.js"></script>
+</head>
+<body ng-controller="Ctrl">
+
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                ng-click="toggleMenu()">
+            Dropdown
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ng-hide="hideMenu"
+                ng-init="menu = ['Action', 'Home', 'Link', 'Other']">
+            <li ng-repeat="item in menu"><a href="#" ng-click="setItem(item)">{{item}}</a></li>
+        </ul>
+    </div>
+    <hr/>
+    <div class="animate-switch-container" ng-switch on="item">
+        <div class="animate-switch" ng-switch-when="Action">actions content</div>
+        <div class="animate-switch" ng-switch-when="Home">home content</div>
+        <div class="animate-switch" ng-switch-when="Link">link content</div>
+        <div class="animate-switch" ng-switch-default>others</div>
+    </div>
+
+    <script>
+        angular.module('myApp', ['ngAnimate'])
+                .controller('Ctrl', function ($scope) {
+                    $scope.hideMenu = true;
+                    $scope.item = '';
+                    $scope.toggleMenu = function () {
+                        $scope.hideMenu = !$scope.hideMenu;
+                    };
+                    $scope.setItem = function (item) {
+                        $scope.item = item;
+                        $scope.hideMenu = true;
+                    };
+                });
+    </script>
+</body>
+</html>

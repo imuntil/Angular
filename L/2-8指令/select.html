@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body ng-controller="Ctrl">
+
+<form name="form"  ng-init="o=[{name: 'AA', v: '00'}, {name: 'BB', v: '11'}]; a=o[1].v;">
+    <select ng-model="a" ng-options="x.v as x.name for x in o" ng-change="show()"></select>
+</form>
+
+<script src="../../framework/1.3.0.14/angular.js"></script>
+<script>
+    angular.module('myApp', [])
+            .controller('Ctrl', function ($scope) {
+//                $scope.o = [
+//                    {name:'AA', v:'00'},
+//                    {name:'BB', v:'11'}
+//                ];
+//                $scope.a = o[1].v;
+                $scope.show = function () {
+                    console.log($scope.a);
+                }
+            });
+</script>
+</body>
+</html>

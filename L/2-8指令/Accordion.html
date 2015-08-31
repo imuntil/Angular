@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        .expander {
+            border: 1px solid black;
+            width: 250px;
+        }
+
+        .expander>.title {
+            background-color: black;
+            color: white;
+            padding: .1em .3em;
+            cursor: pointer;
+        }
+
+        .expander>.body {
+            padding: .1em .3em;
+        }
+    </style>
+</head>
+<body ng-controller="Ctrl">
+    <accordion>
+        <expander class="expander" ng-repeat="expander in expanders" expander-title="expander.title">
+            {{expander.text}}
+        </expander>
+    </accordion>
+
+    <script src="../../framework/1.3.0.14/angular.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.directive('accordion', function () {
+            return {
+                restrict: 'AE',
+                replace: true,
+                transclude: true,
+                template: '<div ng-transclude></div>',
+                controller: function () {
+                    var expanders = [];
+                    this.gotOpened = function (selectedExpander) {
+                        angular.forEach(expanders, function (expander) {
+                            if (selectedExpander != expander) {
+                                expander.showMe = false;
+                            }
+                        });
+                    };
+                    this.addExpander = function (expander) {
+                        expanders.push(expander);
+                    };
+                }
+            }
+        });
+        app.directive('expander', function () {
+            return {
+                restrict: 'AE',
+                replace: true,
+                transclude: true,
+                require: '^?accordion',
+                scope: {
+                    title: '=expanderTitle'
+                },
+                template:   '<div>' +
+                            '<div class="title" ng-click="toggle()">{{title}}</div>' +
+                            '<div class="body" ng-show="showMe" ng-transclude></div>'+
+                            '</div>',
+                link: function (scope, element, attrs, parentController) {
+                    scope.showMe = false;
+                    parentController.addExpander(scope);
+                    scope.toggle = function () {
+                        scope.showMe = !scope.showMe;
+                        parentController.gotOpened(scope);
+                    }
+                }
+            }
+        });
+        app.controller('Ctrl', function ($scope) {
+            $scope.expanders = [
+                {
+                    title:'expander A',
+                    text:'expander a\'s contents'
+                },
+                {
+                    title:'expander B',
+                    text:'expander b\'s contents'
+                },
+                {
+                    title:'expander C',
+                    text:'expander c\'s contents'
+                }
+            ];
+        });
+    </script>
+</body>
+</html>
