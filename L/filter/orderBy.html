@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+    <div ng-controller="Ctrl-1">
+        {{data | orderBy: 'age'}}
+        <br/>
+        {{data | orderBy: '-age'}}
+        <br/>
+        {{data | orderBy: '-age' | limitTo: 2}}
+        <br/>
+        {{data | orderBy: ['-age', 'name']}}
+    </div>
+    <script src="../../framework/1.3.0.14/angular.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('Ctrl-1', function ($scope) {
+            $scope.data = [
+                {name:'B', age:4},
+                {name:'D', age:3},
+                {name:'C', age:1},
+                {name:'A', age:3}
+            ];
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body ng-controller="shoppingController">
+<h1>Shop!</h1>
+<table>
+    <tr ng-repeat="item in items">
+        <td>{{item.title}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.price | currency}}</td>
+    </tr>
+</table>
+<script src="../../framework/1.3.0.14/angular.js"></script>
+<script>
+    angular.module('myApp',[])
+//            .factory('Items', function () {
+//                var items = {};
+//                items.query = function () {
+//                    //从服务器端拉取数据
+//                    return [
+//                        {title:'Paint pots', description:'Pots full of paint', price:3.95},
+//                        {title:'Polka dots', description:'Dots with polka', price:2.95},
+//                        {title:'Pebbles', description:'Just little rocks', price:6.95}
+//                    ];
+//                };
+//                return items;
+//            })
+//            .controller('shoppingController', function ($scope, Items) {
+//                $scope.items = Items.query();
+//            })
+            .factory('Items', ['$http', function ($http) {
+                var items = {};
+                items.query = function () {
+                    return $http({
+                        method:'GET',
+                        url:'product.json'
+                    });
+                };
+                return items;
+            }])
+            .controller('shoppingController', function ($scope, Items) {
+                Items.query().success(function (data, status) {
+                    console.log('...');
+                    $scope.items = data;
+                });
+            });
+
+</script>
+</body>
+</html>
