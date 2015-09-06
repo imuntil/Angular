@@ -42,10 +42,17 @@
                 return items;
             }])
             .controller('shoppingController', function ($scope, Items) {
-                Items.query().success(function (data, status) {
-                    console.log('...');
+                Items.query().success(function (data, status, headers, config) {
+                    console.log(status);
+                    console.log(headers());
+                    console.log(config);
                     $scope.items = data;
+                }).error(function (data, status) {
+                    console.log('error');
                 });
+            })
+            .run(function ($http) {
+                $http.defaults.headers.common.Authorization = 'Basic YmVlcDpib29w';
             });
 
 </script>
