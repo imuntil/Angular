@@ -8,13 +8,16 @@
 <script src="../../framework/1.3.0.14/angular.js"></script>
 <script>
     angular.module('myApp', [])
-            .factory('UserInfo', ['$http', '$q', function ($http, $q) {
-                return {
-
-                    query: function () {
-                        var deferred = $q.defer();
-                    }
-                }
+            .controller('Ctrl', ['$scope', '$q', function ($scope, $q) {
+                var defer = $q.defer();
+                var promise = defer.promise;
+                promise.then(function (data) {
+                    console.log('ok, ' + data);
+                }, function (data) {
+                    console.log('error, ' + data);
+                });
+//                defer.resolve('xxxx');
+                defer.reject('oooo');
             }]);
 </script>
 </body>
