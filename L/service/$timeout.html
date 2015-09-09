@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body  ng-controller="Ctrl">
+<div></div>
+<script src="../../framework/1.3.0.14/angular.js"></script>
+<script>
+    var Ctrl = function ($timeout) {
+        var p = $timeout(function () {
+            console.log('haha')
+        }, 5000);
+        p.then(function () {
+            console.log('x');
+        });
+
+        //取消计时器
+//        $timeout.cancel(p)
+    };
+    angular.bootstrap(document.documentElement);
+</script>
+</body>
+</html>
