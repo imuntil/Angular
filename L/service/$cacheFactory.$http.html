@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body ng-controller="Ctrl">
+<script src="../../framework/1.3.0.14/angular.js"></script>
+<script>
+    angular.module('myApp', [])
+            .controller('Ctrl', ['$scope', '$http', '$cacheFactory', function ($scope, $http, $cacheFactory) {
+                var myCache = $cacheFactory('myCache');
+
+                $http({
+                    method: 'GET',
+                    url: 'testJson.json',
+                    cache: myCache
+                }).success(function (data) {
+                    console.log(data);
+
+//                    var _data = myCache.info();
+//                    console.log(_data);
+                });
+
+
+            }])
+            .config(function ($httpProvider) {
+                //
+                $httpProvider.defaults.cache = $cacheFactory('myCache2', {opacity: 20});
+            });
+</script>
+</body>
+</html>
