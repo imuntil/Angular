@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div ng-controller="ColorController">
+    <p color="color">{{color}}</p>
+
+    <p color="green">green</p>
+</div>
+<script src="../../framework/1.3.0.14/angular.js"></script>
+<script>
+    angular.module('myApp', [])
+            .directive('color', function () {
+
+                return {
+                    restrict:'A',
+                    link: function (scope, element, attrs) {
+                        element.css('color', attrs.color);
+                        scope.$watch(attrs.color, function (newValue) {
+                            element.css('color', newValue);
+                        });
+                    }
+                }
+            })
+            .controller('ColorController', function ($scope) {
+                $scope.color = 'pink';
+            });
+</script>
+</body>
+</html>
