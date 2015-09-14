@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../../foundation-5.5.2/css/foundation.css"/>
+    <script src="../../framework/1.3.0.14/angular.js"></script>
+    <script src="../../framework/1.3.0.14/angular-messages.js"></script>
+</head>
+<body>
+<form name="signup_form" novalidate ng-submit="signupForm()" ng-controller="SignUpController">
+    <fieldset>
+        <legend>Signup form</legend>
+
+        <div class="row">
+            <div class="large-12 columns">
+                <label>Your name</label>
+                <input type="text" placeholder="Name" name="name" ng-model="signup.name" ng-minlength="3" ng-maxlength="20" required/>
+                <div class="error" ng-messages="signup_form.name.$error" ng-messages-multiple ng-show="signup_form.name.$dirty">
+                    <div ng-message="required">Make sure you enter your name</div>
+                    <div ng-message="minlength">Your name must be at least 3 characters</div>
+                    <div ng-message="maxlength">Your name cannot be longer than 20 characters</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>Your email</label>
+                <input type="email" placeholder="Email" name="email" ng-model="signup.email" ng-minlength="3" ng-maxlength="20" required/>
+                <div class="error" ng-messages="signup_form.email.$error" ng-messages-include="templates/errors.html" ng-show="signup_form.email.$dirty"></div>
+            </div>
+        </div>
+        <button class="button radius" type="submit">Submit</button>
+    </fieldset>
+</form>
+<script>
+    angular.module('myApp', ['ngMessages'])
+            .controller('SignUpController', function () {
+
+            })
+</script>
+</body>
+</html>
