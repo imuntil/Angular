@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-controller="ServiceController">
+<script src="../../framework/1.3.0.14/angular.js"></script>
+<script>
+    angular.module('myApp', [])
+            .service('pp', function () {
+                this.abc = '123';
+            })
+            .controller('ServiceController', function ($scope, pp) {
+                console.log(pp);
+            });
+</script>
+</body>
+</html>

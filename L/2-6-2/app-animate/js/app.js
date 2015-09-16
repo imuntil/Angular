@@ -3,7 +3,19 @@
  */
 var bookStoreApp = angular.module('bookStoreApp', [
     'ngRoute', 'ngAnimate','bookStoreCtrls'
-]);
+])
+    .run(['$rootScope', '$location', function ($rootScope, $location) {
+        $rootScope.$on('$routeChangeStart', function (evt, next, current) {
+//                console.log('$routeChangeStart-next:'+next);
+//                console.log('$routeChangeStart-current:'+current);
+                console.log(next);
+                console.log(current);
+            });
+        $rootScope.$on('$routeChangeSuccess', function (evt, current, previous) {
+//                console.log('$routeChangeSuccess-current:'+current);
+//                console.log('$routeChangeSuccess-previous:'+previous);
+            });
+    }]);
 
 bookStoreApp.config(function($routeProvider) {
     $routeProvider
