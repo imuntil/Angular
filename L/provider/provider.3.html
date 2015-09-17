@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body ng-controller="MyController">
+<script src="../../framework/1.3.0.14/angular.js"></script>
+<script>
+    angular.module('myApp',[])
+            .provider('foo', function() {
+
+                var thisIsPrivate = "Private";
+
+                return {
+
+                    setPrivate: function(newVal) {
+                        thisIsPrivate = newVal;
+                    },
+                    $get: function() {
+                        function getPrivate() {
+                            return thisIsPrivate;
+                        }
+                        return {
+                            variable: "This is public",
+                            getPrivate: getPrivate
+                        };
+                    }
+                };
+            }).config(function(fooProvider) {
+                fooProvider.setPrivate('New value from config');
+
+            }).controller('MyController', function ($scope, foo) {
+                console.log(foo.getPrivate());
+                console.log(foo.variable);
+                console.log(foo.greet());
+            }).config(function ($provide) {
+                $provide.decorator('foo', function ($delegate) {
+                    $delegate.greet = function () {
+                        return 'hello, I am a new function of \'foo\'';
+                    };
+                    return $delegate;
+                });
+            });
+</script>
+</body>
+</html>
