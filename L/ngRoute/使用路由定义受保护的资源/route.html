@@ -8,30 +8,62 @@
 <div ng-view></div>
 <script src="../../../framework/1.3.0.14/angular.js"></script>
 <script src="../../../framework/1.3.0.14/angular-route.js"></script>
+<script src="../../../framework/1.3.0.14/angular-cookies.js"></script>
 <script>
 
-    angular.module('myApp', ['ngRoute', 'app.level'])
+    angular.module('myApp', ['ngRoute', 'app.level', 'app.services', 'ngCookies'])
             .config(function ($routeProvider, ACCESS_LEVEL) {
                 $routeProvider
                         .when('/home', {
                             controller:'HomeController',
-                            template:'<div>the Home Page</div><a href="#/user">to user page</a>',
+                            template:'<div>the Home Page</div><a href="#/user">to user page</a>&nbsp;<a href="#/login" ng-hide="hide">to Login Page</a> ',
                             access_level: ACCESS_LEVEL.pub
                         })
                         .when('/user', {
                             controller:'UserController',
-                            template:'<div>the User Page</div><a href="#/home">to home</a> ',
+                            template:'<div>the User Page</div><a href="#/home">to home</a><a ng-click="logout()">Logout</a> ',
                             access_level: ACCESS_LEVEL.user
+                        })
+                        .when('/login', {
+                            controller:'LoginController',
+                            template:'<div>the Login Page</div><a href="#/home">to home</a><a ng-click="login()">Login</a> ',
+                            access_level: ACCESS_LEVEL.pub
                         })
                         .otherwise({
                             redirectTo:'/home'
                         });
             })
-            .controller('HomeController', function ($scope) {
-
+            .controller('HomeController', function ($scope, Auth) {
+                $scope.hide = Auth.isLoggedIn();
             })
-            .controller('UserController', function ($scope) {
+            .controller('UserController', function ($scope, Auth, $location) {
+                $scope.logout = function () {
+                    Auth.logout();
+                    $location.path('/login');
+                }
+            })
+            .controller('LoginController', function ($scope, Auth, $location) {
+                $scope.login = function () {
+                    Auth.setUser({role:2, id:123});
+                    $location.path('/home');
+                }
+            })
+            .run(function ($rootScope, $location, Auth, $cookieStore) {
 
+//                Auth.logout();
+//                Auth.setUser({role:2, id:null});
+                console.log(Auth.getUser());
+                $rootScope.$on('$routeChangeStart', function (event, next, currnt) {
+//                    if (next.$$route.originalPath == '/home') return;
+                    if (!Auth.isAuthorized(next.$$route.access_level)) {
+                        if (Auth.isLoggedIn()) {
+                            $location.path('/home');
+                        } else {
+                            if (next.$$route.originalPath == '/home') return;
+                            $location.path('/login');
+                        }
+                    }
+                });
             });
 
     angular.module('app.level', [])
@@ -42,9 +74,44 @@
 
 
 
-    angular.module('app.services', ['app.level'])
+    angular.module('app.services', ['app.level', 'ngCookies'])
             .factory('Auth', function ($cookieStore, ACCESS_LEVEL) {
+                var _user = $cookieStore.get('user');
+                console.log(_user);
 
+                var setUser = function (user) {
+                    if (!user.role || user.role < 0) {
+                        user.role = ACCESS_LEVEL.pub;
+                    }
+                    _user = user;
+                    $cookieStore.put('user', _user);
+                };
+
+                return {
+                    isAuthorized: function (lvl) {
+                        if (_user && _user.role) {
+                            return _user.role >= lvl;
+                        }
+                        return false;
+                    },
+                    setUser: setUser,
+                    isLoggedIn: function () {
+                        return _user ? true : false;
+                    },
+                    getUser: function () {
+                        return _user;
+                    },
+                    getId: function () {
+                        return _user ? _user.id : null;
+                    },
+                    getToken: function () {
+                        return _user ? _user.token : '';
+                    },
+                    logout: function () {
+                        $cookieStore.remove('user');
+                        _user = null;
+                    }
+                };
             });
 </script>
 </body>
