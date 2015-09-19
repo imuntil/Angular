@@ -17,6 +17,7 @@
                                 .success(function (data, status, headers, config) {
                                     console.log('success');
                                     console.log(headers());
+                                    deferred.notify('success-1');
                                     deferred.resolve(data);
                                 })
                                 .error(function (data, status, headers, config) {
@@ -30,10 +31,15 @@
             .controller('Ctrl', ['$scope', 'UserInfo', function ($scope, UserInfo) {
                 var promise = UserInfo.query();
                 promise.then(function (data) {
+                    data.push('then add datas');
+                    return data;
+                }, function (data) {
                     console.log(data);
                 }, function (data) {
                     console.log(data);
-                });
+                }).then(function (data) {
+                    console.log(data);
+                })
             }]);
 </script>
 </body>
