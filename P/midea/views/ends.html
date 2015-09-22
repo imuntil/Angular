@@ -1,27 +1,25 @@
-<div class="video_area">
-    <div class="btn_group">
-        <!--<a href="javascript:void(0)">-->
-            <!--结局1-->
-        <!--</a>-->
-        <!--<a href="javascript:void(0)">-->
-            <!--结局2-->
-        <!--</a>-->
-        <!--<a href="javascript:void(0)">-->
-            <!--结局3-->
-        <!--</a>-->
-        <!--<a href="javascript:void(0)">-->
-            <!--结局4-->
-        <!--</a>-->
-        <!--<a href="javascript:void(0)">-->
-            <!--结局5-->
-        <!--</a>-->
-        <!--<a href="javascript:void(0)">-->
-            <!--结局6-->
-        <!--</a>-->
-        <a href="javascript:void(0)"
-           ng-repeat="end in ends"
-           ng-class="{clicked:end.watched}"
-           ng-click="watchMovies($index)">{{end.movie}}</a>
-    </div>
+<div class="btn_group">
+    <!--<a href="javascript:void(0)">-->
+    <!--结局1-->
+    <!--</a>-->
+    <!--<a href="javascript:void(0)">-->
+    <!--结局2-->
+    <!--</a>-->
+    <!--<a href="javascript:void(0)">-->
+    <!--结局3-->
+    <!--</a>-->
+    <!--<a href="javascript:void(0)">-->
+    <!--结局4-->
+    <!--</a>-->
+    <!--<a href="javascript:void(0)">-->
+    <!--结局5-->
+    <!--</a>-->
+    <!--<a href="javascript:void(0)">-->
+    <!--结局6-->
+    <!--</a>-->
+    <a href="javascript:void(0)"
+       ng-repeat="end in ends"
+       ng-class="{clicked:end.watched}"
+       class="btn"
+       ng-click="watchMovies($index+1)">{{end.movie}}</a>
 </div>
-<p class="txt">参加考试年代初爱死你下家是厂考试年代初爱死你下家是厂家是厂考试年代初爱死你下家是厂家是厂考试年代初爱死你下家是厂家少参加考试年代初爱死你下家是厂家少参加考试年代初爱死你下家是厂家少参加考试年代初爱死你下家是厂家少年到参加考试年代</p>

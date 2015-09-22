@@ -1,21 +1,44 @@
 /**
  * Created by 斌 on 2015/9/21.
  */
-var app = angular.module('myApp', ['ui.router']);
+var app = angular.module('myApp', ['ui.router', 'app.service', 'ngSanitize']);
 app.config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/index/ends');
+    $urlRouterProvider.otherwise('/index/0');
     $stateProvider
         .state('index', {
-            url:'/index',
+            url:'/index/:movieID',
             views:{
                 '':{
-                    template:'<div class="container"><div ui-view="KV"></div><div ui-view="main"></div></div>'
+                    templateUrl:'views/index.html'
                 },
                 'KV@index':{
                     template:'<header><p>LOGO<br/>活动KV</p></header>'
                 },
                 'main@index':{
-                    template:'<div><div>movie</div><p>活动文案</p></div>'
+                    template:'<div><div><video ng-src="{{movieURL}}" controls="controls" id="t-movie" autoplay></div></div>',
+                    controller: function ($scope, $state, $sce, $stateParams, movies, ends, shared) {
+
+                        var mid = $stateParams.movieID;
+                        $scope.movieURL = $sce.trustAsResourceUrl(movies[mid]);
+                        $scope.movie = document.querySelector('#t-movie');
+                        $scope.movie.load();
+                        $scope.movie.play();
+                        $scope.movie.addEventListener('ended', function (e) {
+
+                            if (mid == 0) {
+                                $state.go('index.ends');
+                            } else {
+                                ends[mid - 1].watched = true;
+
+                                if (!shared.hasShared) {
+                                    shared.hasShared = true;
+                                    $state.go('index.share');
+                                } else {
+                                    $state.go('index.ends');
+                                }
+                            }
+                        }, false);
+                    }
                 }
             }
         })
@@ -24,21 +47,38 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             views:{
                 'main@index':{
                     templateUrl:'views/ends.html',
-                    controller: function ($scope, $state) {
-                        $scope.ends = [
-                            {movie:'结局1',watched:false},
-                            {movie:'结局2',watched:false},
-                            {movie:'结局3',watched:false},
-                            {movie:'结局4',watched:false},
-                            {movie:'结局5',watched:false},
-                            {movie:'结局6',watched:false}
-                        ];
+                    controller: function ($scope, $state, $location, ends) {
+                        $scope.ends = ends;
                         $scope.watchMovies = function (index) {
-                            console.log(index);
-                            $scope.ends[index].watched = true;
+                            //$scope.ends[index-1].watched = true;
+                            if ($scope.ends[index-1].watched) return;
+                            $location.path('/index/'+index)
                         }
                     }
                 }
             }
+        })
+        .state('index.share', {
+            url:'/share',
+            views:{
+                'main@index':{
+                    templateUrl:'views/share.html',
+                    controller: function ($rootScope, $scope, $state, WechatBrowser) {
+                        $rootScope.isWechat = WechatBrowser;
+                        $rootScope.layerShow = false;
+                        $rootScope.hideLayer = function () {
+                            $rootScope.layerShow = false;
+                        };
+
+                        $scope.wxShare = function () {
+                            $rootScope.layerShow = true;
+                        };
+                        $scope.wbShare = function () {
+                            console.log('sina');
+                        };
+                    }
+                }
+            }
+
         });
 });
