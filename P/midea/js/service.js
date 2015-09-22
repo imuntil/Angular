@@ -30,3 +30,76 @@ angular.module('app.service', [])
         {movie:'结局6',watched:false}
     ])
     .value('shared', {hasShared:false});
+
+angular.module('app.wechatRelated', [])
+//    .factory('wechatConfig', function ($http) {
+//        var url = 'http://api.jtuntech.com/event/2015/roewe/jssdk.php?act=config';
+//        return {
+//            getConfig:$http({
+//                method:'GET',
+//                url:url
+//            }),
+//            setConfig: function (debug) {
+//                var self = this;
+//                self.getConfig.success(function (data) {
+//                    wx.config({
+//                        debug: debug,
+//                        appId: data.AppId,
+//                        timestamp: data.Stamp,
+//                        nonceStr: data.NonceStr,
+//                        signature: data.Signature,
+//                        jsApiList: [
+//                            'onMenuShareTimeline',
+//                            'onMenuShareAppMessage'
+//                        ]
+//                    });
+//                });
+//            }
+//        }
+//    })
+    .provider('wechatConfig', function () {
+        var defaultUrl = 'http://api.jtuntech.com/event/2015/roewe/jssdk.php?act=config';
+
+        return {
+            setUrl: function (url) {
+                url && (defaultUrl = url);
+            },
+            $get: function ($http) {
+
+                function getConfig() {
+                    return $http({
+                        method:'GET',
+                        url:defaultUrl
+                    });
+                }
+
+                function setConfig(debug) {
+                    getConfig().success(function (data) {
+                        wx.config({
+                            debug: debug,
+                            appId: data.AppId,
+                            timestamp: data.Stamp,
+                            nonceStr: data.NonceStr,
+                            signature: data.Signature,
+                            jsApiList: [
+                                'onMenuShareTimeline',
+                                'onMenuShareAppMessage'
+                            ]
+                        });
+                    });
+                }
+                return {
+                    setConfig: setConfig
+                }
+            }
+        }
+    })
+    .factory('shareTimeline', function () {
+        return {}
+    })
+    .factory('shareAppMessage', function () {
+        return {};
+    })
+    .factory('defaultShare', function () {
+        return {};
+    });
