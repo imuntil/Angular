@@ -29,6 +29,10 @@
                 console.log(UserService.name);
                 console.log(UserService.getFavoriteColor());
                 console.log(UserService.kumi());
+
+                var t = {a:1, b:2};
+                angular.extend(t, {a:3, c:4});
+                console.log(t);
             }])
             .config(function (UserServiceProvider) {
                 UserServiceProvider.setFavoriteColor('orange');

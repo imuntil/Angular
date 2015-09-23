@@ -40,6 +40,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         });
 });
-app.run(function(wechatConfig) {
-    wechatConfig.setConfig(true)
+app.run(function(wechatConfig, defaultShare) {
+    wechatConfig.setConfig(true);
+    wx.ready(function () {
+        var pro = defaultShare();
+        pro.sam.then(function () {
+            alert('分享好友成功');
+        });
+        pro.stl.then(function () {
+            alert('分享朋友圈成功');
+        });
+    });
 });
