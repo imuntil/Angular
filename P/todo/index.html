@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+    <script src="../../framework/1.3.0.14/angular.js"></script>
+</head>
+<body>
+
+<div ng-controller="TodoController" class="controller">
+    <span class="col-sm-offset-1">{{remain()}} of {{todos.length}} remaining</span>
+    <ul class="unstyled">
+        <li ng-repeat="todo in todos">
+            <input type="radio" ng-checked="todo.done" ng-click="todo.done = !todo.done"/>
+            {{todo.item}}
+        </li>
+    </ul>
+
+    <form ng-submit="addTodo()" name="addTodoForm" novalidate>
+        <input type="text" name="todovalue" ng-model="newTodo" ng-minlength="2" ng-maxlength="30"  all-space required/>
+        <input type="submit" class="btn btn-primary"
+               value="add todo" ng-disabled="addTodoForm.$invalid"/>
+
+        <br/>
+        <tt>addTodoForm.todovalue.$error:{{addTodoForm.todovalue.$error}}</tt>
+        <br/>
+        <tt>addTodoForm.$invalid:{{addTodoForm.$invalid}}</tt>
+        <br/>
+        <tt>addTodoFrom.$valid:{{addTodoForm.$valid}}</tt>
+        <br/>
+        <!--<tt>{{addTodoForm.todovalue.$error.notallspace}}</tt>-->
+    </form>
+
+
+</div>
+
+<script>
+    angular.module('myApp', [])
+            .controller('TodoController', function ($scope) {
+                $scope.todos = [
+                    {done:true,item:'first event'}
+                ];
+                $scope.newTodo = '';
+                $scope.addTodo = function () {
+                    $scope.todos.push({
+                        done:false,
+                        item:$scope.newTodo
+                    });
+                    $scope.newTodo = '';
+                };
+                $scope.remain = function () {
+                    var count = 0;
+                    angular.forEach($scope.todos, function (todo) {
+                        count += todo.done ? 0 : 1;
+                    });
+                    return count;
+                }
+            })
+//            .directive('allSpace', function () {
+//                return {
+//                    require:'ngModel',
+//                    link: function (scope, ele, attrs, ctrl) {
+//                        ctrl.$parsers.unshift(function (viewValue) {
+//                            var trim = viewValue.replace(/\s*/g, '');
+//                            if (trim.length > 0) {
+//                                ctrl.$setValidity('notallspace', true);
+//                                return viewValue;
+//                            } else {
+//                                ctrl.$setValidity('notallspace', false);
+//                                return undefined;
+//                            }
+//                        });
+//                    }
+//                }
+//            });
+
+    var ALL_SPACE = /(^\s*)|(\s*$)/g;
+</script>
+
+
+<!--<div ng-controller="TestCtrl">-->
+    <!--<p>示例数据: {{ a|map:map_value:'>>':'(no)' }}</p>-->
+    <!--<p>示例数据: {{ b|map:map_value:'>>':'(no)' }}</p>-->
+<!--</div>-->
+
+
+<!--<script type="text/javascript">-->
+
+    <!--var app = angular.module('Demo', [], angular.noop);-->
+    <!--app.controller('TestCtrl', function($scope){-->
+        <!--$scope.map_value = {-->
+            <!--a: '一',-->
+            <!--b: '二',-->
+            <!--c: '三'-->
+        <!--}-->
+        <!--$scope.a = 'a';-->
+        <!--$scope.b = 'c';-->
+    <!--});-->
+
+    <!--app.filter('map', function(){-->
+        <!--var filter = function(input, map_value, append, default_value){-->
+            <!--var r = map_value[input];-->
+            <!--if(r === undefined){ return default_value + append }-->
+            <!--else { return r + append }-->
+        <!--};-->
+        <!--return filter;-->
+    <!--});-->
+
+    <!--angular.bootstrap(document, ['Demo']);-->
+<!--</script>-->
+</body>
+</html>
