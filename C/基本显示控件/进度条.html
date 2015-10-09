@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+    <script src="../../framework/1.3.0.14/angular.js"></script>
+</head>
+<body ng-controller="ProgressController">
+<div class="row col-sm-8 col-sm-offset-1">
+    <h3>进度条</h3>
+    <hr/>
+    <div ng-class="{progress:true, 'progress-striped':vm.striped}">
+        <div ng-class="['progress-bar', vm.style]" ng-style="{width:vm.value + '%'}">
+            <div ng-if="vm.showLabel">{{vm.value}}%</div>
+        </div>
+    </div>
+
+    <h3>选项</h3>
+    <hr/>
+    <label>
+        进度：<input type="number" class="form-control" ng-model="vm.value"/>
+    </label>
+    <button class="btn btn-primary" ng-click="vm.value=0">0%</button>
+    <button class="btn btn-primary" ng-click="vm.value=20">20%</button>
+    <button class="btn btn-primary" ng-click="vm.value=60">60%</button>
+    <button class="btn btn-primary" ng-click="vm.value=100">100%</button>
+    <hr/>
+    <label>
+        斑马纹 <input type="checkbox" ng-model="vm.striped"/>
+    </label>
+    <label>
+        文字 <input type="checkbox" ng-model="vm.showLabel"/>
+    </label>
+    <hr/>
+    <label>
+        风格：
+        <br/>
+        <select name="" class="form-control" ng-model="vm.style">
+            <option value="progress-bar-success">progress-bar-success</option>
+            <option value="progress-bar-info">progress-bar-info</option>
+            <option value="progress-bar-danger">progress-bar-danger</option>
+            <option value="progress-bar-warning">progress-bar-warning</option>
+        </select>
+    </label>
+</div>
+
+
+<script>
+    angular.module('myApp', [])
+            .controller('ProgressController', function ($scope) {
+                var vm = $scope.vm = {};
+                vm.striped = false;
+                vm.style = 'progress-bar-success';
+                vm.value = 50;
+                vm.showLabel = true;
+            });
+</script>
+</body>
+</html>
