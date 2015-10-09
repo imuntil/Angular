@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+    <script src="../../framework/1.3.0.14/angular.js"></script>
+</head>
+<body ng-controller="TableController">
+<div class="col-sm-6 col-sm-offset-2">
+    <div class="input-group pull-right global-search">
+        <label class="input-group-addon">全局搜索</label>
+        <input class="form-control" type="text" ng-model="vm.filter.$"/>
+    </div>
+    <table class="table table-bordered table-over">
+        <thead>
+        <tr>
+            <th ng-repeat="column in vm.columns"
+                    ng-if="!column.hidden"
+                    ng-click="vm.sort.toggle(column)"
+                    ng-class="{sortable:column.sortable !== false}">
+                <i ng-if="column.name === vm.sort.column && vm.sort.direction"
+                        class="glyphicon {{vm.sort.direction|orderClass}}"></i>
+            </th>
+        </tr>
+        </thead>
+    </table>
+</div>
+</body>
+</html>
