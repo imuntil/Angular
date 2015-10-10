@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<script src="../../framework/moment.js"></script>
+<script>
+    function rand(min, max) {
+        return min + Math.round(Math.random() * (max - min));
+    }
+
+    var birthday = moment().subtract('day', rand(365, 365 * 50)).toDate();
+
+    console.log(birthday);
+    console.log(moment().diff(birthday, 'years'));
+</script>
+</body>
+</html>
