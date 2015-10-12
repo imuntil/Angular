@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+    <script src="../../framework/1.4.7/angular.js"></script>
+    <script src="../../framework/1.4.7/angular-animate.js"></script>
+    <script src="../../framework/ui-bootstrap-tpls-0.14.1.js"></script>
+</head>
+<body ng-controller="CollapseController">
+    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">
+        Toggle collapse
+    </button>
+    <hr/>
+    <div uib-collapse="isCollapsed">
+        <div class="well well-lg">Some content</div>
+    </div>
+    <script>
+        angular.module('myApp', ['ngAnimate', 'ui.bootstrap.collapse'])
+                .controller('CollapseController', function ($scope) {
+                    $scope.isCollapsed = false;
+                });
+    </script>
+</body>
+</html>
