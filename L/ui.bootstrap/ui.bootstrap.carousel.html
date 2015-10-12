@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+    <script src="../../framework/1.4.7/angular.js"></script>
+    <script src="../../framework/1.4.7/angular-animate.js"></script>
+    <!--<script src="../../framework/ui-bootstrap-tpls.js"></script>-->
+    <script src="../../framework/ui-bootstrap-tpls-0.14.1.js"></script>
+</head>
+<body ng-controller="CarouselController" style="height: 300px;">
+<uib-carousel interval="myInterval">
+    <uib-slide>
+        <img src="../../IMG/img-1.jpg" alt="" style="margin: auto;"/>
+        <div class="carousel-caption">
+            <p>Beautiful!</p>
+        </div>
+    </uib-slide>
+    <uib-slide>
+        <img src="../../IMG/img-2.png" alt="" style="margin: auto;"/>
+        <div class="carousel-caption">
+            <p>D'aww!</p>
+        </div>
+    </uib-slide>
+</uib-carousel>
+
+<!--<uib-carousel interval="myInterval" no-warp="noWarpSlides">-->
+    <!--<uib-slide ng-repeat="slide in slides" active="slide.active">-->
+        <!--<img ng-src="{{slide.image}}" style="margin:auto;">-->
+        <!--<div class="carousel-caption">-->
+            <!--<p>{{slide.text}}</p>-->
+        <!--</div>-->
+    <!--</uib-slide>-->
+<!--</uib-carousel>-->
+<script>
+    angular.module('myApp', ['ngAnimate', 'ui.bootstrap'])
+            .controller('CarouselController', function ($scope) {
+
+                // 设置轮播图图片间隔
+                $scope.myInterval = 5000;
+
+                $scope.noWarpSlides = false;
+                // 轮播图数据初始化
+                var slides = $scope.slides = [];
+                // 添加轮播图源
+                slides.push({ image: '../../IMG/img-1.jpg', text: 'ABX' });
+                slides.push({ image: '../../IMG/img-2.png', text: 'FGR' });
+            });
+</script>
+</body>
+</html>
