@@ -65,7 +65,8 @@
                             '<div class="title" ng-click="toggle()">{{title}}</div>' +
                             '<div class="body" ng-show="showMe" ng-transclude></div>'+
                             '</div>',
-                link: function (scope, element, attrs, parentController) {
+                link: function (scope, element, attrs, parentController, transclude) {
+                    console.log(transclude(scope, angular.noop));
                     scope.showMe = false;
                     parentController.addExpander(scope);
                     scope.toggle = function () {

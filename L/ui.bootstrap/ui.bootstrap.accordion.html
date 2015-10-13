@@ -10,6 +10,22 @@
 </head>
 <body ng-controller="AccordionController">
 
+<script type="text/ng-template" id="group-template.html">
+    <div class="panel {{panelClass || 'panel-default}}">
+        <div class="panel-heading">
+            <h4 class="panel-title" style="color: #fa39c3;">
+                <a href tabindex="0" ng-click="toggleOpen()" uib-accordion-transclude="heading"
+                   class="accordion-toggle">
+                    <span ng-class="{'text-muted': isDisabled}">{{heading}}</span>
+                </a>
+            </h4>
+        </div>
+        <div class="panel-collapse collapse" uib-collapse="!isOpen">
+            <div class="panel-body" style="text-align: center" ng-transclude></div>
+        </div>
+    </div>
+</script>
+
     <p>
         <button class="btn btn-default btn-sm" ng-click="status.open = !status.open">
             Toggle last panel
@@ -24,9 +40,9 @@
             Open only one at a time
         </label>
     </div>
-    <uib-accordion close-other="oneAtATime">
+    <uib-accordion close-others="oneAtATime">
         <uib-accordion-group heading="Static Header:どんなタイトルがいいかな" panel-class="panel-success"
-                is-disable="!status.firstDisable" is-open="status.firstOpen">
+                is-disabled="status.firstDisable" is-open="status.firstOpen">
             どんな内容がいいかな。。。
         </uib-accordion-group>
         <uib-accordion-group ng-repeat="group in groups" heading="{{group.title}}"
@@ -35,9 +51,15 @@
         </uib-accordion-group>
         <uib-accordion-group panel-class="panel-info" heading="SOS団　団員共">
             <p>団長：涼宮ハルヒ</p>
-            <input class="form-control" type="text" ng-model="newMember"/>
+            <!--<input class="form-control" type="text" ng-model="newMember"/>-->
             <button class="btn btn-default btn-sm" ng-click="addMember()">Add member</button>
-            <p ng-repeat="member in members">団員：{{member}}</p>
+            <p ng-repeat="member in members track by $index">団員：{{member}}</p>
+        </uib-accordion-group>
+        <uib-accordion-group is-open="status.open" panel-class="panel-danger">
+            <uib-accordion-heading>
+                I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down':status.open, 'glyphicon-chevron-right':!status.open}"></i>
+            </uib-accordion-heading>
+            This is just some content to illustrate fancy headings
         </uib-accordion-group>
     </uib-accordion>
     <script>
@@ -64,7 +86,7 @@
                             '古泉一樹',
                             '朝比奈実玖瑠'
                     ];
-                    $scope.newMember = '三味線';
+//                    $scope.newMember = '三味線';
                     $scope.addMember = function () {
 //                        console.log($scope.newMember);
 //                        $scope.members.push($scope.newMember);
@@ -73,6 +95,8 @@
                         $scope.members.push( 'member' + newMember);
                     };
                 });
+
+        console.log(!!undefined);
     </script>
 </body>
 </html>

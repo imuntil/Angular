@@ -1,17 +1,34 @@
 /**
  * Created by 斌 on 2015/9/22.
  */
-angular.module('app.controllers', ['ui.router', 'app.datas', 'ngSanitize', 'app.wechatRelated'])
+angular.module('app.controllers', ['ui.router', 'app.datas', 'ngSanitize', 'app.wechatRelated', 'h5video'])
     .controller('IndexController', ['$scope', '$state', '$sce', '$stateParams', 'movies', 'ends', 'shared', '$rootScope',
         function ($scope, $state, $sce, $stateParams, movies, ends, shared, $rootScope) {
 
             var mid = $stateParams.movieID;
+            //$scope.movieURL = movies[mid];
             $scope.movieURL = $sce.trustAsResourceUrl(movies[mid]);
-            $scope.movie = document.querySelector('#t-movie');
-            $scope.movie.load();
-            //$scope.movie.play();
-            $scope.movie.addEventListener('ended', function (e) {
-
+            $scope.controls = true;
+            $scope.autoplay = false;
+            //$scope.movie = document.querySelector('#t-movie');
+            //$scope.movie.load();
+            ////$scope.movie.play();
+            //$scope.movie.addEventListener('ended', function (e) {
+            //
+            //    if (mid == 0) {
+            //        $state.go('index.ends');
+            //    } else {
+            //        ends[mid - 1].watched = true;
+            //
+            //        if (!shared.hasShared) {
+            //            shared.hasShared = true;
+            //            $state.go('index.share');
+            //        } else {
+            //            $state.go('index.ends');
+            //        }
+            //    }
+            //}, false);
+            $scope.videoEnd = function() {
                 if (mid == 0) {
                     $state.go('index.ends');
                 } else {
@@ -24,7 +41,7 @@ angular.module('app.controllers', ['ui.router', 'app.datas', 'ngSanitize', 'app.
                         $state.go('index.ends');
                     }
                 }
-            }, false);
+            };
 
             $rootScope.layerShow = false;
         }])

@@ -1,7 +1,7 @@
 /**
  * Created by 斌 on 2015/9/21.
  */
-var app = angular.module('myApp', ['app.controllers', 'app.wechatRelated']);
+var app = angular.module('myApp', ['app.controllers', 'app.wechatRelated', 'app.datas']);
 app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/index/0');
     $stateProvider
@@ -15,7 +15,9 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     template:'<header><p>LOGO<br/>活动KV</p></header>'
                 },
                 'main@index':{
-                    template:'<div><div><video ng-src="{{movieURL}}" controls="controls" id="t-movie"></div></div>',
+                    //template:'<div><div><video ng-src="{{movieURL}}" controls="controls" id="t-movie"></div></div>',
+                    //template:'<div><md-video md-src="movieURL" md-controls="controls" md-autoplay="autoplay"></md-video></div>',
+                    template:'<div><md-video></md-video></div>',
                     controller: 'IndexController'
                 }
             }
@@ -40,7 +42,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         });
 });
-app.run(function(wechatConfig, defaultShare) {
+app.run(function(wechatConfig, defaultShare, $location) {
     wechatConfig.setConfig(true);
     wx.ready(function () {
         var pro = defaultShare();
@@ -51,4 +53,6 @@ app.run(function(wechatConfig, defaultShare) {
             alert('分享朋友圈成功');
         });
     });
+
+    //$location.path('/index/0');
 });

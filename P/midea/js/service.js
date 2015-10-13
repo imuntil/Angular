@@ -113,7 +113,7 @@ angular.module('app.wechatRelated', [])
             wx.onMenuShareTimeline({
                 title:dcw.title,
                 link:dcw.link,
-                imgUrl:dcw.url,
+                imgUrl:dcw.imgUrl,
                 success: function () {
                     deferred.resolve();
                 },
@@ -138,7 +138,7 @@ angular.module('app.wechatRelated', [])
                 title:dcw.title,
                 desc:dcw.desc,
                 link:dcw.link,
-                imgUrl:dcw.url,
+                imgUrl:dcw.imgUrl,
                 type:'link',
                 dataUrl:'',
                 success: function () {
