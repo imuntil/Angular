@@ -10,7 +10,7 @@
 
 </head>
 <body ng-controller="AlertController">
-<apd-sweet-alert heading="this is title" text="this is content"
+<apd-sweet-alert heading="alert.heading" text="alert.text"
         view-alert="show" close="close()"></apd-sweet-alert>
 
 <br/>
@@ -21,10 +21,23 @@
 <script>
     angular.module('myApp', ['apd.alert', 'ngAnimate'])
             .controller('AlertController', function ($scope) {
-                $scope.show = true;
+                $scope.show = false;
+
+
+                var alert = $scope.alert = {
+                    heading:'this is title',
+                    text:'this is content'
+                };
+
                 $scope.close = function () {
-                    console.log('!!!close');
-                }
+                    alert.heading = 'this is another title';
+                    alert.text = 'this is another content';
+//                    $scope.show = false;
+//                    console.log($scope.show);
+                    $scope.close = function () {
+                        $scope.show = false;
+                    }
+                };
             })
 </script>
 
@@ -35,20 +48,21 @@
                     restrict:'EA',
                     templateUrl:'alert-template.html',
                     replace:true,
-                    controller: ['$scope', '$attrs', function ($scope, $attrs) {
-                        $scope._innerClose = function () {
-                            console.log('directive log');
-                            $scope.viewAlert = false;
-
-                            if (!!$attrs.close) {
-                                console.log('out close');
-                                $scope.close();
-                            }
-                        };
-                    }],
+//                    controller: ['$scope', '$attrs', function ($scope, $attrs) {
+//                        $scope._innerClose = function () {
+//                            console.log('directive log');
+//                            $scope.viewAlert = false;
+//
+//                            if (!!$attrs.close) {
+//                                console.log('out close');
+//                                $scope.close();
+//                                console.log($scope.viewAlert);
+//                            }
+//                        };
+//                    }],
                     scope:{
-                        heading:'@',
-                        text:'@',
+                        heading:'=',
+                        text:'=',
                         viewAlert:'=',
                         close:'&'
                     },
@@ -57,16 +71,15 @@
                     }
                 }
             })
-
 </script>
 
 <script type="text/ng-template" id="alert-template.html">
-   <div ng-show="viewAlert">
-       <div class="sweet-overlay"></div>
-       <div class="sweet-alert">
+   <div>
+       <div ng-show="viewAlert" class="sweet-overlay"></div>
+       <div ng-show="viewAlert" class="sweet-alert">
            <h3>{{heading}}</h3>
            <p>{{text}}</p>
-           <button class="confirm" ng-click="_innerClose()">OK</button>
+           <button class="confirm" ng-click="close()">OK</button>
        </div>
    </div>
 </script>

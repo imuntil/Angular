@@ -139,15 +139,36 @@
   }
 }
 
-.ng-hide-remove .sweet-alert {
-  -webkit-animation: showSweetAlert 0.8s;
-  -moz-animation: showSweetAlert 0.8s;
-  animation: showSweetAlert 0.8s;
-  display: block;
+.ng-hide-remove.sweet-alert {
+  -webkit-animation: showSweetAlert 0.3s;
+  -moz-animation: showSweetAlert 0.3s;
+  animation: showSweetAlert 0.3s;
 }
 
-.ng-hide-add .sweet-alert {
+.ng-hide-add.sweet-alert {
   -webkit-animation: hideSweetAlert 0.2s;
   -moz-animation: hideSweetAlert 0.2s;
   animation: hideSweetAlert 0.2s;
+}
+
+.ng-hide-remove.sweet-overlay,
+.ng-hide-add.sweet-overlay
+{
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+.ng-hide-add.sweet-overlay.ng-hide-add-active{
+    opacity: 0;
+}
+.ng-hide-add.sweet-overlay{
+    opacity: 1;
+}
+.ng-hide-remove.sweet-overlay.ng-hide-remove-active{
+    opacity: 1;
+}
+.ng-hide-remove.sweet-overlay{
+    opacity: 0;
 }
