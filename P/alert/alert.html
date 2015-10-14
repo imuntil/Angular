@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+    <link rel="stylesheet" href="sweet-alert.css"/>
+    <script src="../../framework/1.4.7/angular.js"></script>
+    <script src="../../framework/1.4.7/angular-animate.js"></script>
+
+</head>
+<body ng-controller="AlertController">
+<apd-sweet-alert heading="this is title" text="this is content"
+        view-alert="show" close="close()"></apd-sweet-alert>
+
+<br/>
+<tt>$scope.show:{{show}}</tt>
+<br/>
+<button class="btn btn-success" ng-click="show = true">show alert</button>
+<button class="btn btn-info" ng-click="show = false">close alert</button>
+<script>
+    angular.module('myApp', ['apd.alert', 'ngAnimate'])
+            .controller('AlertController', function ($scope) {
+                $scope.show = true;
+                $scope.close = function () {
+                    console.log('!!!close');
+                }
+            })
+</script>
+
+<script>
+    angular.module('apd.alert', ['ngAnimate'])
+            .directive('apdSweetAlert', function () {
+                return {
+                    restrict:'EA',
+                    templateUrl:'alert-template.html',
+                    replace:true,
+                    controller: ['$scope', '$attrs', function ($scope, $attrs) {
+                        $scope._innerClose = function () {
+                            console.log('directive log');
+                            $scope.viewAlert = false;
+
+                            if (!!$attrs.close) {
+                                console.log('out close');
+                                $scope.close();
+                            }
+                        };
+                    }],
+                    scope:{
+                        heading:'@',
+                        text:'@',
+                        viewAlert:'=',
+                        close:'&'
+                    },
+                    link: function (scope, element, attrs) {
+
+                    }
+                }
+            })
+
+</script>
+
+<script type="text/ng-template" id="alert-template.html">
+   <div ng-show="viewAlert">
+       <div class="sweet-overlay"></div>
+       <div class="sweet-alert">
+           <h3>{{heading}}</h3>
+           <p>{{text}}</p>
+           <button class="confirm" ng-click="_innerClose()">OK</button>
+       </div>
+   </div>
+</script>
+</body>
+</html>

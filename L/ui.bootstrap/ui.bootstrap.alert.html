@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+    <script src="../../framework/1.4.7/angular.js"></script>
+    <script src="../../framework/1.4.7/angular-animate.js"></script>
+    <script src="../../framework/ui-bootstrap-tpls-0.14.1.js"></script>
+</head>
+<body ng-controller="AlertController">
+    <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="hideLayer()"
+            >{{alert.msg}}</uib-alert>
+    <script>
+        angular.module('myApp', ['ui.bootstrap'])
+                .controller('AlertController', function ($scope) {
+                    $scope.alerts = [{
+                        msg : 'success alert',
+                        type : 'success'
+                    }];
+                    $scope.hideLayer = function () {
+                        $scope.alerts.shift();
+                    }
+                });
+    </script>
+</body>
+</html>
