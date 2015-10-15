@@ -10,6 +10,19 @@
 </head>
 <body ng-controller="SweetAlertController">
 
+<apd-sweet-alert heading="heading" text="text"
+                 view-alert="show"></apd-sweet-alert>
+
+<script type="text/ng-template" id="alert-template.html">
+    <div>
+        <div ng-show="viewAlert" class="sweet-overlay"></div>
+        <div ng-show="viewAlert" class="sweet-alert">
+            <h3>{{heading}}</h3>
+            <p>{{text}}</p>
+            <button class="confirm" ng-click="close()">OK</button>
+        </div>
+    </div>
+</script>
 <script>
     angular.module('apd.sweetalert', ['ngAnimate'])
             .factory('sweetAlertData', function () {
@@ -28,22 +41,37 @@
                         alert.show = false;
                         angular.isFunction(fn) && fn();
                         console.log(alert);
+                    },
+                    alert:alert
+                }
+            })
+            .controller('ApdSweetAlertController', ['sweetAlertData', '$scope', function (swald, $scope) {
+
+            }])
+            .directive('apdSweetAlert', function () {
+                return {
+                    restrict:'EA',
+                    templateUrl:'alert-template.html',
+                    replace:true,
+                    controller:'ApdSweetAlertController',
+                    scope:{
+                        heading:'=',
+                        text:'=',
+                        viewAlert:'='
                     }
                 }
             })
-            .controller('ApdSweetAlertController', ['sweetAlertData', function (swald) {
-                swald.swalShow({heading:'....'});
-            }]);
 </script>
 <script>
     angular.module('myApp', ['apd.sweetalert'])
             .controller('SweetAlertController', ['$scope', 'sweetAlertData', function ($scope, swal) {
                 swal.swalShow({heading:'...'});
 
-                swal.swalHide(function () {
-                    console.log('ddd');
-                })
-            }])
+//                swal.swalHide(function () {
+//                    console.log('ddd');
+//                })
+
+            }]);
 </script>
 </body>
 </html>

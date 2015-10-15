@@ -16,32 +16,39 @@
 <br/>
 <tt>$scope.show:{{show}}</tt>
 <br/>
-<button class="btn btn-success" ng-click="show = true">show alert</button>
+<button class="btn btn-success" ng-click="showAlert()">show alert</button>
 <button class="btn btn-info" ng-click="show = false">close alert</button>
 <br/>
 <hr/>
 <button class="btn btn-info" ng-click="qTest()">$q</button>
 <script>
     angular.module('myApp', ['apd.alert', 'ngAnimate'])
-            .controller('AlertController', function ($scope, $q) {
-                $scope.show = false;
+            .controller('AlertController', function ($scope, $q, $rootScope) {
+//                $scope.show = false;
+//
+//
+//                var alert = $scope.alert = {
+//                    heading:'this is title',
+//                    text:'this is content'
+//                };
+//
+//                $scope.close = function () {
+//
+//                    $scope.show = false;
+////                    alert.heading = 'this is another title';
+////                    alert.text = 'this is another content';
+////                    $scope.close = function () {
+////                        $scope.show = false;
+////                    }
+//                };
 
-
-                var alert = $scope.alert = {
-                    heading:'this is title',
-                    text:'this is content'
+                $scope.showAlert = function () {
+                    $rootScope.show = true;
                 };
-
                 $scope.close = function () {
-
-                    $scope.show = false;
-//                    alert.heading = 'this is another title';
-//                    alert.text = 'this is another content';
-//                    $scope.close = function () {
-//                        $scope.show = false;
-//                    }
+                    $rootScope.alert.heading = 'scope changed heading'
+                    $rootScope.show = false;
                 };
-
                 var _d = $q.defer();
                 $scope.qTest = function () {
                     _d.resolve('abc');
@@ -49,6 +56,16 @@
                 _d.promise.then(function (data) {
                     console.log(data);
                 });
+            })
+            .run(function ($rootScope) {
+                $rootScope.show = false;
+                $rootScope.alert = {
+                    heading:'root heading',
+                    text:'root text'
+                };
+                $rootScope.close = function () {
+                    $rootScope.show = false;
+                }
             })
 </script>
 
