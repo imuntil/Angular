@@ -18,9 +18,12 @@
 <br/>
 <button class="btn btn-success" ng-click="show = true">show alert</button>
 <button class="btn btn-info" ng-click="show = false">close alert</button>
+<br/>
+<hr/>
+<button class="btn btn-info" ng-click="qTest()">$q</button>
 <script>
     angular.module('myApp', ['apd.alert', 'ngAnimate'])
-            .controller('AlertController', function ($scope) {
+            .controller('AlertController', function ($scope, $q) {
                 $scope.show = false;
 
 
@@ -30,14 +33,22 @@
                 };
 
                 $scope.close = function () {
-                    alert.heading = 'this is another title';
-                    alert.text = 'this is another content';
-//                    $scope.show = false;
-//                    console.log($scope.show);
-                    $scope.close = function () {
-                        $scope.show = false;
-                    }
+
+                    $scope.show = false;
+//                    alert.heading = 'this is another title';
+//                    alert.text = 'this is another content';
+//                    $scope.close = function () {
+//                        $scope.show = false;
+//                    }
                 };
+
+                var _d = $q.defer();
+                $scope.qTest = function () {
+                    _d.resolve('abc');
+                };
+                _d.promise.then(function (data) {
+                    console.log(data);
+                });
             })
 </script>
 

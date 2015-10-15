@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+    <link rel="stylesheet" href="sweet-alert.css"/>
+    <script src="../../framework/1.4.7/angular.js"></script>
+    <script src="../../framework/1.4.7/angular-animate.js"></script>
+</head>
+<body ng-controller="SweetAlertController">
+
+<script>
+    angular.module('apd.sweetalert', ['ngAnimate'])
+            .factory('sweetAlertData', function () {
+                var alert = {
+                    heading:'this is a title',
+                    text:'this is contens',
+                    show:false
+                };
+                return {
+                    swalShow: function (data) {
+                        angular.extend(alert, data);
+                        alert.show = true;
+                        console.log(alert);
+                    },
+                    swalHide: function (fn) {
+                        alert.show = false;
+                        angular.isFunction(fn) && fn();
+                        console.log(alert);
+                    }
+                }
+            })
+            .controller('ApdSweetAlertController', ['sweetAlertData', function (swald) {
+                swald.swalShow({heading:'....'});
+            }]);
+</script>
+<script>
+    angular.module('myApp', ['apd.sweetalert'])
+            .controller('SweetAlertController', ['$scope', 'sweetAlertData', function ($scope, swal) {
+                swal.swalShow({heading:'...'});
+
+                swal.swalHide(function () {
+                    console.log('ddd');
+                })
+            }])
+</script>
+</body>
+</html>
