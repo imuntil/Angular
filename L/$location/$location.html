@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../../framework/1.4.7/angular.js"></script>
+    <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+    <!--<base href="/"/>-->
+</head>
+<body ng-controller="LocationController as LC">
+<button class="btn btn-primary" ng-click="go()">GO</button>
+<button class="btn btn-primary" ng-click="gogo()">GOGO</button>
+
+<button class="btn btn-primary" ng-click="search()">SEARCH</button>
+<a href="www.baidu.com" class="btn btn-info">百度</a>
+
+<script>
+    angular.module('myApp', [])
+            .controller('LocationController', function ($scope, $window, $location) {
+                $scope.go = function () {
+//                    window.location.href = 'www.baidu.com';
+                    console.log($location.path());
+                    $location.search({omg:'omg',cale:'ai'});
+                    console.log($location.absUrl());
+                    console.log($location.url());
+                    console.log($location.hash());
+                };
+
+                $scope.gogo = function () {
+                    $window.location.href = 'http://www.baidu.com';
+                };
+
+                $scope.search = function () {
+                    console.log($location.search().omg);
+                };
+
+                var Q = $location.search();
+                if (Q.omg == 'omg') {
+                    alert('true');
+                }
+
+            })
+            .config(function ($locationProvider) {
+                $locationProvider.html5Mode({
+                    enabled:true
+                    ,
+                    requireBase:false
+                }).hashPrefix('/');
+            })
+</script>
+</body>
+</html>
