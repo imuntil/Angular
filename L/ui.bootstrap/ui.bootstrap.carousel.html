@@ -10,29 +10,29 @@
     <script src="../../framework/ui-bootstrap-tpls-0.14.1.js"></script>
 </head>
 <body ng-controller="CarouselController" style="height: 300px;">
-<uib-carousel interval="myInterval">
-    <uib-slide>
-        <img src="../../IMG/img-1.jpg" alt="" style="margin: auto;"/>
-        <div class="carousel-caption">
-            <p>Beautiful!</p>
-        </div>
-    </uib-slide>
-    <uib-slide>
-        <img src="../../IMG/img-2.png" alt="" style="margin: auto;"/>
-        <div class="carousel-caption">
-            <p>D'aww!</p>
-        </div>
-    </uib-slide>
-</uib-carousel>
-
-<!--<uib-carousel interval="myInterval" no-warp="noWarpSlides">-->
-    <!--<uib-slide ng-repeat="slide in slides" active="slide.active">-->
-        <!--<img ng-src="{{slide.image}}" style="margin:auto;">-->
+<!--<uib-carousel interval="myInterval">-->
+    <!--<uib-slide>-->
+        <!--<img src="../../IMG/img-1.jpg" alt="" style="margin: auto;"/>-->
         <!--<div class="carousel-caption">-->
-            <!--<p>{{slide.text}}</p>-->
+            <!--<p>Beautiful!</p>-->
+        <!--</div>-->
+    <!--</uib-slide>-->
+    <!--<uib-slide>-->
+        <!--<img src="../../IMG/img-2.png" alt="" style="margin: auto;"/>-->
+        <!--<div class="carousel-caption">-->
+            <!--<p>D'aww!</p>-->
         <!--</div>-->
     <!--</uib-slide>-->
 <!--</uib-carousel>-->
+
+<uib-carousel interval="myInterval" no-warp="noWarpSlides">
+    <uib-slide ng-repeat="slide in slides" active="slide.active">
+        <img ng-src="{{slide.image}}" style="margin:auto;">
+        <div class="carousel-caption">
+            <p>{{slide.text}}</p>
+        </div>
+    </uib-slide>
+</uib-carousel>
 <script>
     angular.module('myApp', ['ngAnimate', 'ui.bootstrap'])
             .controller('CarouselController', function ($scope) {
