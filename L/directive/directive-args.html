@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../framework/1.4.7/angular.js"></script>
+    <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+</head>
+<body ng-controller="MyController">
+<div out-fn="doSomethings(args)" data="hello"></div>
+<div out-fn="doSomethings(args)" data="world"></div>
+<script>
+    angular.module('myApp', [])
+            .directive('outFn', function () {
+                return {
+                    restrict:'A',
+                    transclude:true,
+                    scope:{
+                        localFn:'&outFn'
+                    },
+                    link: function (scope, element, attrs) {
+                        scope.localFn({args:attrs.data});
+                    }
+                }
+            })
+            .controller('MyController', function ($scope) {
+                $scope.doSomethings = function (args) {
+                    console.log(args)
+                };
+            });
+</script>
+</body>
+</html>

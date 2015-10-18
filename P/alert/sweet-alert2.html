@@ -10,14 +10,14 @@
 </head>
 <body ng-controller="SweetAlertController">
 
-<div>{{a}}</div>
-<div>{{test}}</div>
+<div>{{swalData}}</div>
 
-<apd-sweet-alert heading="heading" text="text"
-                 view-alert="show" close-cb="close()"></apd-sweet-alert>
+<apd-sweet-alert heading="swalData.heading" text="swalData.text"
+                 view-alert="swalData.show" close-cb="swalData.close()"></apd-sweet-alert>
 
 <div class="inner-controller" ng-controller="InnerController">
     <button class="btn btn-primary" ng-click="outSwalShow()">inner button</button>
+    <button class="btn btn-info" ng-click="TEST()">TEST</button>
 </div>
 
 <script type="text/ng-template" id="alert-template.html">
@@ -56,30 +56,38 @@
 </script>
 <script>
     angular.module('myApp', ['apd.sweetalert'])
-            .controller('SweetAlertController', ['$scope', '$timeout', function ($scope, $timeout) {
-                $scope.heading = 'swal title';
-                $scope.text = 'swal content';
-                $scope.show = true;
-
-                $scope.close = function () {
-                    console.log('close call back');
-                };
-
-                $scope.test = {
-                    a:1,
-                    b:2
-                };
-                $scope.a = $scope.test.a;
-
-                $timeout(function () {
-                    $scope.test.a = 3;
-                }, 3000);
-            }])
-            .controller('InnerController', function ($scope) {
-                $scope.outSwalShow = function() {
-                    $scope.$parent.show = true;
+            .value('swalData', function () {
+                return {
+                    heading:'swal title',
+                    text:'swal content',
+                    show:true,
+                    close: function () {
+                        console.log('out close');
+                    }
                 }
             })
+            .controller('SweetAlertController', ['$scope', '$timeout', 'swalData', function ($scope, $timeout, swalData) {
+                $scope.swalData = swalData;
+            }])
+            .controller('InnerController', function ($scope, swalData) {
+                $scope.swalData = swalData;
+
+
+                $scope.outSwalShow = function() {
+                    $scope.swalData.heading = 'inner title';
+                    $scope.swalData.show = true;
+                    $scope.swalData.close = $scope.close;
+                };
+                $scope.close = function () {
+                    console.log('inner close');
+                };
+
+                $scope.TEST = function () {
+                    angular.extend($scope.swalData, {heading:'test test title', show:true, close: function () {
+                        console.log('test test close');
+                    }});
+                }
+            });
 </script>
 </body>
 </html>
