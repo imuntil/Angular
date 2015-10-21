@@ -12,6 +12,9 @@
 
 <div>{{swalData}}</div>
 
+<div>$timeout:{{_a}}</div>
+<div>$timeout:{{_b}}</div>
+
 <apd-sweet-alert heading="swalData.heading" text="swalData.text"
                  view-alert="swalData.show" close-cb="swalData.close()"></apd-sweet-alert>
 
@@ -68,6 +71,15 @@
             })
             .controller('SweetAlertController', ['$scope', '$timeout', 'swalData', function ($scope, $timeout, swalData) {
                 $scope.swalData = swalData;
+
+                $scope._a = 'a';
+                $scope._b = 'b';
+                $timeout(function () {
+                    $scope._a = 'aa';
+                }, 500);
+                $timeout(function () {
+                    $scope._b = 'bb'
+                }, 500, false);
             }])
             .controller('InnerController', function ($scope, swalData) {
                 $scope.swalData = swalData;
@@ -87,6 +99,8 @@
                         console.log('test test close');
                     }});
                 }
+
+
             });
 </script>
 </body>
