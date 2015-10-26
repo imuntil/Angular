@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../../framework/1.4.7/angular.js"></script>
+    <script src="../../jquery.js"></script>
+    <script src="../../Tools/ng-infinite-scroll.min.js"></script>
+    <style>
+        .item {
+            margin: 10px;
+        }
+        .container {
+            overflow: hidden;
+            position: relative;
+            display: block;
+        }
+    </style>
+</head>
+<body ng-controller="ISController" >
+<div class="container" infinite-scroll="addMoreItems()"
+        infinite-scroll-immediate-check="true">
+    <div class="item" ng-repeat="item in items track by $index">Item number {{::$index}}: {{::item}}</div>
+</div>
+<a href="http://binarymuse.github.io/ngInfiniteScroll/documentation.html">ngInfiniteScroll Documentation</a>
+<script>
+    angular.module('myApp', ['infinite-scroll'])
+            .controller('ISController', function ($scope) {
+                $scope.items = [
+                        0,1,2,3,4,5,6,7,8,9,7,6,5,4,3,4,5,6,4,2,3,4
+                ];
+                $scope.addMoreItems = function () {
+                    console.log('anc');
+                    for (var i = 0; i <= 25; i ++) {
+                        var item = Math.floor( Math.random() * 10);
+                        $scope.items.push(item);
+                    }
+                }
+
+                var a = [1,2];
+                var b = [3,4, [5,6]];
+                console.log(a.concat(b));
+            })
+</script>
+</body>
+</html>
