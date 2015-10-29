@@ -10,15 +10,15 @@
     <script src="../../Tools/ng-infinite-scroll.min.js"></script>
     <script src="main.js"></script>
 </head>
-<body ng-controller="TestController">
-    <div class="container" infinite-scroll="loadMore()"
+<body ng-controller="TestController as vm">
+    <div class="container" infinite-scroll="vm.loadMore()"
          infinite-scroll-immediate-check="false"
-         infinite-scroll-disabled="currentPage >= pagingItems.length">
+         infinite-scroll-disabled="vm.currentPage >= vm.pagingItems.length">
         <div class="btn_area">
-            <a href="javascript:void(0);" ng-click="loadItems(2)" ng-class="{clicked:flag==2}">新品</a>
-            <a href="javascript:void(0);" ng-click="loadItems(1)" ng-class="{clicked:flag==1}">热品</a>
+            <a href="javascript:void(0);" ng-click="vm.loadItems(2)" ng-class="{clicked:vm.flag==2}">新品</a>
+            <a href="javascript:void(0);" ng-click="vm.loadItems(1)" ng-class="{clicked:vm.flag==1}">热品</a>
         </div>
-        <div ng-repeat="vi in viewingItems track by $index">
+        <div ng-repeat="vi in vm.viewingItems track by $index">
             <a href="" class="order_img" ng-click="vi.prohead = 1">
                 <div class="img-content">
                     <img src="" alt="" width="100%"

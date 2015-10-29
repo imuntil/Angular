@@ -12,46 +12,53 @@
     getItems.$inject = ['$http'];
 
     function TestController($scope, getItems, pagination) {
-        $scope.pagingItems = [];
-        $scope.viewingItems = [];
-        $scope.flag = 2;
+        /*jshint validthis: true */
+        var vm = this;
+        vm.flag = 2;
+        vm.loadItems = loadItems;
+        vm.loadMore = loadMore;
+        vm.pagingItems = [];
+        vm.viewingItems = [];
 
-        $scope.loadItems = function (flag) {
-            $scope.flag = flag;
-            $scope.currentPage = 0;
+        vm.loadItems(2);
+
+        function loadItems(flag) {
+            vm.flag = flag;
+            vm.currentPage = 0;
             getItems.query(flag).success(function (data) {
                 if (data.resultcode == 1) {
-                    $scope.pagingItems = pagination(data.result, 8);
-                    if ($scope.pagingItems && $scope.pagingItems.length > 0) {
-                        $scope.viewingItems = $scope.pagingItems[0];
+                    vm.pagingItems = pagination(data.result, 8);
+                    if (vm.pagingItems && vm.pagingItems.length > 0) {
+                        vm.viewingItems = vm.pagingItems[0];
                     }
                 }
             });
-        };
+        }
 
-        $scope.loadMore = function () {
+         function loadMore() {
             console.log('loadmore');
-            $scope.currentPage += 1;
-            var load = $scope.pagingItems[$scope.currentPage];
+            vm.currentPage += 1;
+            var load = vm.pagingItems[vm.currentPage];
             console.log(load);
             if (load && load.length > 0) {
-                $scope.viewingItems = $scope.viewingItems.concat(load);
-                console.log($scope.viewingItems);
+                vm.viewingItems = vm.viewingItems.concat(load);
+                console.log(vm.viewingItems);
             }
-        };
-
-        $scope.loadItems(2);
+        }
     }
     function getItems($http) {
-        var items = {};
-        items.query = function (flag) {
+        var items = {
+            query: query
+        };
+        return items;
+
+        function query(flag) {
             return $http({
                 method:'GET',
                 params:{flag:flag},
                 url:'http://m.jtuntech.com/Baking/productShowAllPro!productShowAll'
             });
-        };
-        return items;
+        }
     }
     function pagination() {
 
@@ -69,9 +76,9 @@
                     child = arr.slice(i * count, arr.length);
                 }
                 result.push(child);
-                if (child.length == 0) break;
+                if (child.length === 0) break;
             }
             return result;
-        }
+        };
     }
 })();
