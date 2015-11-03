@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="../../framework/1.4.7/angular.js"></script>
+    <script src="product.js"></script>
+</head>
+<body ng-controller="ProductController as vm" class="product_detail">
+    <div class="container detail">
+        <div class="detail_img">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+
+                </div>
+            </div>
+            <span class="money">{{::}}</span>
+            <b class="page">{{1/10}}</b>
+        </div>
+        <h4 class="detail_title">{{::}}</h4>
+        <div class="num">
+            <span>数量</span>
+            <div>
+                <a href="javascript:void(0);" class="p-minus">-</a>
+                <em class="p-counts">{{}}</em>
+                <a href="javascript:void(0);" class="p-plus">+</a>
+            </div>
+        </div>
+        <p class="detail_txt">{{::}}</p>
+        <span class="label">{{::}}</span>
+    </div>
+    <footer class="detail_footer spec">
+        <span class="order-counts">{{}}份</span>
+        <span class="order-sum">{{ | currency : '￥'}}</span>
+        <a href="javascript:void(0);" class="order_btn">下单</a>
+    </footer>
+</body>
+</html>
