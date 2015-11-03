@@ -9,10 +9,12 @@
 <script>
     angular.module('myApp', [])
             .service('pp', function () {
-                this.abc = '123';
+                this.abc = function (abc) {
+                    console.log(abc);
+                }
             })
             .controller('ServiceController', function ($scope, pp) {
-                console.log(pp);
+                pp.abc('abcd');
             });
 </script>
 </body>

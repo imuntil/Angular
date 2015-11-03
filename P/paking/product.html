@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="../../Tools/swiper.3.1.2.min.css"/>
+    <script src="../../Tools/swiper.3.1.2.min.js"></script>
     <script src="../../framework/1.4.7/angular.js"></script>
     <script src="product.js"></script>
 </head>
@@ -12,27 +14,32 @@
         <div class="detail_img">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-
+                    <div class="swiper-slide" ng-repeat="slide in vm.totalImgs">
+                        <img src="" alt="" width="100%"
+                                ng-src="http://m.jtuntech.com/BakingManage/upload/{{slide}}"/>
+                    </div>
                 </div>
             </div>
-            <span class="money">{{::}}</span>
-            <b class="page">{{1/10}}</b>
+            <span class="money">{{::vm.infos.proprice | currency : '￥'}}</span>
+            <b class="page">{{vm.currentImg}}/{{vm.totalImgs.length}}</b>
         </div>
-        <h4 class="detail_title">{{::}}</h4>
+        <h4 class="detail_title">{{::vm.infos.proname}}</h4>
         <div class="num">
             <span>数量</span>
             <div>
-                <a href="javascript:void(0);" class="p-minus">-</a>
-                <em class="p-counts">{{}}</em>
-                <a href="javascript:void(0);" class="p-plus">+</a>
+                <a href="javascript:void(0);" class="p-minus"
+                        ng-click="vm.selectGoods('-')">-</a>
+                <em class="p-counts">{{vm.count}}</em>
+                <a href="javascript:void(0);" class="p-plus"
+                        ng-click="vm.selectGoods('+')">+</a>
             </div>
         </div>
-        <p class="detail_txt">{{::}}</p>
-        <span class="label">{{::}}</span>
+        <p class="detail_txt">{{::vm.infos.prodes}}</p>
+        <span class="label" ng-repeat="label in vm.labels">{{::label}}</span>
     </div>
     <footer class="detail_footer spec">
-        <span class="order-counts">{{}}份</span>
-        <span class="order-sum">{{ | currency : '￥'}}</span>
+        <span class="order-counts">{{vm.count}}份</span>
+        <span class="order-sum">{{vm.totalPrice | currency : '￥'}}</span>
         <a href="javascript:void(0);" class="order_btn">下单</a>
     </footer>
 </body>
