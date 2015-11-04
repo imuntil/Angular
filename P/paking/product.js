@@ -7,18 +7,19 @@
             BASE_URL: 'http://m.jtuntech.com/Baking/'
         })
         .factory('getProductInfo', getProductInfo)
-        .service('swiperService', swiperService)
+        .factory('swiperService', swiperService)
         .controller('ProductController', ProductController);
 
-    ProductController.$inject = ['$scope', 'getProductInfo', 'swiperService', '$timeout'];
+    ProductController.$inject = ['$scope', 'getProductInfo', 'swiperService',
+        '$timeout'];
     function ProductController($scope, getProductInfo, swiperService, $timeout) {
         /* jshint validthis: true */
         var vm = this;
         vm.count = 1;
-        vm.currentImg = 1;
         vm.infos = {};
         vm.labels = [];
         vm.selectGoods = selectGoods;
+        vm.swiper = swiperService;
         vm.totalImgs = 0;
         vm.totalPrice = 0;
 
@@ -38,8 +39,8 @@
                 vm.totalPrice = vm.infos.proprice;
 
                 $timeout(function () {
-                    vm.swiper = swiperService.swiper();
-                }, 500, false);
+                    vm.swiper.swiper(vm.totalImgs.length);
+                }, 500);
 
             });
         }
@@ -72,14 +73,26 @@
 
     swiperService.$inject = ['$rootScope'];
     function swiperService($rootScope) {
-        this.swiper = function () {
-            new Swiper('.swiper-container', {
+        var service = {
+            swiper: swiper,
+            activeIndex:1
+        };
+        return service;
+
+        function swiper(slides) {
+            return new Swiper('.swiper-container', {
                 slidesPerView: 1,
                 spaceBetween: 0,
                 preloadImages: true,
                 loop: true,
                 onSlideChangeEnd: function (swiper) {
-
+                    $rootScope.$apply(function () {
+                        if (swiper.activeIndex % slides === 0) {
+                            service.activeIndex = slides;
+                        } else {
+                            service.activeIndex = swiper.activeIndex % slides;
+                        }
+                    });
                 }
             });
         }

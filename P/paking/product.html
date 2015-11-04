@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title></title>
+    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; user-scalable=0" />
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="../../Tools/swiper.3.1.2.min.css"/>
     <script src="../../Tools/swiper.3.1.2.min.js"></script>
@@ -21,7 +22,7 @@
                 </div>
             </div>
             <span class="money">{{::vm.infos.proprice | currency : '￥'}}</span>
-            <b class="page">{{vm.currentImg}}/{{vm.totalImgs.length}}</b>
+            <b class="page">{{vm.swiper.activeIndex}}/{{vm.totalImgs.length}}</b>
         </div>
         <h4 class="detail_title">{{::vm.infos.proname}}</h4>
         <div class="num">
