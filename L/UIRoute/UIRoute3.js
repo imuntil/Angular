@@ -2,7 +2,7 @@
  * Created by jtun02 on 15/8/21.
  */
 var routerApp = angular.module('routerApp', ['ui.router']);
-routerApp.config(function ($stateProvider, $urlRouterProvider) {
+routerApp.config(['$stateProvider','$urlRouterProvider',function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/index/usermng');
     $stateProvider
         .state('index', {
@@ -77,7 +77,7 @@ routerApp.config(function ($stateProvider, $urlRouterProvider) {
                 }
             }
         });
-});
+}]);
 
 
 //......
