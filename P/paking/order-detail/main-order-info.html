@@ -1,0 +1,40 @@
+<div class="container order_detail">
+    <a href="javascript:void(0);" class="order_address adr-content">
+        姓名：{{vm.defaultAddress.name}} <br/>
+        手机：{{vm.defaultAddress.phone}} <br/>
+        地址：{{vm.defaultAddress.address}}
+        <span><img src="img/arrow.png" alt="" width="100%"/></span>
+    </a>
+    <a href="javascript:void(0);" class="order_time choose-date">
+        <b>送达时间</b>
+        <!--<select name="send-date" id="send-date">-->
+            <!--<option value="{{date}}" ng-repeat="date in vm.availableDates track by $index">{{date}}</option>-->
+        <!--</select>-->
+        <date-select dates="vm.dates"></date-select>
+    </a>
+    <div class="order_select">
+        <p>
+            <label>微信支付</label>
+            <input type="radio" class="pay-by" checked/>
+        </p>
+    </div>
+    <a href="javascript:void(0);" class="order_time choose-coupon">
+        <b>使用优惠</b>
+        <b class="o-coupon">选择优惠券</b>
+        <span><img src="img/arrow_b.png" alt="" width="100%"/></span>
+    </a>
+    <div class="order_select">
+        <p><label>商品金额</label><i class="p-sum">{{vm.oi.ptotal | currency:'￥'}}</i></p>
+        <p><label>服务费</label><i class="p-service">{{vm.oi.oservice | currency:'￥'}}</i></p>
+        <p>
+            <label>余额抵扣</label>
+            <input type="checkbox" class="recharge_checkbox balance-option" ng-model="vm.oi.ouseba"/>
+            <i class="p-balance">-{{vm.oi.obalance | currency:'￥'}}</i>
+        </p>
+        <p><label>优惠</label><i class="p-discount">-{{vm.oi.odiscount | currency:'￥'}}</i></p>
+    </div>
+</div>
+<footer class="detail_footer">
+    <span class="amount-payable">{{vm.oi.opay | currency:'￥'}}</span>
+    <a class="order_btn confirm-order">确认下单</a>
+</footer>

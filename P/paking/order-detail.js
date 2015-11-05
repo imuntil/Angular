@@ -1,8 +1,8 @@
 /**
- * Created by ±ó on 2015/11/4.
+ * Created by ï¿½ï¿½ on 2015/11/4.
  */
 (function () {
-    angular.module('myApp', ['ui.router'])
+    angular.module('myApp.order-detail', ['ui.router'])
         .config(orderDetailConfig);
 
     orderDetailConfig.$inject = ['$stateProvider', '$urlRouterProvider']
@@ -11,11 +11,9 @@
         $stateProvider
             .state('order', {
                 url:'/order/:pid/:pnum',
-                template:'<h1>test</h1>',
-                controller: function ($stateParams) {
-                    console.log($stateParams);
-                }
-            })
+                templateUrl:'order-detail/main-order-info.html',
+                controller:'MainOrderInfoController as vm'
+            });
     }
 
 })();

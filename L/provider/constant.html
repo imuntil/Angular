@@ -9,12 +9,15 @@
 <script src="../../framework/1.3.0.14/angular.js"></script>
 <script>
     angular.module('myApp', [])
-            .constant('apiKey', 'DUGJ39GH802KG7SHK')
+            .constant('apiKey', {
+                xx:'DUGJ39GH802KG7SHK'
+            })
             .controller('ConstantController', function ($scope, apiKey) {
-                console.log(apiKey);
+                console.log(apiKey.xx);
             })
             .config(function (apiKey) {
-                console.log(apiKey);
+                apiKey.xx = '...';
+                console.log(apiKey.xx);
             });
 </script>
 </body>
