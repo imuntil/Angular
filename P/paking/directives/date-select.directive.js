@@ -12,10 +12,7 @@
             //template:'<div>dates</div>',
             replace:true,
             scope:{
-                dates:'@'
-            },
-            link: function (scope, element, attrs) {
-
+                dates:'='
             }
         }
     }

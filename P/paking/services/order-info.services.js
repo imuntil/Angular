@@ -32,7 +32,7 @@
         function watchInfo() {
             $rootScope.$watch(function () {
                 return service.info;
-            }, function (nv, ov) {
+            }, function () {
                 var _info = service.info;
                 _info.opay = _info.ptotal + _info.oservice
                     - (_info.ouseba ? _info.obalance : 0)

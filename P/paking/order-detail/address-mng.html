@@ -1,0 +1,21 @@
+<div class="container address choose-container">
+    <a class="add_address">
+        <p>
+            + 新增收货地址
+            <img src="img/arrow_b.png" alt="" class="arrow" width="5%"/>
+        </p>
+    </a>
+    <p class="title">现有地址</p>
+    <div class="addresss_content" ng-repeat="adr in vm.addresses track by $index">
+        <p>
+            {{}} <br/>
+            {{}} {{}}
+        </p>
+        <a class="address_btn">{{}}</a>
+        <a class="address_btn d-a">{{}}</a>
+        <div class="address_edit">
+            <input type="button"class="edit"  value="编辑"/>
+            <input type="button" class="default s-d-a" value="设为默认"/>
+        </div>
+    </div>
+</div>

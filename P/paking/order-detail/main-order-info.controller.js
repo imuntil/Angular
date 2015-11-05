@@ -2,11 +2,11 @@
  * Created by jtun02 on 15/11/5.
  */
 (function () {
-    angular.module('myApp', [
-        'myApp.order-detail',
+    angular.module('app.controller.module', [
         'http.services',
         'order-info.services',
-        'app.directives.module'
+        'app.directives.module',
+        'app.services.module'
     ])
         .controller('MainOrderInfoController', MainOrderInfoController);
 
@@ -14,18 +14,20 @@
         '$stateParams',
         'getAddressesData',
         'orderInfo',
-        '$interval'
+        'availableDates'
     ];
-    function MainOrderInfoController($stateParams, getAddressesData, orderInfo, $interval) {
+    function MainOrderInfoController($stateParams, getAddressesData, orderInfo, availableDates) {
         var vm = this;
         vm.addresses = [];
         vm.defaultAddress = {};
         vm.oi = {};
-        vm.dates = [1, 2, 3, 4];
+        vm.dates = [];
 
+        //console.log($stateParams);
 
         active();
         orderInit();
+        getDates();
         function active() {
             return getAddressesData.getAddresses().then(function (data) {
                 vm.addresses = getAddressesData.addresses = data['result'];
@@ -46,6 +48,8 @@
             orderInfo.watchInfo();
             vm.oi = orderInfo.info;
         }
-
+        function getDates() {
+            vm.dates = availableDates.dates(4, 9);
+        }
     }
 })();
