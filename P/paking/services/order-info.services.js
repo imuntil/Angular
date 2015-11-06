@@ -2,7 +2,7 @@
  * Created by jtun02 on 15/11/5.
  */
 (function () {
-    angular.module('order-info.services', [])
+    angular.module('app.services.order-info', [])
         .factory('orderInfo', orderInfo);
 
     orderInfo.$inject = ['$rootScope'];

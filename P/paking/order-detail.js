@@ -4,7 +4,9 @@
 (function () {
     angular.module('myApp', [
         'ui.router',
-        'app.controller.module'
+        'app.MainOrderInfoController',
+        'app.AddressManagementController',
+        'app.AddressEditController'
     ])
         .config(orderDetailConfig);
 
@@ -17,12 +19,16 @@
                 templateUrl:'order-detail/main-order-info.html',
                 controller:'MainOrderInfoController as vm'
             })
-            //.state('addressMng', {
-            //    url:'/addressMng',
-            //    template:'<div>address</div>',
-            //    //templateUrl:'',
-            //    controller:'AddressManagementController as vm'
-            //})
+            .state('addressMng', {
+                url:'/addressMng',
+                templateUrl:'order-detail/address-mng.html',
+                controller:'AddressManagementController as vm'
+            })
+            .state('addressEdit', {
+                url:'/addressEdit/:addressIndex',
+                templateUrl:'order-detail/address-edit.html',
+                controller:'AddressEditController as vm'
+            })
     }
 
 })();

@@ -1,8 +1,8 @@
 /**
- * Created by ±ó on 2015/11/5.
+ * Created by ï¿½ï¿½ on 2015/11/5.
  */
 (function () {
-    angular.module('app.services.module', [])
+    angular.module('app.services.availableDates', [])
         .factory('availableDates', availableDates);
 
     function availableDates() {

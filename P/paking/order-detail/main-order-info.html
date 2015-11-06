@@ -1,8 +1,8 @@
 <div class="container order_detail">
-    <a ui-sref="order.addresses" class="order_address adr-content">
-        姓名：{{vm.defaultAddress.name}} <br/>
-        手机：{{vm.defaultAddress.phone}} <br/>
-        地址：{{vm.defaultAddress.address}}
+    <a ui-sref="addressMng" class="order_address adr-content">
+        姓名：{{vm.chosenAdr.name}} <br/>
+        手机：{{vm.chosenAdr.phone}} <br/>
+        地址：{{vm.chosenAdr.city}}&nbsp;&nbsp;{{vm.chosenAdr.address}}
         <span><img src="img/arrow.png" alt="" width="100%"/></span>
     </a>
     <a href="javascript:void(0);" class="order_time choose-date">

@@ -282,7 +282,7 @@ img{
     position: absolute;
     top: 0;
     left: 0;
-    display: none;
+    /*display: none;*/
     overflow: scroll;
 }
 .order_detail span{
@@ -665,9 +665,9 @@ form.join input[type="radio"]:nth-of-type(2){
     padding: 3% 5%;
     position: relative;
 }
-.address_content .d-a {
-    display: none;
-}
+/*.address_content .d-a {*/
+    /*display: none;*/
+/*}*/
 .address_content .s-d-a {
     display: block;
 }
@@ -709,6 +709,7 @@ form.join input[type="radio"]:nth-of-type(2){
 }
 .address_edit input{
     margin-bottom: 6%;
+    display: block;
     width: 75px;
 }
 .balance_content{

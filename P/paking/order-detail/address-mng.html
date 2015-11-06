@@ -1,21 +1,25 @@
 <div class="container address choose-container">
-    <a class="add_address">
+    <a class="add_address" ui-sref="addressEdit">
         <p>
             + 新增收货地址
             <img src="img/arrow_b.png" alt="" class="arrow" width="5%"/>
         </p>
     </a>
     <p class="title">现有地址</p>
-    <div class="addresss_content" ng-repeat="adr in vm.addresses track by $index">
+    <div class="address_content"
+         ng-repeat="adr in vm.addresses track by $index"
+         ng-click="vm.chooseAdr($index)" >
         <p>
-            {{}} <br/>
-            {{}} {{}}
+            {{adr.city}}{{adr.address}} <br/>
+            {{adr.name}} &nbsp;&nbsp; {{adr.phone}}
         </p>
-        <a class="address_btn">{{}}</a>
-        <a class="address_btn d-a">{{}}</a>
+        <a class="address_btn" ng-if="!!adr.label">{{adr.label}}</a>
+        <a class="address_btn d-a" ng-if="adr.status === 1">默认</a>
         <div class="address_edit">
-            <input type="button"class="edit"  value="编辑"/>
-            <input type="button" class="default s-d-a" value="设为默认"/>
+            <input type="button"class="edit"  value="编辑"
+                    ng-click="vm.editAddress($event, $index)"/>
+            <input type="button" class="default" value="设为默认"
+                   ng-if="adr.status !== 1" ng-click="vm.setToDefault($event, $index)"/>
         </div>
     </div>
 </div>

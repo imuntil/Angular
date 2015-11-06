@@ -2,24 +2,24 @@
  * Created by jtun02 on 15/11/5.
  */
 (function () {
-    angular.module('app.controller.module', [
-        'http.services',
-        'order-info.services',
-        'app.directives.module',
-        'app.services.module'
+    angular.module('app.MainOrderInfoController', [
+        'app.directives.dateSelect',
+        'app.services.addressOperate',
+        'app.services.order-info',
+        'app.services.availableDates'
     ])
         .controller('MainOrderInfoController', MainOrderInfoController);
 
     MainOrderInfoController.$inject = [
         '$stateParams',
-        'getAddressesData',
+        'addressOperate',
         'orderInfo',
         'availableDates'
     ];
-    function MainOrderInfoController($stateParams, getAddressesData, orderInfo, availableDates) {
+    function MainOrderInfoController($stateParams, addressOperate, orderInfo, availableDates) {
         var vm = this;
         vm.addresses = [];
-        vm.defaultAddress = {};
+        vm.chosenAdr = {};
         vm.oi = {};
         vm.dates = [];
 
@@ -29,21 +29,17 @@
         orderInit();
         getDates();
         function active() {
-            return getAddressesData.getAddresses().then(function (data) {
-                vm.addresses = getAddressesData.addresses = data['result'];
-                setDefaultAddress();
+            return addressOperate.getAddresses().then(function (data) {
+                vm.addresses = addressOperate.addresses = data['result'];
+                setDefaultToChosenAdr();
             });
         }
-        function setDefaultAddress() {
-            vm.defaultAddress = vm.addresses[0];
-            for (var i = 0; i < vm.addresses.length; i++) {
-                var va = vm.addresses[i];
-                if (va.status === 1) {
-                    vm.defaultAddress = va;
-                    break;
-                }
-            }
+
+        function setDefaultToChosenAdr() {
+            addressOperate.setDefaultToChosenAdr();
+            vm.chosenAdr = addressOperate.chosenAdr;
         }
+
         function orderInit() {
             orderInfo.watchInfo();
             vm.oi = orderInfo.info;
