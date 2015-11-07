@@ -23,7 +23,9 @@
 
         active();
         function active() {
-            return vm.addresses = addressOperate.addresses;
+            return addressOperate.getAddresses().then(function (data) {
+                vm.addresses = data;
+            });
         }
         function setDefaultAdr($event, index) {
             $event.stopPropagation();

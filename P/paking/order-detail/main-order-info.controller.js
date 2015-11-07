@@ -30,7 +30,7 @@
         getDates();
         function active() {
             return addressOperate.getAddresses().then(function (data) {
-                vm.addresses = addressOperate.addresses = data['result'];
+                vm.addresses = data;
                 setDefaultToChosenAdr();
             });
         }

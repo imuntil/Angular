@@ -6,11 +6,14 @@
         'ui.router',
         'app.MainOrderInfoController',
         'app.AddressManagementController',
-        'app.AddressEditController'
-    ])
-        .config(orderDetailConfig);
+        'app.AddressEditController',
 
-    orderDetailConfig.$inject = ['$stateProvider', '$urlRouterProvider']
+        'app.services.uiRouter'
+    ])
+        .config(orderDetailConfig)
+        //.run(appRun);
+
+    orderDetailConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
     function orderDetailConfig($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/order/9/3');
         $stateProvider
@@ -29,6 +32,11 @@
                 templateUrl:'order-detail/address-edit.html',
                 controller:'AddressEditController as vm'
             })
+    }
+
+    appRun.$inject = ['listenAddressMngRouter'];
+    function appRun(listenAddressMngRouter) {
+        listenAddressMngRouter.listen();
     }
 
 })();

@@ -4,18 +4,22 @@
 (function () {
     angular.module('app.AddressEditController', [
         'app.services.addressOperate',
+        'app.services.http',
         'app.directives.phoneNumberValid'
     ])
         .controller('AddressEditController', AddressEditController);
 
     AddressEditController.$inject = [
         '$stateParams',
+        'commonData',
         'addressOperate'
     ];
-    function AddressEditController($stateParams, addressOperate) {
+    function AddressEditController($stateParams, commonData, addressOperate) {
         var vm = this;
         vm.addressIndex = $stateParams.addressIndex || undefined;
         vm.addresses = [];
+        vm.cancelEdit = cancelEdit;
+        vm.deleteAddress = deleteAddress;
         vm.editingAdr = {};
         vm.saveAddress = saveAddress;
 
@@ -28,6 +32,48 @@
         }
         function saveAddress(invalid) {
             if (invalid) { return; }
+            if (vm.addressIndex === undefined) {
+                addAddress();
+            } else {
+                updateAddress();
+            }
         }
+
+        function cancelEdit() {
+            window.history.back();
+        }
+
+        function deleteAddress() {
+            var _id = vm.addresses[vm.addressIndex].id;
+            addressOperate.deleteAddress(_id)
+                .then(function () {
+                    window.history.back();
+                });
+        }
+
+        function addAddress() {
+            var param = angular.extend({usersid:commonData.OPENID}, vm.editingAdr);
+            addressOperate.addAddress(param)
+                .then(function () {
+                    window.history.back();
+                });
+        }
+
+        function updateAddress() {
+            var param = {
+                id     :vm.editingAdr.id,
+                name   :vm.editingAdr.name,
+                phone  :vm.editingAdr.phone,
+                city   :vm.editingAdr.city,
+                address:vm.editingAdr.address,
+                label  :vm.editingAdr.label
+            };
+            addressOperate.updateAddress(param)
+                .then(function () {
+                    window.history.back();
+                });
+        }
+
+
     }
 })();

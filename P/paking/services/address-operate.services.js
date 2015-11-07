@@ -16,7 +16,11 @@
             setAdrToDe: setAdrToDe,
 
             setDefaultToChosenAdr:setDefaultToChosenAdr,
-            setChosenAdr:setChosenAdr
+            setChosenAdr:setChosenAdr,
+
+            addAddress:addAddress,
+            updateAddress:updateAddresss,
+            deleteAddress:deleteAddress
         };
 
         return service;
@@ -33,7 +37,8 @@
                 url: commonData.BASE_URL + 'selectAddressAds!selectAddress'
             }).success(function (data) {
                 if (data['resultcode'] === '1' || data['resultcode'] === 1) {
-                    defer.resolve(data);
+                    service.addresses = data['result'];
+                    defer.resolve(service.addresses);
                 } else {
                     defer.reject(data);
                 }
@@ -90,6 +95,10 @@
         }
 
 
+        /**
+         * 新增收货地址
+         * @param params
+         */
         function addAddress(params) {
             var defer = $q.defer();
             $http({
@@ -105,6 +114,49 @@
             }).error(function (data) {
                 defer.reject(data);
             });
+            return defer.promise;
+        }
+
+        function updateAddresss(params) {
+            var defer = $q.defer();
+            $http({
+                metho:'GET',
+                params:params,
+                url:commonData.BASE_URL + 'updateAddressOneAds!updateAddressOne',
+            }).success(function (data) {
+                if (data['resultcode'] === '1' || data['resultcode'] === 1) {
+                    defer.resolve(data);
+                    if(params.id === service.chosenAdr.id) {
+                        angular.extend(service.chosenAdr, params);
+                    }
+                } else {
+                    defer.reject(data);
+                }
+            }).error(function (data) {
+                defer.reject(data);
+            });
+            return defer.promise;
+        }
+
+        function deleteAddress(id) {
+            var defer = $q.defer();
+            $http({
+                metho:'GET',
+                params:{id:id},
+                url:commonData.BASE_URL + 'delAddressAds!delAddress',
+            }).success(function (data) {
+                if (data['resultcode'] === '1' || data['resultcode'] === 1) {
+                    defer.resolve(data);
+                    if (id === service.chosenAdr.id) {
+                        service.chosenAdr = {};
+                    }
+                } else {
+                    defer.reject(data);
+                }
+            }).error(function (data) {
+                defer.reject(data);
+            });
+            return defer.promise;
         }
     }
 })();
