@@ -25,6 +25,9 @@
                 odiscount:0,  //优惠金额
                 opay     :undefined   //应付金额
             },
+            coupon:{
+
+            },
             watchInfo:watchInfo,
             watching:false
         };

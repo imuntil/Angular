@@ -23,6 +23,7 @@
         vm.addresses = [];
         vm.chosenAdr = {};
         vm.class = 'main';
+        vm.coupon = {};
         vm.oi = {};
         vm.dates = [];
 
@@ -46,6 +47,8 @@
         function orderInit() {
             orderInfo.watchInfo();
             vm.oi = orderInfo.info;
+
+            vm.coupon = orderInfo.coupon;
         }
         function getDates() {
             vm.dates = availableDates.dates(4, 9);

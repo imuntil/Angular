@@ -22,10 +22,10 @@
             return couponsAbout.getCoupons()
                 .then(function (data) {
                     vm.coupons = data;
-                })
+                });
         }
         function chooseCoupon(index) {
-            couponsAbout.chosenCp = vm.coupons[index];
+            orderInfo.coupon = couponsAbout.chosenCp = vm.coupons[index];
             orderInfo.info.odiscount = couponsAbout.chosenCp.price;
             backToMain();
         }
@@ -33,7 +33,7 @@
             window.history.back();
         }
         function cancelToUseCp() {
-            couponsAbout.chosenCp = {};
+            orderInfo.coupon = couponsAbout.chosenCp = {};
             orderInfo.info.odiscount = 0;
             backToMain();
         }

@@ -20,7 +20,8 @@
     </div>
     <a ui-sref="couponMng" class="order_time choose-coupon">
         <b>使用优惠</b>
-        <b class="o-coupon">选择优惠券</b>
+        <b class="o-coupon" ng-if="vm.coupon.name">{{vm.coupon.name}}</b>
+        <b class="o-coupon" ng-if="!vm.coupon.name">请选择优惠券</b>
         <span><img src="img/arrow_b.png" alt="" width="100%"/></span>
     </a>
     <div class="order_select">
