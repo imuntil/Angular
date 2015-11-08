@@ -4,9 +4,11 @@
 (function () {
     angular.module('myApp', [
         'ui.router',
+        'ngAnimate',
         'app.MainOrderInfoController',
         'app.AddressManagementController',
         'app.AddressEditController',
+        'app.CouponManagementController',
 
         'app.services.uiRouter'
     ])
@@ -31,6 +33,11 @@
                 url:'/addressEdit/:addressIndex',
                 templateUrl:'order-detail/address-edit.html',
                 controller:'AddressEditController as vm'
+            })
+            .state('couponMng', {
+                url:'/couponMng',
+                templateUrl:'order-detail/coupon-mng.html',
+                controller:'CouponManagementController as vm'
             })
     }
 

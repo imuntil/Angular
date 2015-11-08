@@ -5,22 +5,27 @@
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <meta name="format-detection" content="telephone=no" />
     <title></title>
-    <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="../../Tools/animate.min.css"/>
+    <link rel="stylesheet" href="style/animate.css"/>
 
     <script src="../../framework/1.4.7/angular.js"></script>
+    <script src="../../framework/1.4.7/angular-animate.js"></script>
     <script src="../../ui-router/angular-ui-router.min.js"></script>
     <script src="../../Tools/moment.js"></script>
 
     <script src="order-detail/main-order-info.controller.js"></script>
     <script src="order-detail/address-mng.controller.js"></script>
     <script src="order-detail/address-edit.controller.js"></script>
+    <script src="order-detail/coupon-mng.controller.js"></script>
 
     <script src="services/http.services.js"></script>
     <script src="services/address-operate.services.js"></script>
     <script src="services/order-info.services.js"></script>
     <script src="services/available-dates.service.js"></script>
     <script src="services/ui-router.services.js"></script>
+    <script src="services/coupons-about.services.js"></script>
 
     <script src="directives/date-select.directive.js"></script>
     <script src="directives/phone-number-valid.directive.js"></script>
@@ -28,6 +33,6 @@
     <script src="order-detail.js"></script>
 </head>
 <body>
-<div ui-view></div>
+<div ui-view class="view-page animated {{vm.class}}"></div>
 </body>
 </html>

@@ -19,6 +19,7 @@
         vm.addressIndex = $stateParams.addressIndex || undefined;
         vm.addresses = [];
         vm.cancelEdit = cancelEdit;
+        vm.class = 'edit';
         vm.deleteAddress = deleteAddress;
         vm.editingAdr = {};
         vm.saveAddress = saveAddress;

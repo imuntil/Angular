@@ -16,6 +16,7 @@
         var vm = this;
         vm.addresses = [];
         vm.chooseAdr = chooseAdr;
+        vm.class = 'mng';
         vm.editAddress = editAddress;
         vm.setToDefault = setDefaultAdr;
 

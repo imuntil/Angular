@@ -1,0 +1,24 @@
+<div class="main_add coupons-container">
+    <div class="container cp-container">
+        <div class="btn_area">
+            <a class="clicked">优惠券</a>
+            <a>余额</a>
+        </div>
+        <div class="no-coupon" ng-click="vm.cancelToUseCp()">
+            <span>不使用优惠券</span>
+        </div>
+        <div class="coupon" ng-repeat="cp in vm.coupons"
+                ng-click="vm.chooseCoupon($index)">
+            <b>￥ {{cp.price}}</b>
+            <span>
+                {{cp.name}}<br/>
+                {{cp.des}}<br/>
+                {{cp.endtime}}
+            </span>
+            <em class="coupon_num">
+                {{$index + 1}}
+            </em>
+        </div>
+    </div>
+    <a class="preserve btn_long" ng-click="vm.backToMain()">取消</a>
+</div>

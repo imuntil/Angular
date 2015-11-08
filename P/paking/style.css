@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    box-sizing: inherit;
 }
 ul,ol{
     list-style: none;
@@ -38,6 +39,8 @@ img{
 .container{
     width: 90%;
     margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
 }
 .btn_area{
     display: block;

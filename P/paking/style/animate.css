@@ -1,0 +1,23 @@
+
+div.view-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+div.main.ng-enter,
+div.mng.ng-enter,
+div.edit.ng-enter,
+div.coupons.ng-enter{
+    -webkit-animation-name: bounceInRight;
+    animation-name: bounceInRight;
+}
+div.main.ng-leave,
+div.mng.ng-leave,
+div.edit.ng-leave,
+div.coupons.ng-leave{
+    -webkit-animation-name: rotateOutDownRight;
+    animation-name: rotateOutDownRight;
+}

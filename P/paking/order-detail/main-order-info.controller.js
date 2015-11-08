@@ -6,7 +6,8 @@
         'app.directives.dateSelect',
         'app.services.addressOperate',
         'app.services.order-info',
-        'app.services.availableDates'
+        'app.services.availableDates',
+        'app.services.couponsAbout'
     ])
         .controller('MainOrderInfoController', MainOrderInfoController);
 
@@ -14,12 +15,14 @@
         '$stateParams',
         'addressOperate',
         'orderInfo',
-        'availableDates'
+        'availableDates',
+        'couponsAbout'
     ];
-    function MainOrderInfoController($stateParams, addressOperate, orderInfo, availableDates) {
+    function MainOrderInfoController($stateParams, addressOperate, orderInfo, availableDates, couponsAbout) {
         var vm = this;
         vm.addresses = [];
         vm.chosenAdr = {};
+        vm.class = 'main';
         vm.oi = {};
         vm.dates = [];
 

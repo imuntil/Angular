@@ -18,18 +18,23 @@
 
                 oadrid   :undefined,  //订单地址
                 odate    :undefined,  //送货时间
-                ocoupon  :undefined,  //优惠券
+                //ocoupon  :undefined,  //优惠券
                 oservice :5,  //服务费
                 ouseba   :false,       //使用余额抵扣
                 obalance :100,  //余额抵扣金额
-                odiscount:20,  //优惠金额
+                odiscount:0,  //优惠金额
                 opay     :undefined   //应付金额
             },
-            watchInfo:watchInfo
+            watchInfo:watchInfo,
+            watching:false
         };
         return service;
 
         function watchInfo() {
+            if (service.watching) {
+                return;
+            }
+            service.watching = true;
             $rootScope.$watch(function () {
                 return service.info;
             }, function () {

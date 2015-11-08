@@ -18,7 +18,7 @@
             <input type="radio" class="pay-by" checked/>
         </p>
     </div>
-    <a href="javascript:void(0);" class="order_time choose-coupon">
+    <a ui-sref="couponMng" class="order_time choose-coupon">
         <b>使用优惠</b>
         <b class="o-coupon">选择优惠券</b>
         <span><img src="img/arrow_b.png" alt="" width="100%"/></span>
@@ -36,5 +36,5 @@
 </div>
 <footer class="detail_footer">
     <span class="amount-payable">{{vm.oi.opay | currency:'￥'}}</span>
-    <a class="order_btn confirm-order">确认下单</a>
+    <a class="order_btn confirm-order" ng-click="vm.oi.odiscount = vm.oi.odiscount + 1">确认下单</a>
 </footer>
