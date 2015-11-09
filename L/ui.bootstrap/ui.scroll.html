@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../framework/1.4.7/angular.js"></script>
+    <script src="../../Tools/ui-scroll.min.js"></script>
+    <script src="../../Tools/ui-scroll-jqlite.min.js"></script>
+</head>
+<body>
+    <div style="width: 200px;height: 300px;overflow-y: auto">
+        <ul>
+            <li ui-scroll="item in datasource"  is-loading="loading" top-visible-scope="topVisible">{{$index}}: {{item}}</li>
+        </ul>
+    </div>
+    <script>
+//        angular.module('myApp', ['ui.scroll', 'ui.scroll.jqlite'])
+//                .factory('datasource', uiscroll);
+//
+//        uiscroll.$inject = ['$log', '$timeout', '$rootScope', '$location'];
+//        function uiscroll(console, $timeout, $rootScope, $location) {
+//            var offset = parseInt($location.search().offset || '0');
+//            var actualIndex = 0;
+//            function get(index, count, success) {
+//                $timeout(function () {
+//                    actualIndex = index + offset;
+//                    var result = [];
+//                    var start = Math.max(-40, actualIndex);
+//                    var end = Math.min(actualIndex + count - 1, 100);
+//
+//                    if (start > end) {
+//                        success(result);
+//                    } else {
+//                        for (var i = start; i <= end; i++) {
+//                            result.push('item#' + i);
+//                        }
+//                    }
+//                }, 100);
+//                $rootScope.$watch(function () {
+//                    return $rootScope.topVisible
+//                }, function () {
+//                    if ($rootScope.topVisible) {
+//                        $location.search('offset', $rootScope.topVisible.$index + offset);
+//                        $location.replace();
+//                    }
+//                });
+//
+//            }
+//        }
+    </script>
+    <script>
+        angular.module('application', ['ui.scroll', 'ui.scroll.jqlite']).factory('datasource', [
+            '$log', '$timeout', '$rootScope', '$location', function(console, $timeout, $rootScope, $location) {
+                var get, offset;
+                offset = parseInt($location.search().offset || '0');
+                get = function(index, count, success) {
+                    return $timeout(function() {
+                        var actualIndex, end, i, result, start, _i;
+                        actualIndex = index + offset;
+                        result = [];
+                        start = Math.max(-40, actualIndex);
+                        end = Math.min(actualIndex + count - 1, 100);
+                        if (start > end) {
+                            return success(result);
+                        } else {
+                            for (i = _i = start; start <= end ? _i <= end : _i >= end; i = start <= end ? ++_i : --_i) {
+                                result.push("item " + i);
+                            }
+                            return success(result);
+                        }
+                    }, 100);
+                };
+                $rootScope.$watch((function() {
+                    return $rootScope.topVisible;
+                }), function() {
+                    if ($rootScope.topVisible) {
+                        $location.search('offset', $rootScope.topVisible.$index + offset);
+                        return $location.replace();
+                    }
+                });
+                return {
+                    get: get
+                };
+            }
+        ]);
+
+        angular.bootstrap(document, ["application"]);
+    </script>
+</body>
+</html>
