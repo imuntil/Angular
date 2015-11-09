@@ -820,3 +820,18 @@ form.join input[type="radio"]:nth-of-type(2){
 .order_select p input.recharge_checkbox{
     float: left;
 }
+.form-group{
+    margin-bottom: 15px;
+}
+.form-group label {
+    margin-left: 10px;
+}
+.form-group .error{
+    color: red;
+    margin-left: 50px;
+}
+.form-group input,
+.form-group select{
+    margin-left: 10px;
+    width: 200px;
+}

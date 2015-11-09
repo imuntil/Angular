@@ -1,0 +1,20 @@
+<div class="container" infinite-scroll="vm.loadMore()"
+        infinite-scroll-immediate-check="false"
+        infinite-scroll-disabled="vm.currentPage >= vm.pagingItems.length">
+    <div class="btn_area">
+        <a ng-click="vm.loadItems(2)" ng-class="{clicked:vm.flag === 2}">新品</a>
+        <a ng-click="vm.loadItems(1)" ng-class="{clicked:vm.flag === 1}">热品</a>
+    </div>
+    <div ng-repeat="vi in vm.viewingItems track by $index">
+        <a class="order_img" ui-sref="product({index:$index, id:vi.id})">
+            <div class="img-content">
+                <img src="" alt="" width="100%"
+                     ng-src="http://m.jtuntech.com/BakingManage/upload/{{vi.proimg.split(',')[0]}}"/>
+                <span class="money">{{vi.proprice | currency:'￥'}}</span>
+                <b><img src="" alt="" width="100%"
+                        ng-src="http://m.jtuntech.com/BakingManage/upload/{{vi.prohead}}"/></b>
+            </div>
+        </a>
+        <p class="product_title">{{vi.proname}}</p>
+    </div>
+</div>

@@ -2,7 +2,7 @@
  * Created by jtun02 on 15/11/6.
  */
 (function () {
-    angular.module('app.directives.phoneNumberValid', [])
+    angular.module('app.directives.phoneNumberValidate', [])
         .directive('phoneNumber', phoneNumber);
 
     function phoneNumber() {

@@ -20,8 +20,7 @@
         vm.pagingItems = [];
         vm.viewingItems = [];
 
-        vm.loadItems(2);
-
+        loadItems(2);
         function loadItems(flag) {
             vm.flag = flag;
             vm.currentPage = 0;

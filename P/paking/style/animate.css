@@ -10,14 +10,18 @@ div.view-page {
 div.main.ng-enter,
 div.mng.ng-enter,
 div.edit.ng-enter,
-div.coupons.ng-enter{
+div.coupons.ng-enter,
+div.products.ng-enter,
+div.product.ng-enter{
     -webkit-animation-name: bounceInRight;
     animation-name: bounceInRight;
 }
 div.main.ng-leave,
 div.mng.ng-leave,
 div.edit.ng-leave,
-div.coupons.ng-leave{
+div.coupons.ng-leave,
+div.products.ng-leave,
+div.product.ng-leave{
     -webkit-animation-name: rotateOutDownRight;
     animation-name: rotateOutDownRight;
 }

@@ -5,7 +5,8 @@
     angular.module('app.AddressEditController', [
         'app.services.addressOperate',
         'app.services.http',
-        'app.directives.phoneNumberValid'
+        'app.directives.phoneNumberValidate',
+        'app.directives.blurValidate'
     ])
         .controller('AddressEditController', AddressEditController);
 

@@ -1,0 +1,30 @@
+<div class="container detail">
+    <div class="detail_img">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" ng-repeat="slide in vm.totalImgs track by $index">
+                    <img src="" alt="" width="100%"
+                         ng-src="http://m.jtuntech.com/BakingManage/upload/{{slide}}"/>
+                </div>
+            </div>
+        </div>
+        <span class="money">{{::vm.infos.proprice | currency : '￥'}}</span>
+        <b class="page">{{vm.swiper.activeIndex}}/{{vm.totalImgs.length}}</b>
+    </div>
+    <h4 class="detail_title">{{::vm.infos.proname}}</h4>
+    <div class="num">
+        <span>数量</span>
+        <div>
+            <a class="p-minus" ng-click="vm.selectGoods('-')">-</a>
+            <em class="p-counts">{{vm.count}}</em>
+            <a class="p-plus" ng-click="vm.selectGoods('+')">+</a>
+        </div>
+    </div>
+    <p class="detail_txt">{{::vm.infos.prodes}}</p>
+    <span class="label" ng-repeat="label in vm.labels">{{::label}}</span>
+</div>
+<footer class="detail_footer spec">
+    <span class="order-counts">{{vm.count}}份</span>
+    <span class="order-sum">{{vm.infos.proprice * vm.count | currency:'￥'}}</span>
+    <a class="order_btn" ng-click="vm.generateOrder()">下单</a>
+</footer>
