@@ -7,7 +7,8 @@
             'ui.router',
             'ngAnimate',
 
-            'app.ProductsController',
+            //'app.ProductsController',
+            'app.PullLoadController',
             'app.ProductDetailController',
 
             'app.MainOrderInfoController',
@@ -26,8 +27,10 @@
             $stateProvider
                 .state('products', {
                     url:'/products',
-                    templateUrl:'product/products.html',
-                    controller:'ProductsController as vm'
+                    //templateUrl:'product/products.html',
+                    //controller:'ProductsController as vm'
+                    templateUrl:'product/pull-load.html',
+                    controller:'PullLoadController as vm'
                 })
                 .state('product', {
                     url:'/product/:index/:id',

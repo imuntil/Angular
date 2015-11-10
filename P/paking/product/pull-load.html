@@ -1,0 +1,13 @@
+<div class="container" id="wrapper">
+    <div class="btn_area">
+        <a ng-click="vm.loadItems(2)" ng-class="{clicked:vm.flag === 2}">新品</a>
+        <a ng-click="vm.loadItems(1)" ng-class="{clicked:vm.flag === 1}">热品</a>
+    </div>
+
+    <pull-load>
+        <pull-load-item
+                pro-img-src=""
+                head-img-src="{{vm.viewingItems[0].prohead}}"
+                pro-name="10"></pull-load-item>
+    </pull-load>
+</div>

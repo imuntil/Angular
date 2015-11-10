@@ -1,0 +1,168 @@
+
+#wrapper {
+    position: absolute;
+    z-index: 1;
+    /*top: 45px;*/
+    /*bottom: 48px;*/
+    /*left: 9999px; /!* Not a must - can be 0 - but it makes the appearance of the content a bit nicer *!/*/
+    width: 100%;
+    height: 100%;
+    /*background: #ccc;*/
+    overflow: hidden;
+}
+
+#scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+#scroller ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+}
+
+#scroller li {
+    padding: 0 10px;
+    height: 80px;
+    line-height: 80px;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #fff;
+    background-color: #fafafa;
+    font-size: 14px;
+}
+
+.pullDownLabel, .pullUpLabel {
+    color: #999
+}
+
+.pullDown, .pullUp {
+    background: #fff;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 0.8em;
+    color: #888
+}
+
+.pullDown .pullDownIcon, .pullUp .pullUpIcon {
+    display: block;
+    float: left;
+    opacity: 0.4;
+    width: 40px;
+    height: 40px;
+    background: url(../img/pull_to_refresh.png) 0 0 no-repeat;
+
+    background-size: 40px 80px;
+    -webkit-transition: transform 250ms;
+    -moz-transition: transform 250ms;
+    -ms-transition: transform 250ms;
+    -o-transition: transform 250ms;
+    transition: transform 250ms;
+}
+
+.pullDown .pullDownIcon {
+
+    -webkit-transform: rotate(0deg) translateZ(0);
+    -moz-transform: rotate(0deg) translateZ(0);
+    -ms-transform: rotate(0deg) translateZ(0);
+    -o-transform: rotate(0deg) translateZ(0);
+    transform: rotate(0deg) translateZ(0);
+}
+
+.pullUp .pullUpIcon {
+
+    -webkit-transform: rotate(-180deg) translateZ(0);
+    -moz-transform: rotate(-180deg) translateZ(0);
+    -ms-transform: rotate(-180deg) translateZ(0);
+    -o-transform: rotate(-180deg) translateZ(0);
+    transform: rotate(-180deg) translateZ(0);
+}
+
+.pullDown.flip .pullDownIcon {
+    -webkit-transform: rotate(-180deg) translateZ(0);
+    -moz-transform: rotate(-180deg) translateZ(0);
+    -ms-transform: rotate(-180deg) translateZ(0);
+    -o-transform: rotate(-180deg) translateZ(0);
+    transform: rotate(-180deg) translateZ(0);
+}
+
+.pullUp.flip .pullUpIcon {
+    -webkit-transform: rotate(0deg) translateZ(0);
+    -moz-transform: rotate(0deg) translateZ(0);
+    -ms-transform: rotate(0deg) translateZ(0);
+    -o-transform: rotate(0deg) translateZ(0);
+    transform: rotate(0deg) translateZ(0);
+}
+
+.pullDown.loading .pullDownIcon,
+.pullUp.loading .pullUpIcon {
+    background-position: 0 100%;
+
+    /*-webkit-transform: rotate(0deg) translateZ(0);*/
+    /*-moz-transform: rotate(0deg) translateZ(0);*/
+    /*transform: rotate(0deg) translateZ(0);*/
+
+    /*-webkit-transition-duration: 0ms;*/
+    /*-moz-transition-duration: 0ms;*/
+    /*transition-duration: 0ms;*/
+
+    -webkit-animation: loading 1s linear infinite;
+    -o-animation: loading 1s linear infinite;
+    animation: loading 1s linear infinite;
+}
+
+.pullUp .pullUpIcon {
+
+    -webkit-transform: rotate(-180deg) translateZ(0);
+    -moz-transform: rotate(-180deg) translateZ(0);
+    -ms-transform: rotate(-180deg) translateZ(0);
+    -o-transform: rotate(-180deg) translateZ(0);
+    transform: rotate(-180deg) translateZ(0);
+}
+
+@-webkit-keyframes loading {
+    from {
+        -webkit-transform: rotate(0deg) translateZ(0)
+    }
+    to {
+        -webkit-transform: rotate(360deg) translateZ(0)
+    }
+}
+
+
+@-o-keyframes loading {
+    from {
+        -o-transform: rotate(0deg) translateZ(0);
+    }
+    to {
+        -o-transform: rotate(360deg) translateZ(0);
+    }
+}
+@keyframes loading {
+    from {
+        transform: rotate(0deg) translateZ(0);
+    }
+    to {
+        transform: rotate(360deg) translateZ(0);
+    }
+}
