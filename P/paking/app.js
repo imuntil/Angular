@@ -16,7 +16,8 @@
             'app.AddressEditController',
             'app.CouponManagementController',
 
-            'app.services.uiRouter'
+            'app.services.uiRouter',
+            'app.services.wechatRelated'
         ])
             .config(orderDetailConfig)
             .run(appRun);
@@ -59,8 +60,9 @@
                 })
         }
 
-        appRun.$inject = ['listenAddressMngRouter'];
-        function appRun(listenAddressMngRouter) {
+        appRun.$inject = ['listenAddressMngRouter', 'userAuthorization'];
+        function appRun(listenAddressMngRouter, userAuthorization) {
+            //userAuthorization.start();
             listenAddressMngRouter.listen();
         }
 
