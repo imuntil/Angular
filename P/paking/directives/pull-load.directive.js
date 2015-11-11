@@ -23,7 +23,6 @@
             },
             controller:PullLoadController,
             link: function (iScope, iEle, iAttrs) {
-                console.log('pullLoad');
 
                 var pullUpEl = $(iEle).find('.pullUp'),
                     pullDownEl = undefined,
@@ -38,7 +37,6 @@
                     pullDownEl = $(iEle).find('.pullDown');
                 }
 
-                console.log(pullUpEl);
                 function triggerMyScroll(offset) {
 
                     pullDownOffset = pullDownEl ? pullDownEl[0].offsetHeight : 0;
