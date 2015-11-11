@@ -1,17 +1,17 @@
 
-#wrapper {
+.iscroll-wrapper {
     position: absolute;
     z-index: 1;
     /*top: 45px;*/
     /*bottom: 48px;*/
     /*left: 9999px; /!* Not a must - can be 0 - but it makes the appearance of the content a bit nicer *!/*/
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 85%;
     /*background: #ccc;*/
     overflow: hidden;
 }
 
-#scroller {
+.iscroll-scroller {
     position: absolute;
     z-index: 1;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -33,7 +33,7 @@
     text-size-adjust: none;
 }
 
-#scroller ul {
+.iscroll-scroller ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -41,7 +41,7 @@
     text-align: left;
 }
 
-#scroller li {
+.iscroll-scroller li {
     padding: 0 10px;
     height: 80px;
     line-height: 80px;
@@ -114,8 +114,8 @@
     transform: rotate(0deg) translateZ(0);
 }
 
-.pullDown.loading .pullDownIcon,
-.pullUp.loading .pullUpIcon {
+.pullDown.iscroll-loading .pullDownIcon,
+.pullUp.iscroll-loading .pullUpIcon {
     background-position: 0 100%;
 
     /*-webkit-transform: rotate(0deg) translateZ(0);*/

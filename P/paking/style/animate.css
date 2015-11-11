@@ -12,7 +12,7 @@ div.mng.ng-enter,
 div.edit.ng-enter,
 div.coupons.ng-enter,
 div.products.ng-enter,
-div.product.ng-enter{
+div.product.ng-enter {
     -webkit-animation-name: bounceInRight;
     animation-name: bounceInRight;
 }
@@ -21,7 +21,17 @@ div.mng.ng-leave,
 div.edit.ng-leave,
 div.coupons.ng-leave,
 div.products.ng-leave,
-div.product.ng-leave{
+div.product.ng-leave {
     -webkit-animation-name: rotateOutDownRight;
     animation-name: rotateOutDownRight;
+}
+
+.iscroll-wrapper.ng-enter {
+    -webkit-animation-name: zoomInRight;
+    animation-name: zoomInRight;
+}
+
+.iscroll-wrapper.ng-leave {
+    -webkit-animation-name: zoomOutLeft;
+    animation-name: zoomOutLeft;
 }
