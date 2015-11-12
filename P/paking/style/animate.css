@@ -35,3 +35,14 @@ div.product.ng-leave {
     -webkit-animation-name: zoomOutLeft;
     animation-name: zoomOutLeft;
 }
+
+div.p-error.ng-enter {
+    -webkit-animation-name: fadeInDownBig;
+    animation-name: fadeInDownBig;
+}
+div.p-error.ng-leave {
+    -webkit-animation-name: fadeOutDownBig;
+    animation-name: fadeOutDownBig;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+}

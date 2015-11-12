@@ -12,13 +12,13 @@
         .controller('MainOrderInfoController', MainOrderInfoController);
 
     MainOrderInfoController.$inject = [
-        '$stateParams',
+        '$location',
         'addressOperate',
         'orderInfo',
         'availableDates',
         'couponsAbout'
     ];
-    function MainOrderInfoController($stateParams, addressOperate, orderInfo, availableDates, couponsAbout) {
+    function MainOrderInfoController($location, addressOperate, orderInfo, availableDates, couponsAbout) {
         var vm = this;
         vm.addresses = [];
         vm.chosenAdr = {};
@@ -47,6 +47,11 @@
         function orderInit() {
             orderInfo.watchInfo();
             vm.oi = orderInfo.info;
+
+            if (vm.oi.pid === undefined) {
+                $location.url('/error');
+                $location.replace();
+            }
 
             vm.coupon = orderInfo.coupon;
         }

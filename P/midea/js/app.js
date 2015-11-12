@@ -1,7 +1,10 @@
 /**
  * Created by 斌 on 2015/9/21.
  */
-var app = angular.module('myApp', ['app.controllers', 'app.wechatRelated', 'app.datas']);
+var app = angular.module('myApp', ['app.controllers',
+    'app.services.wechatRelated',
+    //'app.wechatRelated',
+    'app.datas']);
 app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/index/0');
     $stateProvider
@@ -44,15 +47,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 });
 app.run(function(wechatConfig, defaultShare, $location) {
     wechatConfig.setConfig(true);
-    wx.ready(function () {
-        var pro = defaultShare();
-        pro.sam.then(function () {
-            alert('分享好友成功');
-        });
-        pro.stl.then(function () {
-            alert('分享朋友圈成功');
-        });
-    });
+    //wx.ready(function () {
+    //    var pro = defaultShare();
+    //    pro.sam.then(function () {
+    //        alert('分享好友成功');
+    //    });
+    //    pro.stl.then(function () {
+    //        alert('分享朋友圈成功');
+    //    });
+    //});
 
     //$location.path('/index/0');
 });

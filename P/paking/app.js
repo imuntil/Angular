@@ -15,6 +15,7 @@
             'app.AddressManagementController',
             'app.AddressEditController',
             'app.CouponManagementController',
+            'app.ErrorController',
 
             'app.services.uiRouter',
             'app.services.wechatRelated',
@@ -58,6 +59,11 @@
                     url:'/couponMng',
                     templateUrl:'order-detail/coupon-mng.html',
                     controller:'CouponManagementController as vm'
+                })
+                .state('error', {
+                    url:'/error',
+                    templateUrl:'order-detail/error.html',
+                    controller:'ErrorController as vm'
                 })
         }
 
