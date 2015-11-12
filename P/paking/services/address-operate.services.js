@@ -7,8 +7,8 @@
     ])
         .factory('addressOperate', addressOperate);
 
-    addressOperate.$inject = ['$http', '$q', 'commonData'];
-    function addressOperate($http, $q, commonData) {
+    addressOperate.$inject = ['$http', '$q', 'commonData', 'checkAuth'];
+    function addressOperate($http, $q, commonData, checkAuth) {
         var service = {
             addresses: [],
             chosenAdr: {},
@@ -31,19 +31,21 @@
          */
         function getAddresses() {
             var defer = $q.defer();
-            $http({
-                method: 'GET',
-                params: {openid: commonData.OPENID},
-                url: commonData.BASE_URL + 'selectAddressAds!selectAddress'
-            }).success(function (data) {
-                if (data['resultcode'] === '1' || data['resultcode'] === 1) {
-                    service.addresses = data['result'];
-                    defer.resolve(service.addresses);
-                } else {
+            checkAuth.chAu().then(function () {
+                $http({
+                    method: 'GET',
+                    params: {openid: commonData.OPENID},
+                    url: commonData.BASE_URL + 'selectAddressAds!selectAddress'
+                }).success(function (data) {
+                    if (data['resultcode'] === '1' || data['resultcode'] === 1) {
+                        service.addresses = data['result'];
+                        defer.resolve(service.addresses);
+                    } else {
+                        defer.reject(data);
+                    }
+                }).error(function (data) {
                     defer.reject(data);
-                }
-            }).error(function (data) {
-                defer.reject(data);
+                });
             });
             return defer.promise;
         }

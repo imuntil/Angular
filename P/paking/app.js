@@ -17,7 +17,8 @@
             'app.CouponManagementController',
 
             'app.services.uiRouter',
-            'app.services.wechatRelated'
+            'app.services.wechatRelated',
+            'app.services.http'
         ])
             .config(orderDetailConfig)
             .run(appRun);
@@ -60,9 +61,11 @@
                 })
         }
 
-        appRun.$inject = ['listenAddressMngRouter', 'userAuthorization'];
-        function appRun(listenAddressMngRouter, userAuthorization) {
-            //userAuthorization.start();
+        appRun.$inject = ['listenAddressMngRouter', 'userAuthorization', 'commonData', '$rootScope'];
+        function appRun(listenAddressMngRouter, userAuthorization, commonData) {
+            userAuthorization.start().then(function (data) {
+                commonData.OPENID = data.userNick;
+            });
             listenAddressMngRouter.listen();
         }
 

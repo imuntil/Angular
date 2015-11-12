@@ -25,7 +25,12 @@
                 var defer = $q.defer();
                 var p = defer.promise;
                 var p2 = p.then(function (data) {
-                    return data + ' 0000';
+//                    return data + ' 0000';
+                    var defer2 = $q.defer();
+                    setTimeout(function () {
+                        defer2.resolve(data + '10000');
+                    }, 1000);
+                    return defer2.promise;
                 });
                 p2.then(function (data) {
                     console.log(data)
