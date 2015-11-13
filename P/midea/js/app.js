@@ -2,10 +2,10 @@
  * Created by 斌 on 2015/9/21.
  */
 var app = angular.module('myApp', ['app.controllers',
-    'app.services.wechatRelated',
-    //'app.wechatRelated',
+    //'app.services.wechatRelated',
+    'app.wechatRelated',
     'app.datas']);
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, wechatConfigProvider) {
     $urlRouterProvider.otherwise('/index/0');
     $stateProvider
         .state('index', {
