@@ -13,9 +13,10 @@
     AddressEditController.$inject = [
         '$stateParams',
         'commonData',
-        'addressOperate'
+        'addressOperate',
+        '$location'
     ];
-    function AddressEditController($stateParams, commonData, addressOperate) {
+    function AddressEditController($stateParams, commonData, addressOperate, $location) {
         var vm = this;
         vm.addressIndex = $stateParams.addressIndex || undefined;
         vm.addresses = [];
@@ -30,6 +31,9 @@
             vm.addresses = addressOperate.addresses;
             if (vm.addressIndex !== undefined) {
                 vm.editingAdr = vm.addresses[vm.addressIndex];
+                if (vm.editingAdr === undefined) {
+                    $location.url('/error').replace();
+                }
             }
         }
         function saveAddress(invalid) {
