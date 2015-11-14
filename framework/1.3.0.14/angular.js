@@ -18356,7 +18356,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    * input field will be updated with the new model value and any pending operations are cancelled.
    *
    * <example name="ng-model-cancel-update" module="cancel-update-example">
-   *   <file name="app.js">
+   *   <file name="require-app.js">
    *     angular.module('cancel-update-example', [])
    *
    *     .controller('CancelUpdateCtrl', function($scope) {
@@ -19083,7 +19083,7 @@ var ngValueDirective = function() {
         <pre>user.name = <span ng-bind="user.name"></span></pre>
       </div>
     </file>
-    <file name="app.js">
+    <file name="require-app.js">
       function Ctrl($scope) {
         $scope.user = { name: 'say', data: '' };
 
@@ -19134,7 +19134,7 @@ var ngValueDirective = function() {
         <pre>user.name = <span ng-bind="user.name"></span></pre>
       </div>
     </file>
-    <file name="app.js">
+    <file name="require-app.js">
       function Ctrl($scope) {
         $scope.user = { name: 'say' };
       }
@@ -19847,7 +19847,7 @@ var ngCloakDirective = ngDirective({
  *     </ul>
  *    </div>
  *   </file>
- *   <file name="app.js">
+ *   <file name="require-app.js">
  *    function SettingsController1() {
  *      this.name = "John Smith";
  *      this.contacts = [
@@ -19927,7 +19927,7 @@ var ngCloakDirective = ngDirective({
  *    </ul>
  *   </div>
  *  </file>
- *  <file name="app.js">
+ *  <file name="require-app.js">
  *   function SettingsController2($scope) {
  *     $scope.name = "John Smith";
  *     $scope.contacts = [

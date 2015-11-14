@@ -26,7 +26,7 @@ your custom filter with this module:</p>
 return one of the two unicode characters we have chosen to represent true (<code>\u2713</code> -&gt; ✓) or false (<code>\u2718</code> -&gt; ✘).</p>
 <p>Now that our filter is ready, we need to register the <code>phonecatFilters</code> module as a dependency for
 our main <code>phonecatApp</code> module.</p>
-<p><strong><code>app/js/app.js</code>:</strong></p>
+<p><strong><code>app/js/require-app.js</code>:</strong></p>
 <pre><code class="lang-js">...
 angular.module(&#39;phonecatApp&#39;, [&#39;ngRoute&#39;,&#39;phonecatControllers&#39;,&#39;phonecatFilters&#39;]);
 ...

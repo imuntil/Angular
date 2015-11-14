@@ -1,0 +1,32 @@
+/**
+ * Created by jtun02 on 15/11/13.
+ */
+require.config({
+    paths:{
+        'angular':'../../../framework/1.3.0.14/angular',
+        'angular-sanitize':'../../../framework/1.3.0.14/angular-sanitize',
+        'ui-router':'../../../ui-router/angular-ui-router.min',
+        'bootstrap':'require-bootstrap',
+        'domReady':'../../../Tools/domReady',
+        'text':'../../../Tools/text',
+        'app':'require-app',
+        'router':'require-route',
+        'controller':'require-controller',
+        'directive':'require-directives',
+        'service':'require-service'
+    },
+    shim:{
+        'angular':{
+            exports:'angular'
+        },
+        'ui-router':{
+            deps:['angular'],
+            exports:'ui-router'
+        },
+        'angular-sanitize':{
+            deps:['angular'],
+            exports:'angular-sanitize'
+        }
+    },
+    deps:['bootstrap']
+});

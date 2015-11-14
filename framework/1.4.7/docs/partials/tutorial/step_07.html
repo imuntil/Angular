@@ -100,7 +100,7 @@ loading the additional <code>angular-route.js</code> file, which we download via
 ...
   &lt;script src=&quot;bower_components/angular/angular.js&quot;&gt;&lt;/script&gt;
   &lt;script src=&quot;bower_components/angular-route/angular-route.js&quot;&gt;&lt;/script&gt;
-  &lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;js/require-app.js&quot;&gt;&lt;/script&gt;
   &lt;script src=&quot;js/controllers.js&quot;&gt;&lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
@@ -114,7 +114,7 @@ loading the additional <code>angular-route.js</code> file, which we download via
 application:</p>
 <ul>
 <li><code>angular-route.js</code> : defines the Angular <code>ngRoute</code> module, which provides us with routing.</li>
-<li><code>app.js</code> : this file now holds the root module of our application.</li>
+<li><code>require-app.js</code> : this file now holds the root module of our application.</li>
 </ul>
 <p>Note that we removed most of the code in the <code>index.html</code> template and replaced it with a single
 line containing a div with the <code>ng-view</code> attribute. The code that we removed was placed into the
@@ -165,7 +165,7 @@ moved the controllers into their own module <code>phonecatControllers</code> (as
 <code>controllers.js</code>. That&#39;s not all we need to do to be able to use their code, however. We also have
 to add the modules as dependencies of our app. By listing these two modules as dependencies of
 <code>phonecatApp</code>, we can use the directives and services they provide.</p>
-<p><strong><code>app/js/app.js</code>:</strong></p>
+<p><strong><code>app/js/require-app.js</code>:</strong></p>
 <pre><code class="lang-js">var phonecatApp = angular.module(&#39;phonecatApp&#39;, [
   &#39;ngRoute&#39;,
   &#39;phonecatControllers&#39;

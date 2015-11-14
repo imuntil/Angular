@@ -1,0 +1,143 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+ul,ol{
+    list-style: none;
+}
+html,body{
+    width: 100%;
+    /*overflow-x: hidden;*/
+    font-family: "Microsoft Yahei", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", sans-serif,"微软雅黑";
+    font-size: 62.5%;
+    /*background-color: #000;*/
+}
+a{
+    text-decoration: none;
+    border:0 none;
+    outline: 0 none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -moz-tap-highlight-color:rgba(0,0,0,0);
+    -o-tap-highlight-color:rgba(0,0,0,0);
+    tap-highlight-color:rgba(0,0,0,0);
+}
+img{
+    border:0 none;
+    display: block;
+    outline: 0 none;
+}
+.container{
+    width: 96%;
+    margin: 0 auto;
+}
+header{
+    width: 100%;
+    height: 150px;
+    background-color: #f00;
+    margin: 3% 0;
+}
+.video_area{
+    width: 100%;
+    height: 160px;
+    position: relative;
+}
+.video_area video{
+    width: 100%;
+    height: 100%;
+}
+.txt{
+    font-size: 1.2rem;
+    margin: 3% 0;
+}
+.btn_group{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #f2f2f2;
+    overflow: hidden;
+}
+.btn{
+    display: block;
+    width: 45%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    font-size: 1.6rem;
+    background-color: #169bd5;
+    border-radius: 3px;
+    margin: 2%;
+}
+.btn.clicked{
+    background-color: #555;
+}
+.btn:nth-of-type(2n+1){
+    float: left;
+}
+.btn:nth-of-type(2n){
+    float: right;
+}
+.share_btn{
+    background-color: #169bd5;
+    border-radius: 100px;
+    color: #fff;
+    display: block;
+    font-size: 1.6rem;
+    height: 130px;
+    line-height: 130px;
+    margin-top: 15px;
+    text-align: center;
+    width: 130px;
+}
+.share_btn:nth-of-type(1){
+    float: left;
+    margin-left: 3%;
+}
+.share_btn:nth-of-type(2){
+    float: right;
+    margin-right: 3%;
+}
+.share_bg{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.8;
+}
+.wx_txt{
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    text-align: center;
+    font-size: 1.6rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top:-20px;
+    margin-left: -100px;
+    /*display: none;*/
+}
+.wb_txt{
+    color: #fff;
+    font-size: 1.6rem;
+    height: 240px;
+    left: 50%;
+    line-height: 1.3em;
+    margin-left: -106px;
+    margin-top: -120px;
+    position: fixed;
+    top: 50%;
+    width: 212px;
+}
+.wb_txt span {
+    background-color: #f00;
+    display: block;
+    height: 100px;
+    margin: 15% auto 0;
+    width: 100px;
+}

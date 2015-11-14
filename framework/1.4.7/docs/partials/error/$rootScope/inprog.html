@@ -224,7 +224,7 @@ stacktrace looks like this:</p>
     at Array.forEach (native)
     at q (angular.min.js:7:295)
     at HTMLInputElement.c (angular.min.js:32:14)
-    at Object.fn (app.js:12:38) angular.js:10111
+    at Object.fn (require-app.js:12:38) angular.js:10111
 (anonymous function) angular.js:10111
 $get angular.js:7412
 $get.g.$apply angular.js:12738                   &lt;--- $apply
@@ -232,7 +232,7 @@ $get.g.$apply angular.js:12738                   &lt;--- $apply
 (anonymous function) angular.js:2890
 q angular.js:320
 c angular.js:2889
-(anonymous function) app.js:12
+(anonymous function) require-app.js:12
 $get.g.$digest angular.js:12469
 $get.g.$apply angular.js:12742                   &lt;--- $apply
 (anonymous function) angular.js:19833            &lt;--- called here
@@ -267,7 +267,7 @@ forEach(
 </code></pre>
 <p>It is not possible to tell which from the stack trace, but we happen to know in this case that it is
 the <code>ngFocus</code> directive.</p>
-<p>Now look up the stack to see that our application code is only entered once in <code>app.js</code> at line <code>12</code>.
+<p>Now look up the stack to see that our application code is only entered once in <code>require-app.js</code> at line <code>12</code>.
 This is where our problem is:</p>
 <pre><code>10: link: function($scope, $element, $attr) {
 11:   $scope.$watch($attr.setFocusIf, function(value) {
