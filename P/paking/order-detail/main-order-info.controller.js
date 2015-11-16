@@ -7,7 +7,8 @@
         'app.services.addressOperate',
         'app.services.order-info',
         'app.services.availableDates',
-        'app.services.couponsAbout'
+        'app.services.couponsAbout',
+        'app.services.generateOrder'
     ])
         .controller('MainOrderInfoController', MainOrderInfoController);
 
@@ -16,9 +17,11 @@
         'addressOperate',
         'orderInfo',
         'availableDates',
-        'couponsAbout'
+        'couponsAbout',
+        'watchChosenAdr',
+        'generateOrder'
     ];
-    function MainOrderInfoController($location, addressOperate, orderInfo, availableDates, couponsAbout) {
+    function MainOrderInfoController($location, addressOperate, orderInfo, availableDates, couponsAbout, watchChosenAdr, generateOrder) {
         var vm = this;
         vm.addresses = [];
         vm.chosenAdr = {};
@@ -26,6 +29,7 @@
         vm.coupon = {};
         vm.oi = {};
         vm.dates = [];
+        vm.submitOrder = submitOrder;
 
         //console.log($stateParams);
 
@@ -42,6 +46,7 @@
         function setDefaultToChosenAdr() {
             addressOperate.setDefaultToChosenAdr();
             vm.chosenAdr = addressOperate.chosenAdr;
+            watchChosenAdr.watch();
         }
 
         function orderInit() {
@@ -57,6 +62,13 @@
         }
         function getDates() {
             vm.dates = availableDates.dates(4, 9);
+            vm.date = vm.dates[0];
+        }
+
+        function submitOrder() {
+            vm.oi.odate = vm.date;
+
+            generateOrder.GO();
         }
     }
 })();

@@ -3,9 +3,11 @@
  */
 (function () {
     angular.module('app.services.addressOperate',[
-        'app.services.http'
+        'app.services.http',
+        'app.services.order-info'
     ])
-        .factory('addressOperate', addressOperate);
+        .factory('addressOperate', addressOperate)
+        .factory('watchChosenAdr', watchChosenAdr);
 
     addressOperate.$inject = ['$http', '$q', 'commonData', 'checkAuth'];
     function addressOperate($http, $q, commonData, checkAuth) {
@@ -159,6 +161,26 @@
                 defer.reject(data);
             });
             return defer.promise;
+        }
+    }
+
+    watchChosenAdr.$inject = ['$rootScope', 'addressOperate', 'orderInfo'];
+    function watchChosenAdr($rootScope, addressOperate, orderInfo) {
+        var service = {
+            watching:false,
+            watch:watch
+        };
+        return service;
+        function watch() {
+            if (service.watching) {
+                return;
+            }
+            service.watching = true;
+            $rootScope.$watch(function () {
+                return addressOperate.chosenAdr;
+            }, function (newAdr, oldAdr) {
+                orderInfo.info.oadrid = newAdr.id;
+            }, true);
         }
     }
 })();

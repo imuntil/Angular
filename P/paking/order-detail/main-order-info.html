@@ -10,7 +10,7 @@
         <!--<select name="send-date" id="send-date">-->
             <!--<option value="{{date}}" ng-repeat="date in vm.availableDates track by $index">{{date}}</option>-->
         <!--</select>-->
-        <date-select dates="vm.dates"></date-select>
+        <date-select dates="vm.dates" date="vm.date"></date-select>
     </a>
     <div class="order_select">
         <p>
@@ -37,5 +37,5 @@
 </div>
 <footer class="detail_footer">
     <span class="amount-payable">{{vm.oi.opay | currency:'￥'}}</span>
-    <a class="order_btn confirm-order" ng-click="vm.oi.odiscount = vm.oi.odiscount + 1">确认下单</a>
+    <a class="order_btn confirm-order" ng-click="vm.submitOrder()">确认下单</a>
 </footer>

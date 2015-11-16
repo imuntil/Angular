@@ -16,5 +16,8 @@ myCSSModule.controller('HeaderController', ['$scope',
             $scope.isWarning = true;
             $scope.isError = false;
         }
+        $scope.xchange = function () {
+            console.log('aa');
+        }
     }
 ]);

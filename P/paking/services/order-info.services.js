@@ -60,7 +60,9 @@
             }
             service.coupon = {};
             angular.forEach(service.info, function (item, key) {
-                this[key] = undefined;
+                if (key !== 'oadrid') {
+                    this[key] = undefined;
+                }
             }, service.info);
             service.info.oservice = 5;
             service.info.ouseba = false;

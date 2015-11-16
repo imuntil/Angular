@@ -1,10 +1,10 @@
 /**
- * Created by ±ó on 2015/11/8.
+ * Created by ï¿½ï¿½ on 2015/11/8.
  */
 (function () {
     angular.module('app.CouponManagementController', [
         'app.services.couponsAbout',
-        'app.services.order-info',
+        'app.services.order-info'
     ])
         .controller('CouponManagementController', CouponManagementController);
 

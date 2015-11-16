@@ -10,6 +10,12 @@
     <div ng-class="{error: isError, warning: isWarning}">{{messageText}}</div>
     <button ng-click="showError()">Simulate Error</button>
     <button ng-click="showWarning()">Simulate Warning</button>
+
+    <select ng-model="vv" ng-change="xchange()">
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+    </select>
 </div>
 <script src="../../framework/1.3.0.14/angular.js"></script>
 <script src="NgClass.js"></script>

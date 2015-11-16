@@ -11,7 +11,8 @@
             templateUrl:'directives/date-select.directive.html',
             replace:true,
             scope:{
-                dates:'='
+                dates:'=',
+                date:'='
             }
         }
     }
