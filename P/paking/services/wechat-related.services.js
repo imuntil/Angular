@@ -126,13 +126,13 @@
             }
 
             function setApiList(list) {
-                list && defaultList.concat(list);
+                defaultList = defaultList.concat(list);
             }
 
             function setConfig(debug) {
                 getConfig().success(function (data) {
                     wx.config({
-                        debug:debug,
+                        debug:debug || false,
                         appId:data['AppId'],
                         timestamp:data['Stamp'],
                         nonceStr:data['NonceStr'],

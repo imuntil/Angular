@@ -68,7 +68,27 @@
         function submitOrder() {
             vm.oi.odate = vm.date;
 
-            generateOrder.GO();
+            var po = generateOrder.GO()
+                .then(function (data) {
+                    return data;
+                });
+            var pp = po.then(function (data) {
+                generateOrder.pay(data)
+                    .then(function (res) {
+                        return res;
+                    });
+            });
+
+            if (orderInfo.coupon.id) {
+                pp.then(function (res) {
+                    couponsAbout.useCoupon(orderInfo.coupon.id)
+                        .then(function () {
+                            console.log('订单支付完成');
+                        });
+                });
+            } else {
+                console.log('订单支付完成');
+            }
         }
     }
 })();

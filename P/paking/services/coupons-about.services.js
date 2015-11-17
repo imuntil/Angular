@@ -1,5 +1,5 @@
 /**
- * Created by ±ó on 2015/11/8.
+ * Created by ï¿½ï¿½ on 2015/11/8.
  */
 (function () {
     angular.module('app.services.couponsAbout', [
@@ -12,7 +12,8 @@
         var service = {
             chosenCp:{},
             coupons:[],
-            getCoupons:getCoupons
+            getCoupons:getCoupons,
+            useCoupon:useCoupon
         };
         return service;
         function getCoupons() {
@@ -25,6 +26,24 @@
                 if (data['resultcode'] === 1 || data['resultcode'] === '1') {
                     service.coupons = data['result'];
                     defer.resolve(service.coupons);
+                } else {
+                    defer.reject(data);
+                }
+            }).error(function (data) {
+                defer.reject(data);
+            });
+            return defer.promise;
+        }
+
+        function useCoupon(id) {
+            var defer = $q.defer();
+            $http({
+                method:'GET',
+                url:commonData.BASE_URL + 'updatePerPr!updatePer',
+                params:{id:id}
+            }).success(function (data) {
+                if (data['resultcode'] === 1 || data['resultcode'] === '1') {
+                    defer.resolve(data['result']);
                 } else {
                     defer.reject(data);
                 }

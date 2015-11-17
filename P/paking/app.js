@@ -64,15 +64,17 @@
                     url:'/error',
                     templateUrl:'order-detail/error.html',
                     controller:'ErrorController as vm'
-                })
+                });
         }
 
-        appRun.$inject = ['listenAddressMngRouter', 'userAuthorization', 'commonData', '$rootScope'];
-        function appRun(listenAddressMngRouter, userAuthorization, commonData) {
+        appRun.$inject = ['listenAddressMngRouter', 'userAuthorization', 'commonData', 'wechatConfig'];
+        function appRun(listenAddressMngRouter, userAuthorization, commonData, wechatConfig) {
             userAuthorization.start().then(function (data) {
                 commonData.OPENID = data.userNick;
             });
             listenAddressMngRouter.listen();
+            wechatConfig.addApiList(['chooseWXPay']);
+            wechatConfig.setConfig(true);
         }
 
     })();
