@@ -1,13 +1,7 @@
 /**
- * Created by 斌 on 2015/11/18.
+ * Created by 斌 on 2015/11/25.
  */
-(function () {
-    angular.module('RoverApp', [
-        'ui.router',
-
-        'app.controllers.WelcomeAController'
-    ])
-        .config(config);
+define(['app'], function (app) {
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
     function config($stateProvider, $urlRouterProvider) {
@@ -29,7 +23,8 @@
                         templateUrl:'main/main-container.html'
                     },
                     'topbar@home':{
-                        templateUrl:'main/topbar.html'
+                        templateUrl:'main/topbar.html',
+                        controller:'TopBarController as vm'
                     },
                     'main@home':{
                         templateUrl:'main/catalogue.html'
@@ -72,5 +67,5 @@
                 }
             })
     }
-    //$state.go('addressEdit',{addressIndex:index});
-})();
+    return app.config(config);
+});
