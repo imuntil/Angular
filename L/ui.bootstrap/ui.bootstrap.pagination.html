@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+    <script src="../../framework/1.4.7/angular.js"></script>
+    <script src="../../framework/1.4.7/angular-animate.js"></script>
+    <script src="../../framework/ui-bootstrap-tpls-0.14.1.js"></script>
+</head>
+<body ng-controller="Ctrl">
+<uib-pagination boundary-links="true" total-items="totalItems"
+                ng-model="currentPage" class="pagination-sm"
+                items-per-page="1"  max-size="12"
+                ng-change="_change()"
+                previous-text="&lt;" next-text="&gt;"
+                first-text="&laquo;" last-text="&raquo;">
+</uib-pagination>
+<script>
+    angular.module('myApp', ['ui.bootstrap'])
+            .controller('Ctrl', function ($scope) {
+                $scope.totalItems = 20;
+                $scope.currentPage = 2;
+                $scope._change = function () {
+                    console.log($scope.currentPage);
+                }
+            });
+</script>
+</body>
+</html>
