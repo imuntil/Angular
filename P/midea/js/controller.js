@@ -7,6 +7,7 @@
             function ($scope, $state, $sce, $stateParams, movies, ends, shared, $rootScope) {
 
                 var mid = $stateParams.movieID;
+                //$scope.movieURL = movies[mid];
                 $scope.movieURL = $sce.trustAsResourceUrl(movies[mid]);
                 $scope.controls = true;
                 $scope.autoplay = false;
