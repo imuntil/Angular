@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Test">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Bootstrap/bootstrap.css"/>
+    <script src="../../framework/1.4.7/angular.min.js"></script>
+    <script src="../../framework/ui-bootstrap-tpls-0.14.1.js"></script>
+    <script src="iu.directives.calendar.js"></script>
+</head>
+<body ng-controller="TestCtrl">
+<div id="calendar"><SELECT id=idYear></SELECT>年 <SELECT id=idMonth></SELECT>月 <SELECT id=idDay></SELECT>日</div>
+<br/>
+<hr/>
+<br/>
+<iu-calendar ng-model="defDate"></iu-calendar>
+<br/>
+<hr/>
+<br/>
+<uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" class="pagination-sm" boundary-links="true" num-pages="numPages"></uib-pagination>
+<script src="../../jquery.js"></script>
+<script src="../../Tools/jquery.calendar.js"></script>
+<script>
+    $(function () {
+        var myDate = new Date();
+        $("#calendar").DateSelector({
+            ctlYearId: 'idYear',
+            ctlMonthId: 'idMonth',
+            ctlDayId: 'idDay',
+            defYear: myDate.getFullYear(),
+            defMonth: (myDate.getMonth()+1),
+            defDay:myDate.getDate(),
+            minYear: 1900,
+            maxYear: (myDate.getFullYear()+1)
+        });
+    })
+</script>
+<script>
+    (function () {
+        angular.module('Test', ['iu.directives.calendar','ui.bootstrap'])
+                .controller('TestCtrl', function ($scope) {
+                    $scope.defDate = '2015-11-12';
+
+                    $scope.bigTotalItems = 50;
+                    $scope.bigCurrentPage = 2;
+                    $scope.numPages = 8;
+                });
+    })();
+</script>
+</body>
+</html>
