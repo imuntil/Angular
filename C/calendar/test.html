@@ -13,11 +13,11 @@
 <br/>
 <hr/>
 <br/>
-<iu-calendar ng-model="vm.defDate"></iu-calendar>
+<iu-calendar date="vm.defDate"></iu-calendar>
 <br/>
 <hr/>
 <br/>
-<!--<uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" class="pagination-sm" boundary-links="true" num-pages="numPages"></uib-pagination>-->
+<uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" class="pagination-sm" boundary-links="true" num-pages="numPages"></uib-pagination>
 <!--<script src="../../jquery.js"></script>-->
 <!--<script src="../../Tools/jquery.calendar.js"></script>-->
 <!--<script>-->
@@ -45,10 +45,11 @@
 
                     $timeout(function () {
                         vm.defDate = '2010-9-8';
-                    },1000);
-//                    $scope.bigTotalItems = 50;
-//                    $scope.bigCurrentPage = 2;
-//                    $scope.numPages = 8;
+                        $scope.bigCurrentPage = 4;
+                    },5000);
+                    $scope.bigTotalItems = 50;
+                    $scope.bigCurrentPage = 2;
+                    $scope.numPages = 8;
                 });
     })();
 </script>
