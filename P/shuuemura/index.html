@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Shuuemura">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="../../Tools/animate.min.css"/>
+    <script src="../../Tools/hammer.js"></script>
+    <script src="../../framework/1.4.7/angular.js"></script>
+    <script src="../../framework/1.4.7/angular-animate.js"></script>
+    <script src="../../Tools/angular-gestures.js"></script>
+    <script src="main.js"></script>
+    <title></title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .container,
+        section.page {
+            top: 0;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .container {
+            overflow: hidden;
+        }
+        .page-1 {
+            background-color: red;
+        }
+        .page-2 {
+            background-color: orange;
+        }
+        .page-3 {
+            background-color: yellow;
+        }
+        .page-4 {
+            background-color: green;
+        }
+        .page-5 {
+            background-color: #00d6b2;
+        }
+        .page-6 {
+            background-color: dodgerblue;
+        }
+        .page-7 {
+            background-color: mediumpurple;
+        }
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            width: 100%;
+            height: 50px;
+            background-color: white;
+            color: #000;
+        }
+        .header li {
+            list-style: none;
+            float: left;
+            margin-left: 20px;
+        }
+        .animated.ng-hide-add{
+            -webkit-animation-name: flipOutX;
+            animation-name: flipOutX;
+        }
+        .animated.ng-hide-remove{
+            -webkit-animation-name: flipInX;
+            animation-name: flipInX;
+        }
+        /*.animated.ng-hide-add{*/
+            /*/!*-webkit-animation-name: flipOutX;*!/*/
+            /*/!*animation-name: flipOutX;*!/*/
+
+            /*-webkit-animation-name: fadeOutUp;*/
+            /*-moz-animation-name: fadeOutUp;*/
+            /*-o-animation-name: fadeOutUp;*/
+            /*animation-name: fadeOutUp;*/
+        /*}*/
+        /*.animated.ng-hide-remove{*/
+            /*/!*-webkit-animation-name: flipInX;*!/*/
+            /*/!*animation-name: flipInX;*!/*/
+
+            /*-webkit-animation-name: fadeInUp;*/
+            /*-moz-animation-name: fadeInUp;*/
+            /*-o-animation-name: fadeInUp;*/
+            /*animation-name: fadeInUp;*/
+        /*}*/
+        /*.animated.d-d.ng-hide-add{*/
+            /*-webkit-animation-name: fadeOutDown;*/
+            /*-moz-animation-name: fadeOutDown;*/
+            /*-o-animation-name: fadeOutDown;*/
+            /*animation-name: fadeOutDown;*/
+        /*}*/
+        /*.animated.d-d.ng-hide-remove{*/
+            /*-webkit-animation-name: fadeInDown;*/
+            /*-moz-animation-name: fadeInDown;*/
+            /*-o-animation-name: fadeInDown;*/
+            /*animation-name: fadeInDown;*/
+        /*}*/
+    </style>
+</head>
+<body ng-controller="PagesController as vm">
+<div class="header">
+    <ul>
+        <li ng-click="vm.paging = 2">page-2</li>
+        <li ng-click="vm.paging = 3">page-3</li>
+        <li ng-click="vm.paging = 4">page-4</li>
+    </ul>
+</div>
+<div class="container"
+     hm-swipe-up="vm.swipeUp($event)"
+     hm-swipe-down="vm.swipeDown($event)">
+    <section class="page animated page-1"
+             ng-class="{'d-d':vm.DD}"
+             ng-show="vm.paging === 1"></section>
+    <section class="page animated page-2"
+             ng-class="{'d-d':vm.DD}"
+             ng-show="vm.paging === 2"></section>
+    <section class="page animated page-3"
+             ng-class="{'d-d':vm.DD}"
+             ng-show="vm.paging === 3"></section>
+    <section class="page animated page-4"
+             ng-class="{'d-d':vm.DD}"
+             ng-show="vm.paging === 4"></section>
+    <section class="page animated page-5"
+             ng-class="{'d-d':vm.DD}"
+             ng-show="vm.paging === 5"></section>
+    <section class="page animated page-6"
+             ng-class="{'d-d':vm.DD}"
+             ng-show="vm.paging === 6"></section>
+    <section class="page animated page-7"
+             ng-class="{'d-d':vm.DD}"
+             ng-show="vm.paging === 7"></section>
+</div>
+</body>
+</html>
