@@ -115,6 +115,10 @@
             bottom: 30%;
             background: #000;
         }
+        textarea {
+            width: 100%;
+            margin-bottom: 100px;
+        }
     </style>
 </head>
 <body ng-controller="PagesController as vm">
@@ -134,11 +138,13 @@
     <section class="page animated page-2"
              ng-class="{'d-d':vm.DD}"
              ng-show="vm.paging === 2">
-        <div class="slider" slider max="100" min="100"></div>
+        <!--<div class="slider" slider max="100" min="100"></div>-->
     </section>
     <section class="page animated page-3"
              ng-class="{'d-d':vm.DD}"
-             ng-show="vm.paging === 3"></section>
+             ng-show="vm.paging === 3">
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+    </section>
     <section class="page animated page-4"
              ng-class="{'d-d':vm.DD}"
              ng-show="vm.paging === 4"></section>
