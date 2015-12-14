@@ -9,6 +9,7 @@
     <script src="../../framework/1.4.7/angular.js"></script>
     <script src="../../framework/1.4.7/angular-animate.js"></script>
     <script src="../../Tools/angular-gestures.js"></script>
+    <script src="slider/iu.directives.slider.js"></script>
     <script src="main.js"></script>
     <title></title>
     <style>
@@ -105,6 +106,15 @@
             /*-o-animation-name: fadeInDown;*/
             /*animation-name: fadeInDown;*/
         /*}*/
+
+        .slider {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 150px;
+            bottom: 30%;
+            background: #000;
+        }
     </style>
 </head>
 <body ng-controller="PagesController as vm">
@@ -123,7 +133,9 @@
              ng-show="vm.paging === 1"></section>
     <section class="page animated page-2"
              ng-class="{'d-d':vm.DD}"
-             ng-show="vm.paging === 2"></section>
+             ng-show="vm.paging === 2">
+        <div class="slider" slider max="100" min="100"></div>
+    </section>
     <section class="page animated page-3"
              ng-class="{'d-d':vm.DD}"
              ng-show="vm.paging === 3"></section>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../../../framework/1.4.7/angular.js"></script>
+    <script src="../../../Tools/preloadjs-0.6.1.min.js"></script>
+    <script src="loader.directive.js"></script>
+</head>
+<body ng-controller="Ctrl">
+<div loader complete="complete()" progress="progress" ng-bind="progress">ll
+
+</div>
+<script>
+    angular.module('myApp', ['iu.directives.loader'])
+            .controller('Ctrl', function ($scope, $timeout) {
+                $scope.complete = function () {
+                    console.log('complete!!!');
+                };
+                $scope.progress = 0;
+            });
+//            .directive('loader', function () {
+//                return {
+//                    restrict:'A',
+//                    template:'<p>{{progress}}</p>',
+//                    scope:{
+//                        complete:'&',
+//                        progress:'='
+//                    },
+//                    controller: ['$scope','$timeout',function ($scope, $timeout) {
+//                        var loader = new createjs.LoadQueue(false);
+//                        loader.on('complete', loadComplete);
+//                        loader.on('progress', loading);
+//                        loader.loadManifest(getMainfest(), true);
+//
+//                        function getMainfest() {
+//                            var mf = [];
+//                            for (var i = 0; i <= 45; i ++) {
+//                                var img = 'star00' + (i > 9 ? i : '0' + i);
+//                                mf.push({
+//                                    id:img,
+//                                    src:'test-imgs/'+img+'.jpg'
+//                                });
+//                            }
+//                            return mf;
+//                        }
+//                        function loadComplete() {
+//                            $scope.complete();
+//                        }
+//                        function loading() {
+//                            $timeout(function () {
+//                                $scope.progress = Math.floor(loader.progress*100)+"%";
+//                            }, 0);
+//                        }
+//                    }]
+//                }
+//            })
+</script>
+</body>
+</html>

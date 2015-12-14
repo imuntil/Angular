@@ -4,7 +4,8 @@
 (function () {
     angular.module('Shuuemura', [
         'ngAnimate',
-        'angular-gestures'
+        'angular-gestures',
+        'iu.directives.slider'
     ])
         .controller('PagesController', PagesController)
         .config(config);
@@ -17,7 +18,6 @@
         vm.swipeUp = swipeUp;
 
         function swipeUp(e) {
-            console.log(e);
             vm.DD = false;
             if (vm.paging >= 7) {
                 vm.paging = 7;
@@ -26,7 +26,6 @@
             }
         }
         function swipeDown(e) {
-            console.log(e);
             vm.DD = true;
             if (vm.paging <= 1) {
                 vm.paging = 1;
