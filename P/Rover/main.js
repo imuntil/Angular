@@ -3,16 +3,20 @@
  */
 require.config({
     paths:{
-        'angular':'../../framework/1.3.0.14/angular',
+        'angular':'../../framework/1.4.7/angular',
         'ui-router':'../../ui-router/angular-ui-router.min',
         'domReady':'../../Tools/domReady',
+        'cookies':'../../framework/1.4.7/angular-cookies.min',
 
         'bootstrap':'script/bootstrap',
         'app':'script/app-module',
         'route':'script/app-route',
 
         'WelcomeAController':'welcome/w-a.controller',
-        'TopBarController':'main/topbar.controller'
+        'TopBarController':'main/topbar.controller',
+        'CatalogueController':'main/catalogue.controller',
+
+        'localData':'services/local-data.service'
     },
     shim:{
         'angular':{
@@ -21,6 +25,10 @@ require.config({
         'ui-router':{
             deps:['angular'],
             exports:'ui-router'
+        },
+        'cookies':{
+            deps:['angular'],
+            exports:'cookies'
         }
     },
     deps:['bootstrap']

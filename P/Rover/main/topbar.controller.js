@@ -7,7 +7,7 @@ define(
         "use strict";
 
         function TopBarController() {
-
+            var vm = this;
         }
         angular.module('app.controllers.TopBarController', [])
             .controller('TopBarController', TopBarController);

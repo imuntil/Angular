@@ -5,15 +5,22 @@ define(
     [
         'angular',
         'ui-router' ,
+        'cookies',
         'WelcomeAController',
-        'TopBarController'
+        'TopBarController',
+        'CatalogueController',
+
+        'localData'
     ],
     function (angular) {
         return angular.module('RoverApp', [
             'ui.router',
-
+            'ngCookies',
             'app.controllers.WelcomeAController',
-            'app.controllers.TopBarController'
+            'app.controllers.TopBarController',
+            'app.controllers.CatalogueController',
+
+            'app.services.localData'
         ]);
     }
 );

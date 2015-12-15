@@ -27,7 +27,8 @@ define(['app'], function (app) {
                         controller:'TopBarController as vm'
                     },
                     'main@home':{
-                        templateUrl:'main/catalogue.html'
+                        templateUrl:'main/catalogue.html',
+                        controller:'CatalogueController as vm'
                     },
                     'footer@home':{
                         templateUrl:'main/footer.html'
