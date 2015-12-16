@@ -10,7 +10,7 @@
 
         return {
             restrict:'EA',
-            template:'<b>{{H}}</b>h<b>{{M}}</b>m<b>{{S}}</b>s',
+            template:'<b>{{H}}</b>H<b>{{M}}</b>M<b>{{S}}</b>S',
             link: function (iScope, iEle, iAttrs) {
                 var EDNDATE = iAttrs.stopwatch;
 
