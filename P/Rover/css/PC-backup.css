@@ -91,7 +91,7 @@ img{
     overflow: hidden;
 }
 .purpose_left{
-    width: 74%;
+    width: 100%;
     float: left;
     font-size: 2.5rem;
     font-size: 25px;
@@ -241,9 +241,12 @@ img{
     *width:49.9%;
     float:left;
 }
-.step1 b{
+.step_content .open-able b{
     display: none;
 }
+/*.step1 b{*/
+    /*display: none;*/
+/*}*/
 .txt{
     font-size: 2.8rem;
     font-size: 28px;

@@ -11,16 +11,13 @@ define(
                 interval;
 
             localData.fetch();
-            localData.watch();
-
-            console.log('w.w');
 
             interval = $interval(function () {
                 if (time > 0) {
                     time -= 1;
                 } else if (time === 0) {
                     $interval.cancel(interval);
-                    //$state.go('welcome-2')
+                    $state.go('welcome-2')
                 }
             }, 1000);
         }

@@ -17,7 +17,10 @@
             </a>
         </div>
         <div class="sub_right step1">
-            <a ui-sref="home.step-1({section:1})" class="section-1">
+            <a href="javascript:void(0);"
+               ng-click="vm.go(1)"
+               ng-class="{'open-able': vm.data.course >= 1}"
+               class="section-1">
                 <img src="img/step1.jpg" width="100%" alt=""/>
                     <span class="txt1 txt">
                       <font>1.</font><br/>潜在客户开发

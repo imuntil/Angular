@@ -7,29 +7,36 @@ define(
         "use strict";
 
         localData.$inject = ['$cookies', '$rootScope'];
-        var key = 'temp-rover-local-data';
+        var key = 'temp-rover-local-data',
+            watching = false;
         function localData($cookies, $rootScope) {
             var services = {
-                data:{},
-                fetch:fetch,
-                watch:watch
+                data:{course:undefined, step:undefined},
+                fetch:fetch
             };
             return services;
             function fetch() {
-                services.data = $cookies.getObject(key) || {course:1,step:1};
-                console.log(services.data);
+                if (services.data.course === undefined) {
+                    console.log('get');
+                    services.data = $cookies.getObject(key) || {course:1,step:1};
+                    watch();
+                }
+                return services.data;
             }
             function update() {
                 $cookies.putObject(key, services.data);
             }
             function watch() {
+                if (watching) {return};
+                console.log('watching');
+                watching = true;
                 $rootScope.$watch(function () {
                     return services.data;
                 }, function (val) {
                     if (val) {
                         update();
                     }
-                });
+                }, true);
             }
         }
         angular.module('app.services.localData',['ngCookies'])
