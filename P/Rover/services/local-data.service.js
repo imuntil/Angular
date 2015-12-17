@@ -12,14 +12,29 @@ define(
         function localData($cookies, $rootScope) {
             var services = {
                 data:{course:undefined, step:undefined},
-                fetch:fetch
+                fetch:fetch,
+                check:check
             };
             return services;
+            function check(course, step) {
+                if (course < services.data.course) {return;}
+                else if (course === services.data.course) {
+                    if (step > services.data.step) {
+                        services.data.step = step;
+                        update();
+                    }
+                } else {
+                    services.data.course = course;
+                    services.data.step = step || 1;
+                    update();
+                }
+            }
             function fetch() {
+                $cookies.putObject(key, {course:2,step:1});
                 if (services.data.course === undefined) {
                     console.log('get');
                     services.data = $cookies.getObject(key) || {course:1,step:1};
-                    watch();
+                    //watch();
                 }
                 return services.data;
             }

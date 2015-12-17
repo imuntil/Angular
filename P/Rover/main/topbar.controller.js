@@ -2,7 +2,7 @@
  * Created by 斌 on 2015/11/25.
  */
 define(
-    ['angular', 'localData'],
+    ['angular', 'localData', 'steps'],
     function (angular) {
         "use strict";
 
@@ -24,7 +24,10 @@ define(
                 $state.go('home.step-' + step, {section:course});
             }
         }
-        angular.module('app.controllers.TopBarController', [])
+        angular.module('app.controllers.TopBarController', [
+            'app.services.localData',
+            'app.directives.steps'
+        ])
             .controller('TopBarController', TopBarController);
     }
 );

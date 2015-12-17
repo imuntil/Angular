@@ -1,14 +1,7 @@
 <ul class="nav nav-view">
     <li class="spec"></li>
-    <li class="unlock">
-        <a href="javascript:void(0);" class="unlock">潜在客<br/>户开发
-            <ul class="page-router">
-                <li ng-repeat="st in vm.steps track by $index">
-                    <b ng-click="vm.go(vm.data.course >= 1 && vm.data.step > $index, 1, $index)"
-                       ng-class="{'is-able':vm.data.course >= 1 && vm.data.step > $index}">{{::st}}</b>
-                </li>
-            </ul>
-        </a>
+    <li>
+        <steps this-course="1">潜在客户<br/>开发</steps>
     </li>
     <li>
         <a href="javascript:void(0);" ng-class="{'unlock':vm.data.course >= 2}">迎宾
@@ -40,14 +33,15 @@
             </ul>
         </a>
     </li>
-    <li><a href="javascript:void(0);" ng-class="{'unlock':vm.data.course >= 5}">产品体验
-        <ul class="page-router">
-            <li ng-repeat="st in vm.steps track by $index">
-                <b ng-click="vm.go(vm.data.course >= 5 && vm.data.step > $index, 5, $index)"
-                   ng-class="{'is-able':vm.data.course >= 5 && vm.data.step > $index}">{{::st}}</b>
-            </li>
-        </ul>
-    </a>
+    <li>
+        <a href="javascript:void(0);" ng-class="{'unlock':vm.data.course >= 5}">产品体验
+            <ul class="page-router">
+                <li ng-repeat="st in vm.steps track by $index">
+                    <b ng-click="vm.go(vm.data.course >= 5 && vm.data.step > $index, 5, $index)"
+                       ng-class="{'is-able':vm.data.course >= 5 && vm.data.step > $index}">{{::st}}</b>
+                </li>
+            </ul>
+        </a>
     </li>
     <li>
         <a href="javascript:void(0);" ng-class="{'unlock':vm.data.course >= 6}">谈判与成交

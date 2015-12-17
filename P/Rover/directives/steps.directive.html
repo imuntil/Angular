@@ -1,0 +1,17 @@
+<a href="javascript:void(0);" ng-class="{'unlock':''}">
+    <b ng-transclude></b>
+    <ul class="page-router">
+        <li>
+            <b ng-click="go(o[0], 1)" ng-class="{'is-able':o[0]}">视频</b>
+        </li>
+        <li>
+            <b ng-click="go(o[1], 2)" ng-class="{'is-able':o[1]}">小测试</b>
+        </li>
+        <li>
+            <b ng-click="go(o[2], 3)" ng-class="{'is-able':o[2]}">最佳实践</b>
+        </li>
+        <li>
+            <b ng-click="go(o[3], 4)" ng-class="{'is-able':o[3]}">自我评估</b>
+        </li>
+    </ul>
+</a>

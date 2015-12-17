@@ -157,7 +157,7 @@ img{
     left: 0;
     display: none;
 }
-.nav li.unlock:hover ul{
+.nav a.unlock:hover ul{
     display: block;
 }
 .nav li ul li{

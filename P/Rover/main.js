@@ -15,8 +15,12 @@ require.config({
         'WelcomeAController':'welcome/w-a.controller',
         'TopBarController':'main/topbar.controller',
         'CatalogueController':'main/catalogue.controller',
+        'FirstStepController':'main/first-step.controller',
 
-        'localData':'services/local-data.service'
+        'localData':'services/local-data.service',
+
+        'hVideo':'directives/h-video.directive',
+        'steps':'directives/steps.directive'
     },
     shim:{
         'angular':{

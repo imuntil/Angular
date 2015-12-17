@@ -9,8 +9,7 @@ define(
         'WelcomeAController',
         'TopBarController',
         'CatalogueController',
-
-        'localData'
+        'FirstStepController'
     ],
     function (angular) {
         return angular.module('RoverApp', [
@@ -19,8 +18,7 @@ define(
             'app.controllers.WelcomeAController',
             'app.controllers.TopBarController',
             'app.controllers.CatalogueController',
-
-            'app.services.localData'
+            'app.controllers.FirstStepController'
         ]);
     }
 );

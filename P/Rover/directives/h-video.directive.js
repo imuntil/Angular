@@ -10,9 +10,19 @@ define(
         function hVideo() {
             return {
                 restrict:'A',
-                scope:{},
+                scope:{
+                    onEnd:'&'
+                },
                 link: function (iScope, iEle, iAttrs) {
-                    
+                    var video = iEle[0];
+                    video.src = iAttrs.hSrc;
+                    video.load();
+
+                    video.addEventListener('ended', function () {
+                        iScope.$apply(function () {
+                            iScope.onEnd();
+                        });
+                    }, false);
                 }
             }
         }

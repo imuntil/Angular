@@ -39,7 +39,8 @@ define(['app'], function (app) {
                 url:'/:section/step-1',
                 views:{
                     'main@home':{
-                        templateUrl:'main/step-1.html'
+                        templateUrl:'main/step-1.html',
+                        controller:'FirstStepController as vm'
                     }
                 }
             })
