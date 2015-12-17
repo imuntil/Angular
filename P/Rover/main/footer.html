@@ -1,15 +1,22 @@
 <div class="footer">
-    <a href="javascript:void(0);" class="skip go-home">
+    <a href="javascript:void(0);" ui-sref="home" class="skip go-home">
         <img src="img/icon2.png" alt="" class="icon2"/>
         主页
     </a>
     <img src="img/icon.jpg" width="4%" alt="" class="icon"/>
-    <div class="circle_group count-circles" style="">
+    <div class="circle_group" ng-show="vm.counting">
         <span>第一部分.视频</span>
-        <i class="checked"></i><i></i><i></i><i class="last"></i>
+        <i class="checked"></i>
+        <i ng-class="{'checked': vm.step >= 2}"></i>
+        <i ng-class="{'checked': vm.step >= 3}"></i>
+        <i class="last" ng-class="{'checked': vm.step === 4}"></i>
     </div>
-    <div class="btn_group count-circles" style="">
-        <a href="javascript:void(0)" class="pre disabled pre-part-step">&lt;&nbsp;上一页</a>
-        <a href="javascript:void(0)" class="next next-part-step">下一页&nbsp;&gt;</a>
+    <div class="btn_group" ng-show="vm.counting">
+        <a href="javascript:void(0)" class="pre"
+           ng-click="vm.prev()"
+           ng-class="{'disabled':vm.step === 1}">&lt;&nbsp;上一页</a>
+        <a href="javascript:void(0)" class="next"
+           ng-click="vm.next()"
+           ng-class="{'disabled':vm.step === 4}">下一页&nbsp;&gt;</a>
     </div>
 </div>

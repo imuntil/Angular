@@ -19,8 +19,14 @@ define(
 
                     iScope.data = localData.fetch();
                     iScope.o = [true, true, true, true];
+                    iScope.unlock = false;
                     function refresh() {
-                        if (thisCourse < iScope.data.course) {return;}
+                        if (thisCourse <= iScope.data.course) {
+                            iScope.unlock = true;
+                        }
+                        if (thisCourse < iScope.data.course) {
+                            return;
+                        }
                         var s = iScope.data.step || 1;
                         var _o = iScope.o.map(function (item, index) {
                             if (index + 1 <= s) {

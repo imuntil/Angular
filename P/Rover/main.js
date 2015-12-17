@@ -16,6 +16,7 @@ require.config({
         'TopBarController':'main/topbar.controller',
         'CatalogueController':'main/catalogue.controller',
         'FirstStepController':'main/first-step.controller',
+        'FooterController':'main/footer.controller',
 
         'localData':'services/local-data.service',
 

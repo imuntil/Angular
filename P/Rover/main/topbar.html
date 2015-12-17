@@ -4,84 +4,28 @@
         <steps this-course="1">潜在客户<br/>开发</steps>
     </li>
     <li>
-        <a href="javascript:void(0);" ng-class="{'unlock':vm.data.course >= 2}">迎宾
-            <ul class="page-router">
-                <li ng-repeat="st in vm.steps track by $index">
-                    <b ng-click="vm.go(vm.data.course >= 2 && vm.data.step > $index, 2, $index)"
-                       ng-class="{'is-able':vm.data.course >= 2 && vm.data.step > $index}">{{::st}}</b>
-                </li>
-            </ul>
-        </a>
+        <steps this-course="2">迎宾</steps>
     </li>
     <li>
-        <a href="javascript:void(0);" ng-class="{'unlock':vm.data.course >= 3}">需求确定
-            <ul class="page-router">
-                <li ng-repeat="st in vm.steps track by $index">
-                    <b ng-click="vm.go(vm.data.course >= 3 && vm.data.step > $index, 3, $index)"
-                       ng-class="{'is-able':vm.data.course >= 3 && vm.data.step > $index}">{{::st}}</b>
-                </li>
-            </ul>
-        </a>
+        <steps this-course="3">需求确定</steps>
     </li>
     <li>
-        <a href="javascript:void(0);" ng-class="{'unlock':vm.data.course >= 4}">产品介绍<br/>和展示
-            <ul class="page-router">
-                <li ng-repeat="st in vm.steps track by $index">
-                    <b ng-click="vm.go(vm.data.course >= 4 && vm.data.step > $index, 4, $index)"
-                       ng-class="{'is-able':vm.data.course >= 4 && vm.data.step > $index}">{{::st}}</b>
-                </li>
-            </ul>
-        </a>
+        <steps this-course="4">产品介绍<br/>和展示</steps>
     </li>
     <li>
-        <a href="javascript:void(0);" ng-class="{'unlock':vm.data.course >= 5}">产品体验
-            <ul class="page-router">
-                <li ng-repeat="st in vm.steps track by $index">
-                    <b ng-click="vm.go(vm.data.course >= 5 && vm.data.step > $index, 5, $index)"
-                       ng-class="{'is-able':vm.data.course >= 5 && vm.data.step > $index}">{{::st}}</b>
-                </li>
-            </ul>
-        </a>
+        <steps this-course="5">产品体验</steps>
     </li>
     <li>
-        <a href="javascript:void(0);" ng-class="{'unlock':vm.data.course >= 6}">谈判与成交
-            <ul class="page-router">
-                <li ng-repeat="st in vm.steps track by $index">
-                    <b ng-click="vm.go(vm.data.course >= 6 && vm.data.step > $index, 6, $index)"
-                       ng-class="{'is-able':vm.data.course >= 6 && vm.data.step > $index}">{{::st}}</b>
-                </li>
-            </ul>
-        </a>
+        <steps this-course="6">谈判与成交</steps>
     </li>
     <li>
-        <a href="javascript:void(0);" ng-class="{'unlock':vm.data.course >= 7}">订单跟踪<br/>和交付准备
-            <ul class="page-router">
-                <li ng-repeat="st in vm.steps track by $index">
-                    <b ng-click="vm.go(vm.data.course >= 7 && vm.data.step > $index, 7, $index)"
-                       ng-class="{'is-able':vm.data.course >= 7 && vm.data.step > $index}">{{::st}}</b>
-                </li>
-            </ul>
-        </a>
+        <steps this-course="7">订单跟踪<br/>和交付准备</steps>
     </li>
     <li>
-        <a href="javascript:void(0);" ng-class="{'unlock':vm.data.course >= 8}">车辆交付
-            <ul class="page-router">
-                <li ng-repeat="st in vm.steps track by $index">
-                    <b ng-click="vm.go(vm.data.course >= 8 && vm.data.step > $index, 8, $index)"
-                       ng-class="{'is-able':vm.data.course >= 8 && vm.data.step > $index}">{{::st}}</b>
-                </li>
-            </ul>
-        </a>
+        <steps this-course="8">车辆交付</steps>
     </li>
     <li>
-        <a href="javascript:void(0);" ng-class="{'unlock':vm.data.course >= 9}">交付跟进<br/>和维护关系
-            <ul class="page-router">
-                <li ng-repeat="st in vm.steps track by $index">
-                    <b ng-click="vm.go(vm.data.course >= 9 && vm.data.step > $index, 9, $index)"
-                       ng-class="{'is-able':vm.data.course >= 9 && vm.data.step > $index}">{{::st}}</b>
-                </li>
-            </ul>
-        </a>
+        <steps this-course="9">交付跟进<br/>和维护关系</steps>
     </li>
     <li class="spec"></li>
 </ul>

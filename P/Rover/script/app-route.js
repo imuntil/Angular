@@ -31,7 +31,8 @@ define(['app'], function (app) {
                         controller:'CatalogueController as vm'
                     },
                     'footer@home':{
-                        templateUrl:'main/footer.html'
+                        templateUrl:'main/footer.html',
+                        controller:'FooterController as vm'
                     }
                 }
             })

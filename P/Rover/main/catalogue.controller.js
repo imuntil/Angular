@@ -13,7 +13,7 @@ define(
             vm.go = go;
 
             function go(course) {
-                if (course < vm.data.course) {
+                if (course > vm.data.course) {
                     return;
                 }
                 $state.go('home.step-1',{section:course});
