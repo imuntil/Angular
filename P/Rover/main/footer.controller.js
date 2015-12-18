@@ -2,16 +2,17 @@
  * Created by 斌 on 2015/12/17.
  */
 define(
-    ['angular'],
+    ['angular', 'localData'],
     function (angular) {
 
-        FooterController.$inject = ['$scope', '$location'];
-        function FooterController($scope, $location) {
+        FooterController.$inject = ['$scope', '$location', 'localData'];
+        function FooterController($scope, $location, localData) {
             var vm = this;
             vm.counting = false;
             vm.next = next;
             vm.prev = prev;
             vm.step = 1;
+            var data = localData.fetch();
             var url = $location.url();
 
             $scope.$on('$locationChangeSuccess', function (event, nu, ou, ns, os) {
@@ -38,7 +39,8 @@ define(
                 count();
             }
             function count() {
-                vm.step = parseInt(url.substr(-1), 10);
+                vm.step = parseInt(url.substr(-1), 10) || 1;
+                vm.section = parseInt(url.substr(6, 1), 10) || 1;
             }
             function prev() {
                 if (vm.step === 1) {return;}
@@ -48,13 +50,16 @@ define(
             }
             function next() {
                 if (vm.step === 4) {return;}
+
                 var l = url.length,
                     n_url = url.substring(0, l-1) + (vm.step + 1);
                 $location.url(n_url);
             }
         }
 
-        angular.module('app.controllers.FooterController', [])
+        angular.module('app.controllers.FooterController', [
+            'app.services.localData'
+        ])
             .controller('FooterController', FooterController);
     }
 );
