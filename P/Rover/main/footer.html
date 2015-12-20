@@ -17,6 +17,6 @@
            ng-class="{'disabled':vm.step === 1}">&lt;&nbsp;上一页</a>
         <a href="javascript:void(0)" class="next"
            ng-click="vm.next()"
-           ng-class="{'disabled':vm.step === 4}">下一页&nbsp;&gt;</a>
+           ng-class="{'disabled': !vm.nextAble()}">下一页&nbsp;&gt;</a>
     </div>
 </div>

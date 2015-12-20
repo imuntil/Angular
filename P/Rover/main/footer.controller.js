@@ -10,6 +10,7 @@ define(
             var vm = this;
             vm.counting = false;
             vm.next = next;
+            vm.nextAble = nextAble;
             vm.prev = prev;
             vm.step = 1;
             var data = localData.fetch();
@@ -49,11 +50,17 @@ define(
                 $location.url(n_url);
             }
             function next() {
-                if (vm.step === 4) {return;}
+                if (!nextAble()) {return;}
 
                 var l = url.length,
                     n_url = url.substring(0, l-1) + (vm.step + 1);
                 $location.url(n_url);
+            }
+            function nextAble() {
+                if (vm.step === 4) {return false;}
+                if (vm.section > data.course) {return false;}
+                if (vm.section === data.course && vm.step >= data.step) {return false;}
+                return true;
             }
         }
 
