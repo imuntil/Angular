@@ -1,15 +1,7 @@
-<div class="training_content part-3">
+<div class="training_content part-3 in-page">
     <h4>最佳实践范例</h4>
-    <div class="best-practices">
-        <p>最佳实践范例最佳最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例</p>
-        <img width="23%" alt="" src="img/traning1_pic1.jpg">
-    </div>
-    <div class="best-practices">
-        <p>最佳实践范例最佳最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例</p>
-        <img width="23%" alt="" src="img/traning1_pic2.jpg">
-    </div>
-    <div class="best-practices">
-        <p>最佳实践范例最佳最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例最佳实践范例</p>
-        <img width="23%" alt="" src="img/traning1_pic3.jpg">
+    <div ng-repeat="practice in vm.practices track by $index">
+        <p>{{practice.text}}</p>
+        <b ng-style="practice.style"></b>
     </div>
 </div>

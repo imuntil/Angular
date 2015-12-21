@@ -14,6 +14,7 @@ define(
             vm.prev = prev;
             vm.step = 1;
             var data = localData.fetch();
+            var footers = ['第一部分.视频','第二部分.小测试','第三部分.最佳实践','第四部分.自我评估'];
             var url = $location.url();
 
             $scope.$on('$locationChangeSuccess', function (event, nu, ou, ns, os) {
@@ -42,6 +43,7 @@ define(
             function count() {
                 vm.step = parseInt(url.substr(-1), 10) || 1;
                 vm.section = parseInt(url.substr(6, 1), 10) || 1;
+                vm.footer = footers[vm.step - 1];
             }
             function prev() {
                 if (vm.step === 1) {return;}

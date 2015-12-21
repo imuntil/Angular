@@ -49,7 +49,8 @@ define(['app'], function (app) {
                 url:'/:section/step-2',
                 views:{
                     'main@home':{
-                        templateUrl:'main/step-2.html'
+                        templateUrl:'main/step-2.html',
+                        controller:'SecondStepController as vm'
                     }
                 }
             })
@@ -57,7 +58,8 @@ define(['app'], function (app) {
                 url:'/:section/step-3',
                 views:{
                     'main@home':{
-                        templateUrl:'main/step-3.html'
+                        templateUrl:'main/step-3.html',
+                        controller:'ThirdStepController as vm'
                     }
                 }
             })
@@ -65,7 +67,8 @@ define(['app'], function (app) {
                 url:'/:section/step-4',
                 views:{
                     'main@home':{
-                        templateUrl:'main/step-4.html'
+                        templateUrl:'main/step-4.html',
+                        controller:'FourthStepController as vm'
                     }
                 }
             })

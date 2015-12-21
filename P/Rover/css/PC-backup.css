@@ -9,9 +9,10 @@ html,body{
     width: 100%;
     height: 100%;
     overflow-x: hidden;
-    font-family: '黑体',Arial;
+    font-family: '黑体',SimHei,Arial;
     font-size: 62.5%;
     color: #333;
+    background-color: #ffffff;
 }
 a{
     text-decoration: none;
@@ -28,10 +29,13 @@ img{
 }
 .container{
     width:1024px;
-    height:768px;
+    height:825px;
     margin: 0 auto;
     position: relative;
-    /*display:none;*/
+    display:none;
+}
+.container-3{
+    display: block;
 }
 .container.is-active{
     display: block;
@@ -42,7 +46,7 @@ img{
 .index_container{
     background: url("../img/bg.jpg") no-repeat;
     background-size: 100% 100%;
-    /*display: none;*/
+    display: none;
 }
 .index_banner{
     width: 100%;
@@ -91,7 +95,7 @@ img{
     overflow: hidden;
 }
 .purpose_left{
-    width: 100%;
+    /*width: 74%;*/
     float: left;
     font-size: 2.5rem;
     font-size: 25px;
@@ -103,8 +107,8 @@ img{
     margin-bottom: 70px;
 }
 .purpose_left dd{
-    padding-left: 130px;
     margin-bottom: 35px;
+    padding-left: 72px;
     background: url("../img/list_icon.png") no-repeat 0 0;
 }
 .purpose_right,object{
@@ -157,7 +161,7 @@ img{
     left: 0;
     display: none;
 }
-.nav a.unlock:hover ul{
+.nav li a.unlock:hover ul{
     display: block;
 }
 .nav li ul li{
@@ -171,6 +175,10 @@ img{
 }
 .nav li ul li:hover b ,.nav li ul li b.is-able{
     color: #3e3a39;
+}
+.nav li ul li b.is-able.is-cu {
+    font-size: 20px;
+    font-weight: bold;
 }
 .nav li ul li b{
     display: block;
@@ -187,6 +195,12 @@ img{
 }
 .nav li a.unlock{
     color: #767575;
+}
+.nav li.is-pcu a.unlock{
+    color: #000;
+}
+.nav li.is-pcu {
+    background-color: #ccc;
 }
 .nav li.spec{
     width: 43px;
@@ -241,12 +255,9 @@ img{
     *width:49.9%;
     float:left;
 }
-.step_content .open-able b{
+.step1 b{
     display: none;
 }
-/*.step1 b{*/
-    /*display: none;*/
-/*}*/
 .txt{
     font-size: 2.8rem;
     font-size: 28px;
@@ -297,7 +308,7 @@ img{
 .training_content,
 .finish_content{
     clear: both;
-    height: 461px;
+    height: 520px;
     margin: 0 auto;
     padding-top: 2.5%;
     position: relative;
@@ -308,12 +319,11 @@ img{
 }
 .video_content video{
     margin: 0 auto;
-}
-.in-page{
-    display: none;
-}
-.in-page.is-active{
     display: block;
+}
+.in-page.part-3,
+.in-page.part-2{
+    overflow-y: scroll;
 }
 .play_btn{
     width: 109px;
@@ -330,14 +340,14 @@ img{
     font-size: 2.5rem;
     font-size: 25px;
     text-align: center;
-    margin: 2.4% 0 0 17%;
+    margin: 2.4% 0 0 5%;
 }
-.count-circles{
-    display: none;
-}
-.count-circles.is-active{
-    display: block;
-}
+/*.count-circles{*/
+/*display: none;*/
+/*}*/
+/*.count-circles.is-active{*/
+/*display: block;*/
+/*}*/
 .circle_group span{
     margin-bottom: 12px;
     display: block;
@@ -398,50 +408,76 @@ img{
     width: 100%;
 }
 .target ul li{
-    width: 310px;
-    height: 198px;
-    text-align: center;
-    color: #fefefe;
     background-color: #d6d7d7;
+    border: 4px solid #d6d7d7;
+    color: #767575;
     float: left;
+    height: 190px;
     margin-bottom: 28px;
     position: relative;
+    text-align: center;
+    width: 302px;
+}
+.target ul li.v-hide{
+    display: none;
 }
 .target ul li.even{
     float: right;
 }
+.target ul li.ans-wrong {
+    border: solid red 4px;
+}
+.target ul li.ans-right {
+    border: solid greenyellow 4px;
+}
 .target ul li span{
     display: block;
     text-align: center;
-    font-size: 2.8rem;
-    font-size: 28px;
+    /*font-size: 2.8rem;*/
+    font-size: 21px;
     padding-top:66px;
 }
 .drop{
     width: 166px;
     float: right;
 }
+.drop.offset-top{
+    margin-top: 100px;
+}
 .drop li{
     margin: 0 0 17px;
     position: relative;
     width: 166px;
     height: 106px;
+    cursor: pointer;
+}
+.drop li.v-hide{
+    display: none;
 }
 .drop li video,.drop li object{
     display: block;
     width: 166px;
     height: 106px;
 }
-.drop li a{
-    width: 70px;
-    height: 70px;
+.drop .v-mask{
+    height: 106px;
+    width: 166px;
+    background-color: white;
     display: block;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -35px;
-    margin-top: -35px;
+    top: 0;
+}
+.drop li a{
+    display: block;
+    height: 106px;
+    position: absolute;
+    text-align: center;
+    width: 166px;
     z-index: 1;
+}
+.drop li a img{
+    display: inline-block;
+    margin-top: 12%;
 }
 .training_content h4{
     font-size: 2.5rem;
@@ -464,24 +500,28 @@ img{
 .training_content div p{
     width: 70%;
     padding: 12px;
-    color: #221814;
-    font-size: 1.7rem;
-    font-size: 17px;
+    color: #767575;
+    /*font-size: 1.7rem;*/
+    font-size: 20px;
     float: left;
     background-color: #f0f0f0;
+    height: 102px;
 }
-.training_content div img{
+.training_content div b{
     float: right;
+    width: 198px;
+    height: 126px;
+    display: block;
+    background: url("../img/traning1_pic1.jpg") no-repeat center top;
+    background-size: cover;
 }
 .part-4 div p{
-    font-size: 2.2rem;
-    font-size: 22px;
+    /*font-size: 2.2rem;*/
+    font-size: 21px;
     color: #767575;
-    margin-left: 5%;
-    width: 51%;
+    margin-left: 1%;
+    width: 63%;
     height: 54px;
-}
-.part-4 div p.spec{
     line-height: 54px;
 }
 .part-4 div ul{
@@ -575,4 +615,46 @@ img{
 .game-drop li video{
     width: 100%;
     height: 100%;
+}
+.test{
+    overflow: hidden;
+}
+.test_left{
+    float: left;
+    width: 47%;
+}
+.test_right{
+    float: right;
+    width: 46%;
+}
+.option{
+    background-color: #d6d7d7;
+    border-radius: 5px;
+    color: #666666;
+    display: block;
+    font-size: 14px;
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 1%;
+    text-align: center;
+    width: 100%;
+}
+.option.ans-right.q-active {
+    background-color: greenyellow;
+    color: #000;
+}
+.option.ans-wrong.q-active{
+    background-color: red;
+    color: #000;
+}
+.test p{
+    clear: both;
+    font-size: 15px;
+    margin-bottom: 1%;
+}
+.animated.unlock.nw{
+    -webkit-animation-name: rubberBand;
+    -moz-animation-name: rubberBand;
+    -o-animation-name: rubberBand;
+    animation-name: rubberBand;
 }

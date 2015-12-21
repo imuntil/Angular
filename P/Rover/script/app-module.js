@@ -10,6 +10,9 @@ define(
         'TopBarController',
         'CatalogueController',
         'FirstStepController',
+        'SecondStepController',
+        'ThirdStepController',
+        'FourthStepController',
         'FooterController'
     ],
     function (angular) {
@@ -20,6 +23,9 @@ define(
             'app.controllers.TopBarController',
             'app.controllers.CatalogueController',
             'app.controllers.FirstStepController',
+            'app.controllers.SecondStepController',
+            'app.controllers.ThirdStepController',
+            'app.controllers.FourthStepController',
             'app.controllers.FooterController'
         ]);
     }
