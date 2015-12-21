@@ -2,8 +2,13 @@
     <div class="target">
         <h1>1.将右边的小视频拖入相应的框中</h1>
         <ul class="r-game game-drop">
-            <li ng-repeat="theme in vm.themes track by $index" ng-class="{'even': $index % 2 === 1}">
-                <span ng-bind-html="theme"></span>
+            <li ng-repeat="theme in vm.themes track by $index"
+                ng-drop="true" ng-drop-success="vm.dropComplete($data, $index, $event)"
+                ng-class="{'even': $index % 2 === 1}">
+                <span ng-bind-html="theme.title" ng-show="!theme.video"></span>
+                <div ng-show="theme.video">
+                    <video ng-src="{{theme.video.src}}" controls preload="auto"></video>
+                </div>
             </li>
         </ul>
         <div class="test" ng-show="vm.questions">
@@ -23,8 +28,8 @@
     </div>
     <ul class="drop">
         <li ng-repeat="video in vm.videos track by $index">
-            <div>
-                <video ng-src="{{video}}" controls preload="auto"></video>
+            <div ng-drag="true" ng-drag-data="video" data-allow-transform="true">
+                <video ng-src="{{video.src}}" controls preload="auto"></video>
             </div>
         </li>
     </ul>

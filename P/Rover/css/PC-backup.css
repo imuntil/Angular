@@ -32,7 +32,6 @@ img{
     height:825px;
     margin: 0 auto;
     position: relative;
-    display:none;
 }
 .container-3{
     display: block;
@@ -46,7 +45,6 @@ img{
 .index_container{
     background: url("../img/bg.jpg") no-repeat;
     background-size: 100% 100%;
-    display: none;
 }
 .index_banner{
     width: 100%;

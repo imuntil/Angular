@@ -9,7 +9,7 @@ define(
         ThirdStepController.$inject = ['$stateParams', 'localData', 'CD', 'SRC'];
         function ThirdStepController($stateParams, localData, CD, SRC) {
             var vm = this;
-            vm.section = $stateParams.section;
+            vm.section = parseInt($stateParams.section, 10);
             var cd = CD[vm.section - 1];
 
             active();

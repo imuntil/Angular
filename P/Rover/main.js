@@ -26,7 +26,8 @@ require.config({
         'courseData':'services/course-data.service',
 
         'hVideo':'directives/h-video.directive',
-        'steps':'directives/steps.directive'
+        'steps':'directives/steps.directive',
+        'ngDrag':'../../Tools/ngDraggable'
     },
     shim:{
         'angular':{
@@ -39,6 +40,14 @@ require.config({
         'cookies':{
             deps:['angular'],
             exports:'cookies'
+        },
+        'sanitize':{
+            deps:['angular'],
+            exports:'sanitize'
+        },
+        'ngDrag':{
+            deps:['angular'],
+            exports:'ngDrag'
         }
     },
     deps:['bootstrap']

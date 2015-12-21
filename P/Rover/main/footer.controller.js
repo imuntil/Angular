@@ -13,20 +13,11 @@ define(
             vm.nextAble = nextAble;
             vm.prev = prev;
             vm.step = 1;
-            var data = localData.fetch();
+            var data = vm.data = localData.fetch();
             var footers = ['第一部分.视频','第二部分.小测试','第三部分.最佳实践','第四部分.自我评估'];
             var url = $location.url();
 
             $scope.$on('$locationChangeSuccess', function (event, nu, ou, ns, os) {
-                //console.info('event:', event);
-                //console.info('new url:', nu);
-                //console.info('old url:', ou);
-                //console.info('new state:', ns);
-                //console.info('old state:', os);
-                //console.info('url:', $location.url());
-                //console.info('path:', $location.path());
-                //console.info('search;', $location.search());
-                //console.info('hash:', $location.hash());
 
                 url = $location.url();
                 if (url === '/home') {
