@@ -2,16 +2,18 @@
  * Created by jtun02 on 15/12/21.
  */
 define(
-    ['angular', 'localData', 'courseData', 'sanitize', 'ngDrag'],
+    ['angular', 'localData', 'courseData', 'sanitize', 'ngDrag', 'choiceQuestion'],
     function (angular) {
         "use strict";
 
-        SecondStepController.$inject = ['$stateParams', 'localData', 'CD', 'SRC', '$sce'];
-        function SecondStepController($stateParams, localData, CD, SRC, $sce) {
+        SecondStepController.$inject = ['$stateParams', 'localData', 'CD', 'SRC', '$sce', '$timeout'];
+        function SecondStepController($stateParams, localData, CD, SRC, $sce, $timeout) {
             var vm = this;
             vm.dropComplete = dropComplete;
+            vm.onAnswer = onAnswer;
             vm.section = parseInt($stateParams.section, 10);
             var cd = CD[vm.section - 1];
+            var test = new Array(4), answers = '1,1,1,1';
 
             active();
             function active() {
@@ -32,11 +34,32 @@ define(
                 }
             }
             function dropComplete(data, index, event) {
-                console.log(data);
-                console.log(index);
 
+                var _theme = vm.themes[index];
                 if (index === data.id) {
-                    vm.themes[index].video = data;
+                    _theme.video = data;
+                    _theme.class = 'ans-true';
+                } else {
+                    vm.themes[index].video = undefined;
+                    if (_theme.class === 'ans-false') {
+                        _theme.class = null;
+                        $timeout(function () {
+                            _theme.class = 'ans-false';
+                        }, 100);
+                    } else {
+                        _theme.class = 'ans-false';
+                    }
+                }
+                onTest(index, _theme.class === 'ans-true');
+            }
+            function onAnswer(an, index) {
+                onTest(index + 2, an);
+            }
+            function onTest(index, value) {
+                test[index] = +value;
+                if (test.join(',') === answers) {
+                    console.log('complete');
+                    localData.check(vm.section, 3);
                 }
             }
         }
@@ -45,7 +68,8 @@ define(
             'app.services.localData',
             'app.services.courseData',
             'ngSanitize',
-            'ngDraggable'
+            'ngDraggable',
+            'app.directives.choiceQuestion'
         ])
             .controller('SecondStepController', SecondStepController);
     }

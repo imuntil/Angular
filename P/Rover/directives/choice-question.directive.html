@@ -1,0 +1,17 @@
+<p class="q-2">{{cq.que}}</p>
+<div class="test_left">
+    <a href="javascript:void(0);"
+       ng-class="[cq.ans[0] === 1 ? 'ans-right' : 'ans-wrong']"
+       class="option">{{cq.opts[0]}}</a>
+    <a href="javascript:void(0);"
+       ng-class="[cq.ans[1] === 1 ? 'ans-right' : 'ans-wrong']"
+       class="option">{{cq.opts[1]}}</a>
+</div>
+<div class="test_right">
+    <a href="javascript:void(0);"
+       ng-class="[cq.ans[2] === 1 ? 'ans-right' : 'ans-wrong']"
+       class="option">{{cq.opts[2]}}</a>
+    <a href="javascript:void(0);"
+       ng-class="[cq.ans[3] === 1 ? 'ans-right' : 'ans-wrong']"
+       class="option">{{cq.opts[3]}}</a>
+</div>

@@ -30,7 +30,7 @@ define(
                 }
             }
             function fetch() {
-                $cookies.putObject(key, {course:2,step:1});
+                //$cookies.putObject(key, {course:2,step:2});
                 if (services.data.course === undefined) {
                     console.log('get');
                     services.data = $cookies.getObject(key) || {course:1,step:1};

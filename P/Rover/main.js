@@ -27,6 +27,7 @@ require.config({
 
         'hVideo':'directives/h-video.directive',
         'steps':'directives/steps.directive',
+        'choiceQuestion':'directives/choice-question.directive',
         'ngDrag':'../../Tools/ngDraggable'
     },
     shim:{

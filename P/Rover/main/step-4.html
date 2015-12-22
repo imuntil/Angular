@@ -8,83 +8,13 @@
         <li>4</li>
         <li>5</li>
     </ul>
-    <div class="self-as">
-        <p>{{vm.assess[0]}}</p>
-        <ul>
-            <li>
-                <a class="first" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="second" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="third" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="forth" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="fifth" href="javascript:void(0)"></a>
-            </li>
-        </ul>
-    </div>
-    <div class="self-as">
-        <p class="spec">{{vm.assess[1]}}</p>
-        <ul>
-            <li>
-                <a class="first" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="second" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="third" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="forth" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="fifth" href="javascript:void(0)"></a>
-            </li>
-        </ul>
-    </div>
-    <div class="self-as">
-        <p>{{vm.assess[2]}}</p>
-        <ul>
-            <li>
-                <a class="first" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="second" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="third" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="forth" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="fifth" href="javascript:void(0)"></a>
-            </li>
-        </ul>
-    </div>
-    <div class="self-as">
-        <p class="spec">{{vm.assess[3]}}</p>
-        <ul>
-            <li>
-                <a class="first" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="second" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="third" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="forth" href="javascript:void(0)"></a>
-            </li>
-            <li>
-                <a class="fifth" href="javascript:void(0)"></a>
+    <div class="self-as" ng-repeat="ass in vm.assess track by $index">
+        <p>{{ass}}</p>
+        <ul ng-init="index = $index">
+            <li ng-repeat="op in vm.ops track by $index">
+                <a href="javascript:void(0);"
+                   ng-click="vm.assessSelf(index, $index)"
+                   ng-class="[op, {'r-checked':vm.ar[index] === $index}]"></a>
             </li>
         </ul>
     </div>

@@ -4,7 +4,7 @@
         <ul class="r-game game-drop">
             <li ng-repeat="theme in vm.themes track by $index"
                 ng-drop="true" ng-drop-success="vm.dropComplete($data, $index, $event)"
-                ng-class="{'even': $index % 2 === 1}">
+                ng-class="[{'even': $index % 2 === 1}, theme.class]">
                 <span ng-bind-html="theme.title" ng-show="!theme.video"></span>
                 <div ng-show="theme.video">
                     <video ng-src="{{theme.video.src}}" controls preload="auto"></video>
@@ -13,16 +13,8 @@
         </ul>
         <div class="test" ng-show="vm.questions">
             <h1>2. 请根据题干，选择正确答案（多选题）</h1>
-            <div ng-repeat="que in vm.questions track by $index">
-                <p class="q-2">{{que.que}}</p>
-                <div class="test_left">
-                    <a href="javascript:void(0);" class="option">{{que.opts[0]}}</a>
-                    <a href="javascript:void(0);" class="option">{{que.opts[1]}}</a>
-                </div>
-                <div class="test_right">
-                    <a href="javascript:void(0);" class="option">{{que.opts[2]}}</a>
-                    <a href="javascript:void(0);" class="option">{{que.opts[3]}}</a>
-                </div>
+            <div ng-repeat="que in vm.questions track by $index" choice-question="que" on-answer="vm.onAnswer(an, $index)">
+
             </div>
         </div>
     </div>

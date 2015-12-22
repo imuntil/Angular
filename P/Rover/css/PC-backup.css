@@ -416,6 +416,68 @@ img{
     text-align: center;
     width: 302px;
 }
+[ng-drop].drag-enter{
+    opacity: 0.7;
+}
+.target ul li.ans-true {
+    border:solid 4px greenyellow;
+}
+.target ul li.ans-false {
+    -webkit-animation: flash 1s;
+    -o-animation: flash 1s;
+    animation: flash 1s;
+}
+@keyframes flash {
+    0% {
+        border:solid 4px #d6d7d7;
+    }
+    25% {
+        border:solid 4px red;
+    }
+    50% {
+        border:solid 4px #d6d7d7;
+    }
+    75% {
+        border:solid 4px red;
+    }
+    100% {
+        border:solid 4px #d6d7d7;
+    }
+}
+@-webkit-keyframes flash {
+    0% {
+        border:solid 4px #d6d7d7;
+    }
+    25% {
+        border:solid 4px red;
+    }
+    50% {
+        border:solid 4px #d6d7d7;
+    }
+    75% {
+        border:solid 4px red;
+    }
+    100% {
+        border:solid 4px #d6d7d7;
+    }
+}
+@-o-keyframes flash {
+    0% {
+        border:solid 4px #d6d7d7;
+    }
+    25% {
+        border:solid 4px red;
+    }
+    50% {
+        border:solid 4px #d6d7d7;
+    }
+    75% {
+        border:solid 4px red;
+    }
+    100% {
+        border:solid 4px #d6d7d7;
+    }
+}
 .target ul li.v-hide{
     display: none;
 }

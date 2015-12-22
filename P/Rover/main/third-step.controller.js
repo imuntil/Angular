@@ -6,8 +6,8 @@ define(
     function (angular) {
         "use strict";
 
-        ThirdStepController.$inject = ['$stateParams', 'localData', 'CD', 'SRC'];
-        function ThirdStepController($stateParams, localData, CD, SRC) {
+        ThirdStepController.$inject = ['$stateParams', 'localData', 'CD', 'SRC', '$timeout'];
+        function ThirdStepController($stateParams, localData, CD, SRC, $timeout) {
             var vm = this;
             vm.section = parseInt($stateParams.section, 10);
             var cd = CD[vm.section - 1];
@@ -23,7 +23,13 @@ define(
                         }
                     };
                     return practice;
-                })
+                });
+                nextStep();
+            }
+            function nextStep() {
+                vm.time = $timeout(function () {
+                    localData.check(vm.section, 4);
+                }, 4000);
             }
         }
         angular.module('app.controllers.ThirdStepController', [
