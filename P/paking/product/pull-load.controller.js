@@ -10,8 +10,8 @@
     ])
         .controller('PullLoadController', PullLoadController);
 
-    PullLoadController.$inject = ['productsAbout', 'pagination', '$window'];
-    function PullLoadController(productsAbout, pagination, $window) {
+    PullLoadController.$inject = ['productsAbout', 'pagination', '$window', '$location'];
+    function PullLoadController(productsAbout, pagination, $window, $location) {
         /*jshint validthis: true */
         var vm = this;
         vm.class = 'products';
@@ -22,6 +22,7 @@
         vm.pagingItems = [];
         vm.viewingItems = [];
 
+        console.log($location.path());
         loadItems(2);
         function loadItems(flag) {
             if (vm.flag === flag) {return;}

@@ -24,8 +24,9 @@
             .config(orderDetailConfig)
             .run(appRun);
 
-        orderDetailConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
-        function orderDetailConfig($stateProvider, $urlRouterProvider) {
+        orderDetailConfig.$inject = ['$stateProvider', '$urlRouterProvider','$locationProvider'];
+        function orderDetailConfig($stateProvider, $urlRouterProvider,$locationProvider) {
+            $locationProvider.html5Mode(true).hashPrefix('!');
             $urlRouterProvider.otherwise('/products');
             $stateProvider
                 .state('products', {

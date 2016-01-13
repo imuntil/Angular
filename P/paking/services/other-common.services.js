@@ -25,7 +25,7 @@
             return d;
         }
         function wb() {
-            if (/moible/.test(ua) && /micromessenger/.test(ua)) {
+            if (/mobile/.test(ua) && /micromessenger/.test(ua)) {
                 return true;
             }
             return false;

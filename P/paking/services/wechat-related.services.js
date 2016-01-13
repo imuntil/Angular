@@ -33,7 +33,9 @@
             var defer = $q.defer();
             gtype = gtype || 1;
 
+            alert('start');
             if (!deviceUtils.isWeichatBro) {
+                alert('no');
                 $timeout(function () {
                     setInfos({
                         userNick:'123',
@@ -44,20 +46,22 @@
                 return defer.promise;
             }
 
+            alert('yes');
             $http({
                 method:'GET',
                 url:output
             }).success(function (data) {
                 var reUrl = login + gtype +'&url=' + location;
+                alert(JSON.stringify(data));
                 if (gtype === 1) {
-                    if (parseInt(data.status, 10) === 1 && data.msg.UserOpenid) {
+                    if (parseInt(data.status, 10) === 1 && data.msg.UserOpenId) {
                         setInfos({ openId:data.msg.UserOpenId }, defer);
                     } else {
                         checkLocal(reUrl, defer);
                     }
 
                 } else if (gtype === 2) {
-                    if (parseInt(data.status, 10) === 1 && data.msg.UserOpenid && data.msg.Uinfo.nickname) {
+                    if (parseInt(data.status, 10) === 1 && data.msg.UserOpenId && data.msg.Uinfo.nickname) {
                         setInfos({
                             userNick:data.msg.Uinfo.nickname,
                             headerImg:data.msg.Uinfo.headimgurl,
