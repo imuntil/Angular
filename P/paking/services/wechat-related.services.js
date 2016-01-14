@@ -57,7 +57,7 @@
                     if (parseInt(data.status, 10) === 1 && data.msg.UserOpenId) {
                         setInfos({ openId:data.msg.UserOpenId }, defer);
                     } else {
-                        checkLocal(reUrl, defer);
+                        checkLocal(reUrl, defer, 'openId');
                     }
 
                 } else if (gtype === 2) {
@@ -68,7 +68,7 @@
                             openId:data.msg.UserOpenId
                         }, defer);
                     } else {
-                        checkLocal(reUrl, defer);
+                        checkLocal(reUrl, defer, 'userNick');
                     }
                 }
 
@@ -78,9 +78,9 @@
             return defer.promise;
         }
 
-        function checkLocal(reUrl, defer) {
+        function checkLocal(reUrl, defer, keys) {
             var _local = $cookies.getObject(auKey);
-            if (_local && _local.userNick) {
+            if (_local && _local[keys]) {
                 setInfos(_local, defer);
             } else {
                 reUa(reUrl);

@@ -196,9 +196,9 @@ img{
     line-height: 21px;
     width: 25px;
 }
-.num div a:hover{
-    background-color: #eee;
-}
+/*.num div a:hover{*/
+    /*background-color: #eee;*/
+/*}*/
 .num div em{
     border-bottom: 1px solid #e9ecf0;
     border-top: 1px solid #e9ecf0;
