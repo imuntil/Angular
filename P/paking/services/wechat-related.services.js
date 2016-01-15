@@ -11,10 +11,12 @@
         .factory('userAuthorization', userAuthorization)
         .provider('wechatConfig', wechatConfig)
         .provider('wxCopywriter', wxCopywriter)
-        .factory('shareFn', shareFn);
+        .factory('shareFn', shareFn)
+        .factory('WXPay', WXPay);
 
-    userAuthorization.$inject = ['$http', '$q', '$window', '$location', 'deviceUtils', '$timeout', '$cookies', '$rootScope'];
-    function userAuthorization($http, $q, $window, $location, deviceUtils, $timeout, $cookies, $rootScope) {
+
+    userAuthorization.$inject = ['$http', '$q', '$window', '$location', 'deviceUtils', '$timeout', '$cookies', '$rootScope', 'iuLocalStorage'];
+    function userAuthorization($http, $q, $window, $location, deviceUtils, $timeout, $cookies, $rootScope, iuLocalStorage) {
         var output = 'http://api.jtuntech.com/event/2015/Q2/gymax/wx/output.php',
             login = 'http://api.jtuntech.com/event/2015/Q2/gymax/wx/login.php?gtype=';
         var location = $location.absUrl();
@@ -33,20 +35,17 @@
             var defer = $q.defer();
             gtype = gtype || 1;
 
-            alert('start');
             if (!deviceUtils.isWeichatBro) {
-                alert('no');
                 $timeout(function () {
                     setInfos({
                         userNick:'123',
-                        headerImg:'simulation img',
+                        headerImg:'img/sos.jpg',
                         openId:'simulation-id-1234567'
                     }, defer);
                 }, 500, false);
                 return defer.promise;
             }
 
-            alert('yes');
             $http({
                 method:'GET',
                 url:output
@@ -79,7 +78,7 @@
         }
 
         function checkLocal(reUrl, defer, keys) {
-            var _local = $cookies.getObject(auKey);
+            var _local = $cookies.getObject(auKey) || iuLocalStorage.getValue(auKey);
             if (_local && _local[keys]) {
                 setInfos(_local, defer);
             } else {
@@ -94,6 +93,7 @@
         function setInfos(infos, defer) {
             angular.extend(service.infos, infos);
             $cookies.putObject(auKey, service.infos);
+            iuLocalStorage.putValue(auKey, service.infos);
             defer && defer.resolve(service.infos);
             broadcastMsg();
         }
@@ -229,6 +229,31 @@
                 ncw[i] = cw[i];
             }
             return ncw;
+        }
+    }
+
+    WXPay.$inject = ['$q'];
+    function WXPay($q) {
+        var service = {
+            pay:pay
+        };
+        return service;
+        function pay(data) {
+            console.log(data);
+            var defer = $q.defer();
+            wx.chooseWXPay({
+                timestamp: data.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+                nonceStr: data.nonceStr, // 支付签名随机串，不长于 32 位
+                package: data.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
+                signType: data.signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+                paySign: data.paySign, // 支付签名
+                success: function (res) {
+                    // 支付成功后的回调函数
+                    alert('success');
+                    defer.resolve();
+                }
+            });
+            return defer.promise;
         }
     }
 })();

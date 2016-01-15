@@ -16,6 +16,8 @@
         'app.CouponManagementController',
         'app.ErrorController',
 
+        'app.UserInfoController',
+
         'app.services.uiRouter',
         'app.services.wechatRelated',
         'app.services.http'
@@ -68,7 +70,8 @@
             })
             .state('userInfo', {
                 url:'/userInfo',
-                templateUrl:'user-center/user-info.html'
+                templateUrl:'user-center/user-info.html',
+                controller:'UserInfoController as vm'
             })
             .state('userOrder', {
                 url:'/userOrder',
