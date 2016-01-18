@@ -86,6 +86,7 @@
     appRun.$inject = ['listenAddressMngRouter', 'userAuthorization', 'commonData', 'wechatConfig'];
     function appRun(listenAddressMngRouter, userAuthorization, commonData, wechatConfig) {
         userAuthorization.start().then(function (data) {
+            console.log('start');
             commonData.OPENID = data.openid;
         });
         listenAddressMngRouter.listen();

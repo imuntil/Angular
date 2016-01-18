@@ -16,12 +16,12 @@
             useCoupon:useCoupon
         };
         return service;
-        function getCoupons() {
+        function getCoupons(openid) {
             var defer = $q.defer();
             $http({
                 method:'GET',
                 url:commonData.BASE_URL + 'selectPerPr!selectPer',
-                params:{openid:commonData.OPENID}
+                params:{openid:openid || commonData.OPENID}
             }).success(function (data) {
                 if (data['resultcode'] === 1 || data['resultcode'] === '1') {
                     service.coupons = data['result'];

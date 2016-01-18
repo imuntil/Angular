@@ -40,7 +40,7 @@
                     setInfos({
                         userNick:'123',
                         headerImg:'img/sos.jpg',
-                        openId:'simulation-id-1234567'
+                        openId:'ouVekuN3nc2UIApxg_2oZa6z4HDg'
                     }, defer);
                 }, 500, false);
                 return defer.promise;
@@ -51,7 +51,6 @@
                 url:output
             }).success(function (data) {
                 var reUrl = login + gtype +'&url=' + location;
-                alert(JSON.stringify(data));
                 if (gtype === 1) {
                     if (parseInt(data.status, 10) === 1 && data.msg.UserOpenId) {
                         setInfos({ openId:data.msg.UserOpenId }, defer);
@@ -249,7 +248,6 @@
                 paySign: data.paySign, // 支付签名
                 success: function (res) {
                     // 支付成功后的回调函数
-                    alert('success');
                     defer.resolve();
                 }
             });
