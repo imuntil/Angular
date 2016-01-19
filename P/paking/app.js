@@ -20,6 +20,9 @@
         'app.UserOrderController',
         'app.UserAssetsController',
 
+        'app.JoinController',
+        'app.CustomController',
+
         'app.services.uiRouter',
         'app.services.wechatRelated',
         'app.services.http'
@@ -84,6 +87,16 @@
                 url:'/assets/:status',
                 templateUrl:'user-center/user-assets.html',
                 controller:'UserAssetsController as vm'
+            })
+            .state('join', {
+                url:'/join',
+                templateUrl:'join&custom/join.html',
+                controller:'JoinController as vm'
+            })
+            .state('custom', {
+                url:'/custom',
+                templateUrl:'join$custom/custom.html',
+                controller:'CustomController as vm'
             });
     }
 

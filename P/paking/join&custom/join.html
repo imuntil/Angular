@@ -1,0 +1,35 @@
+<div class="container detail">
+    <h1 class="form_title">加入烘焙团队</h1>
+    <form class="join" name="jf" novalidate>
+        <p>
+            <label for="name">姓名</label>
+            <input type="text" id="name" ng-model="vm.f.name" required/>
+        </p>
+        <p>
+            <label for="sex">性别</label>
+            <input type="radio" name="sex" id="sex" checked value="1" ng-model="vm.f.sex"/>
+            男
+            <input type="radio" name="sex" value="0" ng-model="vm.f.sex"/>
+            女
+        </p>
+        <p>
+            <label for="mobile">手机</label>
+            <input type="text" id="mobile" required ng-model="vm.f.phone"/>
+        </p>
+        <p>
+            <label for="address">地址</label>
+            <input type="text" id="address" required ng-model="vm.f.address"/>
+        </p>
+        <p>
+            <label for="specialty">擅长</label>
+            <textarea id="specialty" class="join" required ng-model="vm.f.specialty"></textarea>
+        </p>
+        <p>
+            <label for="require">其他</label>
+            <textarea id="require" class="join" ng-model="vm.f.other"></textarea>
+        </p>
+        <a href="javascript:void(0)" class="submit_btn">
+            提交
+        </a>
+    </form>
+</div>

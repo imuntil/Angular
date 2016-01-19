@@ -1,36 +1,28 @@
 <div class="container cp-content">
     <div class="btn_area">
-        <a class="my-wealth" ui-sref-active="clicked" ui-sref="{status:1}">
+        <a class="my-wealth" ui-sref-active="clicked" ui-sref="{status:1}" ui-sref-opts="{location:'replace'}">
             优惠券
         </a>
-        <a class="my-wealth" ui-sref-active="clicked" ui-sref="{status:2}">
+        <a class="my-wealth" ui-sref-active="clicked" ui-sref="{status:2}" ui-sref-opts="{location:'replace'}">
             余额
         </a>
     </div>
-    <div class="coupon">
-        <b>¥20</b>
-    <span>
-    优惠券名称<br/>
-    优惠券使用要求<br/>
-    有效期
-    </span>
-        <em class="coupon_num">
-            1
-        </em>
-    </div>
-    <div class="coupon">
-        <b>¥20</b>
-    <span>
-    优惠券名称<br/>
-    优惠券使用要求<br/>
-    有效期
-    </span>
-        <em class="coupon_num">
-            2
-        </em>
+    <div ng-show="vm.status === 1">
+        <div class="coupon" ng-repeat="cp in vm.coupons track by $index" ng-cloak>
+            <b>{{cp.price | currency : '￥'}}</b>
+            <span>
+            {{cp.name}}<br/>
+            {{cp.des}}<br/>
+            有效期:{{cp.endtime}}
+            </span>
+            <em class="coupon_num">
+                {{$index + 1}}
+            </em>
+        </div>
+
     </div>
 
-    <div class="balance balance-group" style="display: none;">
+    <div class="balance balance-group" ng-show="vm.status === 2">
             <span class="balance_content">
                 <i>余额</i>
                 <b class="balance-value">100</b>
