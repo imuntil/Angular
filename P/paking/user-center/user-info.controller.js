@@ -5,31 +5,34 @@
     "use strict";
     angular.module('app.UserInfoController', [
         'app.services.wechatRelated',
-        'app.services.couponsAbout'
+        'app.services.couponsAbout',
+        'app.services.http'
     ])
         .controller('UserInfoController', UserInfoController);
 
-    UserInfoController.$inject = ['userAuthorization', 'couponsAbout', '$scope'];
-    function UserInfoController(userAuthorization, couponsAbout, $scope) {
+    UserInfoController.$inject = ['userAuthorization', 'couponsAbout', '$scope', 'commonData', '$state'];
+    function UserInfoController(userAuthorization, couponsAbout, $scope, commonData, $state) {
         var vm = this;
         vm.info = userAuthorization.infos;
+        vm.balance = 0;
+        vm.class = 'user-info';
         vm.coupons = undefined;
 
-        $scope.$on('got:ua', function (e, d) {
-            active();
-        });
-
+        active();
         function active() {
-            getCoupons();
+            if (commonData.OPENID) {
+                getCoupons();
+            } else {
+                $scope.$on('got:OPENID', function (e) {
+                    getCoupons();
+                });
+            }
         }
         function getCoupons() {
-            if (couponsAbout.coupons.length === 0) {
-                couponsAbout.getCoupons(vm.info.openId).then(function (data) {
-                    vm.coupons = data;
-                })
-            } else {
-                vm.coupons = [];
-            }
+
+            couponsAbout.getCoupons().then(function (data) {
+                vm.coupons = data;
+            })
         }
     }
 })();

@@ -2,11 +2,13 @@
  * Created by jtun02 on 15/11/5.
  */
 (function () {
-    angular.module('app.services.order-info', [])
+    angular.module('app.services.order-info', [
+        'app.services.http'
+    ])
         .factory('orderInfo', orderInfo);
 
-    orderInfo.$inject = ['$rootScope'];
-    function orderInfo($rootScope) {
+    orderInfo.$inject = ['$rootScope', 'commonData', '$q', '$http'];
+    function orderInfo($rootScope, commonData, $q, $http) {
         var service = {
             info:{
                 pid      :undefined,  //商品id
@@ -32,7 +34,10 @@
             watching:false,
             generateOrder:generateOrder,
             revokeWatch:undefined,
-            resetOrderInfo:resetOrderInfo
+            resetOrderInfo:resetOrderInfo,
+
+            getOrders:getOrders,
+            userOrders:undefined
         };
         return service;
 
@@ -68,6 +73,29 @@
             service.info.ouseba = false;
             service.info.obalance = 0;
             service.info.odiscount = 0;
+        }
+
+        function getOrders() {
+            var defer = $q.defer();
+            if (service.userOrders) {
+                defer.resolve(service.userOrders)
+            } else {
+                $http({
+                    url:commonData.BASE_URL + 'selectOrderOdr!selectOrder',
+                    method:'GET',
+                    params:{openid:commonData.OPENID}
+                }).success(function (data) {
+                    if (parseInt(data['resultcode'] === 1)) {
+                        service.userOrders = data['result'];
+                        defer.resolve(data['result']);
+                    } else {
+                        defer.reject(data)
+                    }
+                }).error(function (data) {
+                    defer.reject(data);
+                });
+            }
+            return defer.promise;
         }
     }
 })();

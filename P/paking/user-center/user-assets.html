@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div class="container cp-content">
+    <div class="btn_area">
+        <a class="my-wealth" ui-sref-active="clicked" ui-sref="{status:1}">
+            优惠券
+        </a>
+        <a class="my-wealth" ui-sref-active="clicked" ui-sref="{status:2}">
+            余额
+        </a>
+    </div>
+    <div class="coupon">
+        <b>¥20</b>
+    <span>
+    优惠券名称<br/>
+    优惠券使用要求<br/>
+    有效期
+    </span>
+        <em class="coupon_num">
+            1
+        </em>
+    </div>
+    <div class="coupon">
+        <b>¥20</b>
+    <span>
+    优惠券名称<br/>
+    优惠券使用要求<br/>
+    有效期
+    </span>
+        <em class="coupon_num">
+            2
+        </em>
+    </div>
 
-</body>
-</html>
+    <div class="balance balance-group" style="display: none;">
+            <span class="balance_content">
+                <i>余额</i>
+                <b class="balance-value">100</b>
+            </span>
+        <input type="button" value="提现" class="balance_btn ba-withdraw"/>
+        <input type="button" value="充值" class="balance_btn ba-recharge"/>
+    </div>
+</div>

@@ -16,22 +16,28 @@
             useCoupon:useCoupon
         };
         return service;
-        function getCoupons(openid) {
+        function getCoupons() {
             var defer = $q.defer();
-            $http({
-                method:'GET',
-                url:commonData.BASE_URL + 'selectPerPr!selectPer',
-                params:{openid:openid || commonData.OPENID}
-            }).success(function (data) {
-                if (data['resultcode'] === 1 || data['resultcode'] === '1') {
-                    service.coupons = data['result'];
-                    defer.resolve(service.coupons);
-                } else {
+
+            if (service.coupons.length > 0) {
+                defer.resolve(service.coupons);
+            } else {
+                $http({
+                    method:'GET',
+                    url:commonData.BASE_URL + 'selectPerPr!selectPer',
+                    params:{openid:commonData.OPENID}
+                }).success(function (data) {
+                    if (data['resultcode'] === 1 || data['resultcode'] === '1') {
+                        service.coupons = data['result'];
+                        defer.resolve(service.coupons);
+                    } else {
+                        defer.reject(data);
+                    }
+                }).error(function (data) {
                     defer.reject(data);
-                }
-            }).error(function (data) {
-                defer.reject(data);
-            });
+                });
+            }
+
             return defer.promise;
         }
 

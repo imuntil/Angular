@@ -26,6 +26,23 @@ div.product.ng-leave {
     animation-name: rotateOutDownRight;
 }
 
+div.user-info.ng-enter,
+div.user-order.ng-enter,
+div.user-assets.ng-enter{
+    -webkit-animation-name: bounceInRight;
+    -moz-animation-name: bounceInRight;
+    -o-animation-name: bounceInRight;
+    animation-name: bounceInRight;
+}
+div.user-info.ng-leave,
+div.user-order.ng-leave,
+div.user-assets.ng-leave{
+    -webkit-animation-name: bounceOutLeft;
+    -moz-animation-name: bounceOutLeft;
+    -o-animation-name: bounceOutLeft;
+    animation-name: bounceOutLeft;
+}
+
 .iscroll-wrapper.ng-enter {
     -webkit-animation-name: zoomInRight;
     animation-name: zoomInRight;

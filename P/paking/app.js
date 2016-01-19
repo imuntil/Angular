@@ -17,6 +17,8 @@
         'app.ErrorController',
 
         'app.UserInfoController',
+        'app.UserOrderController',
+        'app.UserAssetsController',
 
         'app.services.uiRouter',
         'app.services.wechatRelated',
@@ -75,19 +77,22 @@
             })
             .state('userOrder', {
                 url:'/userOrder',
-                templateUrl:'user-center/user-order.html'
+                templateUrl:'user-center/user-order.html',
+                controller:'UserOrderController as vm'
             })
             .state('userAssets', {
                 url:'/assets/:status',
-                templateUrl:'user-center/user-assets.html'
+                templateUrl:'user-center/user-assets.html',
+                controller:'UserAssetsController as vm'
             });
     }
 
-    appRun.$inject = ['listenAddressMngRouter', 'userAuthorization', 'commonData', 'wechatConfig'];
-    function appRun(listenAddressMngRouter, userAuthorization, commonData, wechatConfig) {
+    appRun.$inject = ['listenAddressMngRouter', 'userAuthorization', 'commonData', 'wechatConfig', '$rootScope'];
+    function appRun(listenAddressMngRouter, userAuthorization, commonData, wechatConfig, $rootScope) {
         userAuthorization.start().then(function (data) {
             console.log('start');
-            commonData.OPENID = data.openid;
+            commonData.OPENID = data.openId;
+            $rootScope.$broadcast('got:OPENID');
         });
         listenAddressMngRouter.listen();
         wechatConfig.addApiList(['chooseWXPay']);
