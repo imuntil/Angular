@@ -388,6 +388,15 @@ form p input{
     padding: 0.5%;
     width: 45%;
 }
+form p i {
+    float: none;
+    margin-left: 67px;
+    color: red;
+    display: block;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
 #pro_name{
     height: 100%;
     width: 53%;

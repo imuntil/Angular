@@ -3,7 +3,11 @@
     <form class="join" name="jf" novalidate>
         <p>
             <label for="name">姓名</label>
-            <input type="text" id="name" ng-model="vm.f.name" required/>
+            <input type="text" id="name"
+                   ng-class="['_animated', {shook:vm.tL.submit && jf.name.$invalid}]"
+                   name="name" ng-model="vm.f.name" ng-minlength="2" ng-maxlength="20" required/>
+            <br/>
+            <i ng-show="vm.tL.submit && jf.name.$invalid">*姓名的长度须在2个字符到20个字符之间</i>
         </p>
         <p>
             <label for="sex">性别</label>
@@ -14,21 +18,37 @@
         </p>
         <p>
             <label for="mobile">手机</label>
-            <input type="text" id="mobile" required ng-model="vm.f.phone"/>
+            <input type="text" id="mobile"
+                   ng-class="['_animated', {shook:vm.tL.submit && jf.mobile.$invalid}]"
+                   name="mobile" required phone-number ng-model="vm.f.phone"/>
+            <br/>
+            <i ng-show="vm.tL.submit && jf.mobile.$invalid">*手机号码有误</i>
         </p>
         <p>
             <label for="address">地址</label>
-            <input type="text" id="address" required ng-model="vm.f.address"/>
+            <input type="text" id="address"
+                   ng-class="['_animated', {shook:vm.tL.submit && jf.address.$invalid}]"
+                   name="address" required ng-maxlength="40" ng-model="vm.f.address"/>
+            <br/>
+            <i ng-show="vm.tL.submit && jf.address.$invalid">*请填写地址</i>
         </p>
         <p>
             <label for="specialty">擅长</label>
-            <textarea id="specialty" class="join" required ng-model="vm.f.specialty"></textarea>
+            <textarea id="specialty" name="specialty"
+                      ng-class="['_animated', {shook:vm.tL.submit && jf.specialty.$invalid}]"
+                      class="join" ng-maxlength="80" required ng-model="vm.f.specialty" placeholder="限80字"></textarea>
+            <br/>
+            <i ng-show="vm.tL.submit && jf.specialty.$invalid">*请填写擅长</i>
         </p>
         <p>
             <label for="require">其他</label>
-            <textarea id="require" class="join" ng-model="vm.f.other"></textarea>
+            <textarea id="require" name="other" class="join"
+                      ng-class="['_animated', {shook:vm.tL.submit && jf.other.$invalid}]"
+                      ng-maxlength="80" ng-model="vm.f.other" placeholder="限80字"></textarea>
+            <br/>
+            <i ng-show="vm.tL.submit && jf.other.$invalid">*内容不能超过80字</i>
         </p>
-        <a href="javascript:void(0)" class="submit_btn">
+        <a href="javascript:void(0)" class="submit_btn" ng-click="vm.join(jf.$valid)">
             提交
         </a>
     </form>

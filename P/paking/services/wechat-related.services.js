@@ -12,7 +12,7 @@
         .provider('wechatConfig', wechatConfig)
         .provider('wxCopywriter', wxCopywriter)
         .factory('shareFn', shareFn)
-        .factory('WXPay', WXPay);
+        .factory('WXAPIS', WXAPIS);
 
 
     userAuthorization.$inject = ['$http', '$q', '$window', '$location', 'deviceUtils', '$timeout', '$cookies', '$rootScope', 'iuLocalStorage'];
@@ -231,14 +231,31 @@
         }
     }
 
-    WXPay.$inject = ['$q'];
-    function WXPay($q) {
+    WXAPIS.$inject = ['$q'];
+    function WXAPIS($q) {
         var service = {
-            pay:pay
+            getLocation:getLocation,
+            location:{},
+            WXPay:WXPay
         };
         return service;
-        function pay(data) {
-            console.log(data);
+
+        function getLocation() {
+            var defer = $q.defer();
+            wx.getLocation({
+                type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+                success: function (res) {
+                    service.location.latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                    service.location.longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                    service.location.speed = res.speed; // 速度，以米/每秒计
+                    service.location.accuracy = res.accuracy; // 位置精度
+                    defer.resolve(res);
+                }
+            });
+            return defer.promise;
+        }
+
+        function WXPay(data) {
             var defer = $q.defer();
             wx.chooseWXPay({
                 timestamp: data.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
