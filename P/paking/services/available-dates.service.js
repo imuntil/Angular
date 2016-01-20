@@ -11,10 +11,10 @@
         };
         return service;
 
-        function available(start, end) {
+        function available(start, end, format) {
             var dates = [];
             for (var i = start; i < end; i++) {
-                dates.push(moment().add(i, 'd').format('MM-DD-YYYY'));
+                dates.push(moment().add(i, 'd').format(format || 'MM-DD-YYYY'));
             }
             return dates;
         }

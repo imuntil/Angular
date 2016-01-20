@@ -1,6 +1,6 @@
 <div class="container detail">
     <h1 class="form_title">个性定制</h1>
-    <form>
+    <form name="cf">
         <p>
             <label for="pro_name">品名</label>
             <select name="pro_name" id="pro_name" ng-model="vm.f.name" ng-options="pro as pro for pro in vm.products">
@@ -8,7 +8,9 @@
         </p>
         <p>
             <label for="num">数量</label>
-            <input type="number" id="num" ng-model="vm.f.count"/>
+            <input type="number" id="num" name="num" ng-model="vm.f.count"
+                   required ng-class="['_animated', {shook:vm.tL.submit && cf.num.$invalid}]"/>
+            <i ng-show="vm.tL.submit && cf.num.$invalid">*请填写数量</i>
         </p>
         <p>
             <label>送达时间</label>
@@ -18,17 +20,23 @@
             <label for="require">个性要求</label>
             <textarea id="require" ng-model="vm.f.requires"></textarea>
         </p>
-        <a href="javascript:void(0)" class="form_address adr-content">
-            姓名：xxxx
+        <a class="form_address" ng-show="!vm.chosenAdr.phone" ui-sref="addressMng">
+            选择收获地址
+            <span>
+                <img alt="" src="img/arrow_b.png" width="100%"/>
+            </span>
+        </a>
+        <a class="form_address" ng-show="vm.chosenAdr.phone" ui-sref="addressMng" ng-cloak>
+            姓名：{{vm.chosenAdr.name}}
             <br>
-            手机：xxxxxxxxxxx
+            手机：{{vm.chosenAdr.phone}}
             <br>
-            地址：xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            地址：{{vm.chosenAdr.city}}&nbsp;&nbsp;{{vm.chosenAdr.address}}
                    <span>
                        <img alt="" src="img/arrow_b.png" width="100%"/>
                    </span>
         </a>
-        <a href="javascript:void(0)" class="submit_btn sub-custom">
+        <a href="javascript:void(0)" class="submit_btn" ng-click="vm.custom(cf.$valid)">
             提交
         </a>
     </form>

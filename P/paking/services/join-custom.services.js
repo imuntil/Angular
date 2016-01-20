@@ -36,7 +36,7 @@
                 params:angular.extend({openid:commonData.OPENID}, params),
                 url:commonData.BASE_URL + 'saveRequirePro!saveRequire'
             }).success(function (data) {
-                if (parseInt(data['resultcode'] === 1)) {
+                if (parseInt(data['resultcode'], 10) === 1) {
                     defer.resolve();
                 } else {
                     defer.reject(data);
