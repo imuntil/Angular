@@ -43,6 +43,21 @@ div.user-assets.ng-leave{
     animation-name: bounceOutLeft;
 }
 
+div.join.ng-enter,
+div.custom.ng-enter {
+    -webkit-animation-name: flipInY;
+    -moz-animation-name: flipInY;
+    -o-animation-name: flipInY;
+    animation-name: flipInY;
+}
+div.join.ng-leave,
+div.custom.ng-leave {
+    -webkit-animation-name: flipOutY;
+    -moz-animation-name: flipOutY;
+    -o-animation-name: flipOutY;
+    animation-name: flipOutY;
+}
+
 .iscroll-wrapper.ng-enter {
     -webkit-animation-name: zoomInRight;
     animation-name: zoomInRight;

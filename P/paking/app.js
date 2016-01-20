@@ -95,7 +95,7 @@
             })
             .state('custom', {
                 url:'/custom',
-                templateUrl:'join$custom/custom.html',
+                templateUrl:'join&custom/custom.html',
                 controller:'CustomController as vm'
             });
     }

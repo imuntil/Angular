@@ -4,7 +4,8 @@
 (function () {
     "use strict";
     angular.module('app.JoinController', [
-        'app.services.JC'
+        'app.services.JC',
+        'oitozero.ngSweetAlert'
     ])
         .controller('JoinController', JoinController)
         .value('tempValue', {
@@ -24,9 +25,10 @@
             }
         }]);
 
-    JoinController.$inject = ['tempValue', 'tempService', '$timeout', 'JC'];
-    function JoinController(tempValue, tempService, $timeout, JC) {
+    JoinController.$inject = ['tempValue', 'tempService', '$timeout', 'JC', 'SweetAlert'];
+    function JoinController(tempValue, tempService, $timeout, JC, SweetAlert) {
         var vm = this;
+        vm.class = 'join';
         vm.f = {
             sex:1
         };
@@ -38,8 +40,10 @@
                 tempService.timeLimit(1000);
                 return;
             }
-            JC.join(vm.f).then(function (data) {
-                console.log(data);
+            JC.join(vm.f).then(function () {
+                SweetAlert.swal('', '提交成功', 'success');
+            }, function () {
+                SweetAlert.swal('', 'Error', 'warning');
             });
         }
     }

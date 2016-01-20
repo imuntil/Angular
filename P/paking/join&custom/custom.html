@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="container detail">
+    <h1 class="form_title">个性定制</h1>
+    <form>
+        <p>
+            <label for="pro_name">品名</label>
+            <select name="pro_name" id="pro_name" ng-model="vm.f.name" ng-options="pro as pro for pro in vm.products">
+            </select>
+        </p>
+        <p>
+            <label for="num">数量</label>
+            <input type="number" id="num" ng-model="vm.f.count"/>
+        </p>
+        <p>
+            <label>送达时间</label>
+            <date-select dates="vm.dates" date="vm.f.time"></date-select>
+        </p>
+        <p>
+            <label for="require">个性要求</label>
+            <textarea id="require" ng-model="vm.f.requires"></textarea>
+        </p>
+        <a href="javascript:void(0)" class="form_address adr-content">
+            姓名：xxxx
+            <br>
+            手机：xxxxxxxxxxx
+            <br>
+            地址：xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                   <span>
+                       <img alt="" src="img/arrow_b.png" width="100%"/>
+                   </span>
+        </a>
+        <a href="javascript:void(0)" class="submit_btn sub-custom">
+            提交
+        </a>
+    </form>
+</div>

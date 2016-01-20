@@ -11,7 +11,8 @@
     JC.$inject = ['commonData', '$http', '$q'];
     function JC(commonData, $http, $q) {
         var service = {
-            join:join
+            join:join,
+            custom:custom
         };
         return service;
 
@@ -25,6 +26,23 @@
                 defer.resolve(data);
             }).error(function (data) {
                 defer.reject(data);
+            });
+            return defer.promise;
+        }
+        function custom(params) {
+            var defer = $q.defer();
+            $http({
+                method:'GET',
+                params:angular.extend({openid:commonData.OPENID}, params),
+                url:commonData.BASE_URL + 'saveRequirePro!saveRequire'
+            }).success(function (data) {
+                if (parseInt(data['resultcode'] === 1)) {
+                    defer.resolve();
+                } else {
+                    defer.reject(data);
+                }
+            }).error(function (data) {
+                defer.reject(data)
             });
             return defer.promise;
         }
