@@ -1,0 +1,29 @@
+<form novalidate name="RF">
+    <h2 class="form-title">注册您的账号</h2>
+    <p class="form-hint">
+        已有账号？
+        <a href="javascript:void(0);" ui-sref="login">马上登录</a>
+    </p>
+    <label for="email" class="form-label">电子邮箱</label>
+    <input type="email" class="form-input" required
+           name="email" ng-model="vm.email" id="email"/>
+    <em class="error"
+        ng-class="{'err-show':RF.email.$invalid && RF.email.$dirty}">
+        请正确输入电子邮箱
+    </em>
+    <label for="password" class="form-label">创建密码</label>
+    <input type="password" class="form-input" required
+           p-v
+           name="password" ng-model="vm.password" id="password"/>
+    <em class="error"
+        ng-class="{'err-show':RF.password.$invalid && RF.password.$dirty}">
+        密码需为6-16个字符组成
+    </em>
+    <label for="re-password" class="form-label">重复密码</label>
+    <input type="password" class="form-input" required
+           name="rePassword" ng-model="vm.rePassword" id="re-password"/>
+    <em class="error" ng-class="{'err-show':RF.password.$valid && vm.rePassword !== vm.password && RF.rePassword.$dirty}">
+        前后密码不一致
+    </em>
+    <a href="javascript:void(0);" class="sign-btn register-btn">注册</a>
+</form>

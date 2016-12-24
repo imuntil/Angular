@@ -1,0 +1,13 @@
+<div class="fixed-menu" ng-style="barStyle">
+    <div>
+        <ul>
+            <li ng-repeat="_item in items track by $index">
+                <a href="javascript:void(0);"
+                   ng-class="{'on-active': activeIndex === $index}"
+                   ng-click="jump(_item._class, $index)">{{_item.item}}</a>
+            </li>
+        </ul>
+        <a class="menu-sign" href="javascript:void(0);">立刻报名</a>
+        <a class="menu-download" href="javascript:void(0);">下载教学大纲</a>
+    </div>
+</div>

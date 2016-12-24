@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="OCApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <script src="../../framework/1.4.7/angular.min.js"></script>
+
+    <script src="directives/c-component.directive.js"></script>
+</head>
+<body>
+<c-header current="5"></c-header>
+<div class="menu menu-bg"></div>
+<div class="bg-container">
+    <img src="img/about_bg.jpg" alt=""/>
+    <img src="img/bg2.jpg" alt=""/>
+    <img src="img/bg3.jpg" alt=""/>
+</div>
+<div class="about-container">
+    <span>OF COURSE的使命</span>
+    <p>
+        1085组灯光照亮奥地利林茨的电子艺术博物馆，一位渐冻人借助眼球追踪系统开始画画，孩子们在计算机模拟的森林里玩耍 － OF COURSE将带领你一起跨越新媒体的边界，由近10年互动创意和编程领域经验的旅美设计师程鹏创立，是程鹏多年工作经验的升华和结晶。教师团队由互动艺术家，骇客，计算机诗人和数字视听专家组成。从纽约到上海，我们用40年科技发展的情感不断探索创意编程教学的新思想，新形式和哲学。还犹豫什么？让我们一起进入艺术，媒体和科技的交叉点。
+    </p>
+    <span>OF COURSE的愿景</span>
+    <p>
+        让更多人通过创意编程实现自身价值的升级，创造更美好的未来。
+    </p>
+    <span>OF COURSE的理念</span>
+    <p>
+        把艺术，设计和科技无缝的连接起来，形成一个基于创意编程为核心的，平衡的，多赢的社区。
+    </p>
+    <span>三个作品</span>
+    <div class="works">
+        <img src="img/about_icon.png" alt=""/>
+        <div class="video-info">
+            <div class="temp-video"></div>
+            <p>艺术是改变社会的工具。我很幸运，因为我能够用涂鸦让更多人了解渐冻人症 ” Tony Quan写道。Tony Quan是美国极具影响力的涂鸦画家，外号Tempt One 或 Tempt1。他被确诊为渐冻人症患者（渐冻人症也叫肌萎缩侧索硬化是一种神经性疾病，影响脑和脊椎中的神经细胞）。</p>
+            <p>自由艺术家和工程师使用openFrameworks为Tony Quan制作了一套费用低廉的眼球识别系统。通过摄像头侦测瞳孔的位置，Tony Quan可以用眼球操纵软件继续涂鸦创作。眼绘者项目旨在为渐冻人艺术家制造价格低廉的辅助设备，让他们继续从事艺术创作！</p>
+        </div>
+    </div>
+    <div class="works">
+        <img src="img/about_icon2.png" alt=""/>
+        <div class="video-info">
+            <div class="temp-video"></div>
+            <p>明亮的夜晚是Theo Watson和 Emily Gobeille为大黄蜂儿童咖啡馆制作的互动装置。孩子们可以探索夜晚中的森林，发现森林里面居住的生物，从花朵中释放萤火虫，与啄木鸟玩耍，甚至在深林里捉迷藏。这套互动装置采用openFrameworks和kinect制作而成。</p>
+        </div>
+    </div>
+    <div class="works">
+        <img src="img/about_icon3.png" alt=""/>
+        <div class="video-info">
+            <div class="temp-video"></div>
+            <p>点亮是由扎克·利伯曼，乔尔·刘易斯，和达米安领衔, 太极泽井和小山恭子协助，为奥地利林茨的新电子艺术博物馆的开幕式制作的巨型影音互动装置。小组成员使用openFrameworks把眼花缭乱的视觉呈现放在了一起。 通过控制超过1085个安装在玻璃窗上的LED，把整个博物馆外墙的颜色与周围的声音发生反应，这是有史以来最大型的OF影音装置之一。</p>
+        </div>
+    </div>
+</div>
+<c-footer></c-footer>
+<script>
+    angular.module('OCApp', [
+            'oc.directives.component'
+    ])
+</script>
+</body>
+</html>

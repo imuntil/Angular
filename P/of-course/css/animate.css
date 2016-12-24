@@ -1,0 +1,15 @@
+/*div.ani-login.ng-enter,*/
+/*div.ani-register.ng-enter {*/
+    /*-webkit-animation-name: bounceInRight;*/
+    /*-moz-animation-name: bounceInRight;*/
+    /*-o-animation-name: bounceInRight;*/
+    /*animation-name: bounceInRight;*/
+/*}*/
+/*div.ani-login.ng-leave,*/
+/*div.ani-register.ng-leave {*/
+    /*/!*-webkit-animation-name: bounceOutLeft;*!/*/
+    /*/!*-moz-animation-name: bounceOutLeft;*!/*/
+    /*/!*-o-animation-name: bounceOutLeft;*!/*/
+    /*/!*animation-name: bounceOutLeft;*!/*/
+    /*display: none;*/
+/*}*/

@@ -6,7 +6,7 @@
         .directive('phoneNumber', phoneNumber);
 
     function phoneNumber() {
-        var mRep = /^0?(13[0-9]|15[0123456789]|17[0-9]|18[0123456789]|14[57])[0-9]{8}$/;
+        var mRep = /^0?(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[0-9])[0-9]{8}$/;
         return {
             require:'ngModel',
             link: function (scope, ele, attrs, ctrl) {

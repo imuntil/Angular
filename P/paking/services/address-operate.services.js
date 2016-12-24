@@ -145,7 +145,7 @@
         function deleteAddress(id) {
             var defer = $q.defer();
             $http({
-                metho:'GET',
+                method:'GET',
                 params:{id:id},
                 url:commonData.BASE_URL + 'delAddressAds!delAddress',
             }).success(function (data) {

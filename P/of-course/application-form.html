@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="OCApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Tools/ng-dialog/ngDialog.min.css"/>
+    <link rel="stylesheet" href="../../Tools/ng-dialog/ngDialog-theme-default.min.css"/>
+    <link rel="stylesheet" href="../../Tools/ng-dialog/ngDialog-theme-plain.min.css"/>
+    <link rel="stylesheet" href="../../Tools/animate.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <script src="../../framework/1.4.7/angular.min.js"></script>
+    <script src="../../jquery.js"></script>
+
+    <script src="directives/c-component.directive.js"></script>
+    <script src="directives/custom-radio.directive.js"></script>
+    <script src="../paking/directives/phone-number-validate.directive.js"></script>
+    <script src="../../Tools/ng-dialog/ngDialog.min.js"></script>
+
+    <script src="services/cities.service.js"></script>
+    <script src="services/dialog-layer.service.js"></script>
+</head>
+<body ng-controller="ApplicationFormController as vm">
+<c-header></c-header>
+<div class="menu menu-bg"></div>
+
+<div class="app-form">
+    <form action="" name="appForm">
+        <h2>课程报名表</h2>
+        <p class="c-1"><em>*</em>为必填信息</p>
+        <p class="c-2">
+            <span>报名课程</span>
+            <custom-radio value="'沉浸式'" ng-model="vm.af.course">沉浸式</custom-radio>
+            <custom-radio value="'基础式(周六班)'" ng-model="vm.af.course">基础式(周六班)</custom-radio>
+            <custom-radio value="'基础式(周日班)'" ng-model="vm.af.course">基础式(周日班)</custom-radio>
+        </p>
+        <p class="c-3">
+            <label for="name">
+                <em>*</em>姓名
+            </label>
+            <input type="text" id="name" name="name"
+                   required
+                   ng-minlength="2" maxlength="20"
+                   ng-model="vm.af.name"/>
+            <i ng-show="(appForm.name.$invalid && appForm.name.$dirty) ||
+                        (appForm.name.$invalid && vm.submit)">请正确填写姓名</i>
+        </p>
+        <p class="c-3">
+            <label>
+                <em>*</em>性别
+            </label>
+
+            <custom-radio value="'男'" ng-model="vm.af.gender">男</custom-radio>
+            <custom-radio value="'女'" ng-model="vm.af.gender">女</custom-radio>
+        </p>
+        <p class="c-4">
+            <label for="mobile">
+                <em>*</em>手机
+            </label>
+            <input type="text" id="mobile" name="mobile"
+                   ng-model="vm.af.mobile"
+                   phone-number
+                   required/>
+            <i ng-show="(appForm.mobile.$invalid && appForm.mobile.$dirty) ||
+                        (appForm.mobile.$invalid && vm.submit)">请正确填写手机号码</i>
+        </p>
+        <p class="c-5">
+            <label for="email">
+                电子邮件
+            </label>
+            <input type="email" id="email" name="email"
+                   ng-model="vm.af.email"/>
+        </p>
+        <p class="c-6">
+            <label>
+                <em>*</em>所在地区
+            </label>
+            <select ng-model="vm.province" ng-options="data.province for data in vm.citiesData"
+                    name="province"
+                    required>
+                <option value="">省份</option>
+            </select>
+            <select ng-model="vm.city" ng-options="city for city in vm.province.cities"
+                    name="city"
+                    required>
+                <option value="">城市</option>
+            </select>
+            <i ng-show="(appForm.province.$invalid && appForm.province.$dirty) ||
+                        (appForm.city.$invalid && appForm.city.$dirty) ||
+                        ((appForm.province.$invalid || appForm.city.$invalid) && vm.submit)">请选择省份，城市</i>
+        </p>
+        <p class="c-7">
+            <label>
+                工作情况
+            </label>
+            <custom-radio value="'在职'" ng-model="vm.af.condition">在职</custom-radio>
+            <custom-radio value="'不在职'" ng-model="vm.af.condition">不在职</custom-radio>
+            <custom-radio value="'学生'" ng-model="vm.af.condition">学生</custom-radio>
+        </p>
+        <p class="c-8">
+            <label>
+                习惯的操作系统
+            </label>
+            <custom-radio value="'Windows'" ng-model="vm.af.system">Windows</custom-radio>
+            <custom-radio value="'MacOS'" ng-model="vm.af.system">MacOS</custom-radio>
+            <custom-radio value="'其他'" ng-model="vm.af.system">其他</custom-radio>
+        </p>
+        <p class="c-9" ng-class="{'c-hide': vm.af.course !== '沉浸式'}">
+            <label>你为什么会学习创意编程</label>
+            <textarea cols="30" rows="10" ng-model="vm.af.reason"></textarea>
+            <label>你是否有编程经验？如果有，聊聊你的编程故事吧？</label>
+            <textarea cols="30" rows="10" ng-model="vm.af.story"></textarea>
+        </p>
+        <a href="javascript:void(0);"
+           class="animated" ng-class="{'shaking':vm.shake}"
+           ng-click="vm.submitForm(appForm.$valid)">提交</a>
+        <p class="c-10">
+            有任何问题，你都可以联系 <em>info@ofcourse.io</em> <br/>
+            或拨打课程咨询电话 <em>400-686-1514</em>
+        </p>
+    </form>
+</div>
+<c-footer></c-footer>
+<script>
+    angular.module('OCApp', [
+            'oc.directives.component',
+            'oc.directives.customRadio',
+            'app.directives.phoneNumberValidate',
+
+            'app.services.citiesData',
+            'oc.services.dialogLayer'
+
+    ])
+            .controller('ApplicationFormController', ApplicationFormController)
+            .factory('signUpService', signUpService);
+
+    ApplicationFormController.$inject = ['citiesData', 'signUpService', 'DialogLayer', '$timeout'];
+    function ApplicationFormController(citiesData, signUpService, DialogLayer, $timeout) {
+        var vm = this;
+        vm.citiesData = citiesData;
+        vm.submit = false;
+        vm.shake = false;
+        vm.af = {
+            course: '沉浸式',
+            gender: '男',
+            system: 'Windows',
+            condition: '在职'
+        };
+        vm.submitForm = submitForm;
+
+        function submitForm(valid) {
+            vm.submit = true;
+            if (valid) {
+                vm.af.province = vm.province.province;
+                vm.af.city = vm.city;
+
+                signUpService.signUp(vm.af)
+                        .then(function (response) {
+
+                        }, function (response) {
+                            DialogLayer.openTimed('网络故障，请稍后再试');
+                        });
+            } else {
+                vm.shake = true;
+                $timeout(function () {
+                    vm.shake = false;
+                }, 500);
+            }
+        }
+    }
+
+    signUpService.$inject = ['$http', '$q'];
+    function signUpService ($http, $q) {
+        return {
+            signUp: function (params) {
+                var defer = $q.defer();
+                $http({
+                    method:'GET',
+                    params:params,
+                    url:'/courseSignUp'
+                }).success(function (response) {
+                    defer.resolve({code:1});
+                }).error(function (response) {
+                    defer.reject({code:0});
+                });
+                return defer.promise;
+            }
+        }
+    }
+</script>
+</body>
+</html>

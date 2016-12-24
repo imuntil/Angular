@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="OCApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Tools/ng-dialog/ngDialog.min.css"/>
+    <link rel="stylesheet" href="../../Tools/ng-dialog/ngDialog-theme-default.min.css"/>
+    <link rel="stylesheet" href="../../Tools/ng-dialog/ngDialog-theme-plain.min.css"/>
+    <link rel="stylesheet" href="../../Tools/animate.min.css"/>
+    <link rel="stylesheet" href="css/animate.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+
+
+    <script src="../../framework/1.4.7/angular.min.js"></script>
+    <script src="../../ui-router/angular-ui-router.min.js"></script>
+    <script src="../../framework/1.4.7/angular-animate.min.js"></script>
+    <script src="../../Tools/ng-dialog/ngDialog.min.js"></script>
+
+    <script src="directives/c-component.directive.js"></script>
+    <script src="directives/password-validate.directive.js"></script>
+
+    <script src="L&R/login.controller.js"></script>
+    <script src="L&R/register.controller.js"></script>
+
+    <script src="services/user-action.services.js"></script>
+</head>
+<body ng-controller="LRController">
+    <c-header></c-header>
+    <div class="menu menu-bg"></div>
+    <div ui-view class="form-content animated {{vm.aniClass}}"></div>
+
+    <c-footer></c-footer>
+</body>
+<script>
+    angular.module('OCApp', [
+            'oc.directives.component',
+            'ui.router',
+//            'ngAnimate',
+
+            'oc.LoginController',
+            'oc.RegisterController'
+    ])
+            .config(LRRouter)
+            .controller('LRController', LRController);
+
+
+    function LRController() {
+
+    }
+    LRRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
+    function LRRouter($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/login');
+        $stateProvider
+                .state('login', {
+                    url:'/login',
+                    templateUrl:'L&R/login.html',
+                    controller:'LoginController as vm'
+                })
+                .state('register', {
+                    url:'/register',
+                    templateUrl:'L&R/register.html',
+                    controller:'RegisterController as vm'
+                });
+    }
+</script>
+</html>

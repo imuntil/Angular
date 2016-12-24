@@ -1,0 +1,12 @@
+<div>
+    <b>{{expander.chapter}}</b>
+    <div ng-repeat="section in expander.sections track by $index">
+        <a href="javascript:void(0);" ng-click="toggle()">
+            {{section.title}}
+            <img src="img/list_icon.png" alt=""/>
+        </a>
+        <ul ng-show="showMe">
+            <li ng-repeat="list in section.lists track by $index">{{list}}</li>
+        </ul>
+    </div>
+</div>

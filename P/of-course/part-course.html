@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="OCApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <script src="../../framework/1.4.7/angular.min.js"></script>
+    <script src="../../framework/1.4.7/angular-animate.min.js"></script>
+    <script src="../../jquery.js"></script>
+    <script src="../../Tools/TweenMax.min.js"></script>
+
+    <script src="directives/c-component.directive.js"></script></head>
+    <script src="directives/to-top.directive.js"></script>
+    <script src="directives/float-bar.directives.js"></script>
+    <script src="directives/accordion.directive.js"></script>
+</head>
+<body ng-controller="PartCourseController as vm">
+<div class="pc-container">
+    <c-header current="3"></c-header>
+    <div class="menu menu-bg"></div>
+    <div class="commons-content content-1">
+        <img src="img/part_title.png" alt=""/>
+        <span>(8周&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;64课时)</span>
+    </div>
+    <float-bar items="vm.barItems"></float-bar>
+    <div class="commons-content content-2">
+        <img src="img/part_title2.png" alt=""/>
+        <ul>
+            <li>
+                <img src="img/full2_icon.png" alt=""/>
+                <b>培养创意编程思维</b>
+                <em>学习功能强大的创意编程工具openFrameworks，掌握创意编程中最有用的部分</em>
+            </li>
+            <li>
+                <img src="img/full2_icon.png" alt=""/>
+                <b>培养创意编程思维</b>
+                <em>学习功能强大的创意编程工具openFrameworks，掌握创意编程中最有用的部分</em>
+            </li>
+            <li>
+                <img src="img/full2_icon.png" alt=""/>
+                <b>培养创意编程思维</b>
+                <em>学习功能强大的创意编程工具openFrameworks，掌握创意编程中最有用的部分</em>
+            </li>
+        </ul>
+    </div>
+    <div class="commons-content content-3">
+        <div class="student-1">
+            <img src="img/teacher_huangsha.png" alt=""/>
+            <div class="student-1-info">
+                <img src="img/quot_l.png" alt=""/>
+                <p>
+                    虽然4年前我曾经是名程序员，但我一直认为编程是无聊又复杂的活，直到我来到OF COURSE遇见了openFrameworks。OF直接把所有乱七八糟的代码都删除，让我用短短几行代码就实现了以前做不到的效果。
+                </p>
+                <img src="img/quot_r.png" alt=""/>
+                <b>黄沙</b>
+                <em>纽约独立导演 <br/>
+                    Three Drops Studio <br/>
+                    商业制片人
+                </em>
+            </div>
+        </div>
+    </div>
+    <div class="commons-content content-4">
+        <img src="img/full_title5.png" alt=""/>
+        <p>你在基础式课程中会学到以下内容：</p>
+        <ul class="p-teaching">
+            <li>
+                <img src="img/full_icon.png" alt=""/>
+                <b>openFrameworks</b>
+                <em>诞生于美国帕森斯设计学院的强大创意编程工具，它能让人们实现传统工具无法实现的神奇互动。</em>
+            </li>
+            <li>
+                <img src="img/full_icon.png" alt=""/>
+                <b>openFrameworks</b>
+                <em>诞生于美国帕森斯设计学院的强大创意编程工具，它能让人们实现传统工具无法实现的神奇互动。</em>
+            </li>
+        </ul>
+    </div>
+    <div class="commons-content content-5">
+        <!--<div class="p-course">-->
+            <!--<div>-->
+                <!--<b>单元1-基础</b>-->
+                <!--<div>-->
+                    <!--<a href="javascript:void(0);">-->
+                        <!--介绍创意编程软件-->
+                        <!--<img src="img/list_icon.png" alt=""/>-->
+                    <!--</a>-->
+                    <!--<ul>-->
+                        <!--<li>什么是编程</li>-->
+                        <!--<li>什么是openFrameworks</li>-->
+                        <!--<li>openFrameworks作品鉴赏</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <accordion>
+            <expander ng-repeat="expander in vm.expanders" ep="expander">
+                <inner  ng-repeat="section in expander.sections"></inner>
+            </expander>
+        </accordion>
+
+        <a href="javascript:void(0);">下载教学大纲</a>
+    </div>
+    <div class="commons-content content-6">
+        <img src="img/full_title7.png" alt=""/>
+        <p>优秀的讲师，才能成就优秀的你</p>
+        <b>课程讲师</b>
+        <ul class="p-teachers">
+            <li>
+                <img src="img/teacher2.png" alt=""/>
+                <p>鹏程 Paul Cheng</p>
+                <em>帕森斯设计学院特聘讲师
+                    <br/>OF COURSE创始人
+                </em>
+                <span>毕业于纽约帕森斯设计学院，获得设计与科技硕士学位。他专注于通过多种视觉媒体（如游戏，机器人和互动装置等）研究用电脑技术探索不同文化的差异。</span>
+            </li>
+            <li>
+                <img src="img/teacher3.png" alt=""/>
+                <p>Jason Levine</p>
+                <em>
+                    音乐家，表演家
+                    <br/>计算机诗人
+                </em>
+                <span>杰森·莱文是音乐家，表演家和计算机诗人。秉承连接不同艺术学科的使命，他视计算机语言为沟通不同媒体的通用语言。</span>
+            </li>
+            <li>
+                <img src="img/teacher2.png" alt=""/>
+                <p>鹏程 Paul Cheng</p>
+                <em>帕森斯设计学院特聘讲师
+                    <br/>OF COURSE创始人
+                </em>
+                <span>毕业于纽约帕森斯设计学院，获得设计与科技硕士学位。他专注于通过多种视觉媒体（如游戏，机器人和互动装置等）研究用电脑技术探索不同文化的差异。</span>
+            </li>
+        </ul>
+        <div class="p-sp-guest">
+            <img src="img/special.png" alt=""/>
+            <div>
+                <b>特约嘉宾</b>
+                <p>Sven Travis</p>
+                <em>
+                    帕森斯设计与科技研究生院创始人 <br/>
+                    帕森斯媒体和设计副教授
+                </em>
+                <p>
+                    认识Sven的人都知道他是个高个子的光头大汉，喜欢说没有人听得懂的笑话。他总喜欢把音乐的音量开的很高，以至于有时候别人找上门来让他把声音开小。他在威斯康星长大，所以他是绿湾包装工队和威斯康星大学麦迪逊分校橄榄球队的铁粉。他酷爱骑自行车和滑雪。此刻他是素食主义者。
+                </p>
+            </div>
+        </div>
+        <b>嘉宾</b>
+        <ul class="p-guests">
+            <li>
+                <img src="img/guest_renyuan.png" alt=""/>
+                <p>任远</p>
+                <em>
+                    设计师、工程师 <br/>
+                    《Processing互动编程》作者
+                </em>
+            </li>
+            <li>
+                <img src="img/guest_renyuan.png" alt=""/>
+                <p>任远</p>
+                <em>
+                    设计师、工程师 <br/>
+                    《Processing互动编程》作者
+                </em>
+            </li>
+            <li>
+                <img src="img/guest_renyuan.png" alt=""/>
+                <p>任远</p>
+                <em>
+                    设计师、工程师 <br/>
+                    《Processing互动编程》作者
+                </em>
+            </li>
+            <li>
+                <img src="img/guest_renyuan.png" alt=""/>
+                <p>任远</p>
+                <em>
+                    设计师、工程师 <br/>
+                    《Processing互动编程》作者
+                </em>
+            </li>
+        </ul>
+    </div>
+    <div class="commons-content content-7">
+        <img src="img/full_title8.png" alt=""/>
+        <div class="p-gallery">
+            <a href="javascript:void(0);" class="p-groups p-1">
+                <img src="img/condition1.jpg" alt="" width="100%"/>
+            </a>
+            <a href="javascript:void(0);" class="p-groups p-2">
+                <img src="img/condition2.jpg" alt="" width="100%"/>
+            </a>
+            <a href="javascript:void(0);" class="p-groups p-3">
+                <img src="img/condition3.jpg" alt="" width="100%"/>
+            </a>
+            <div>
+                <a href="javascript:void(0);" class="p-groups p-4">
+                    <img src="img/condition4.jpg" alt="" width="100%"/>
+                </a>
+                <a href="javascript:void(0);" class="p-groups p-5">
+                    <img src="img/condition5.jpg" alt="" width="100%"/>
+                </a>
+            </div>
+            <a href="javascript:void(0);" class="p-groups p-6">
+                <img src="img/condition6.jpg" alt="" width="100%"/>
+            </a>
+            <a href="javascript:void(0);" class="p-groups p-7">
+                <img src="img/condition7.jpg" alt="" width="100%"/>
+            </a>
+        </div>
+    </div>
+    <div class="commons-content content-8">
+        <img src="img/part_title3.png" alt=""/>
+        <img src="img/shanghai.png" alt=""/>
+        <img src="img/table2.png" alt=""/>
+        <img src="img/gift2.png" alt=""/>
+        <a href="javascript:void(0);" class="p-sign">立即报名</a>
+        <img src="img/table3.png" alt=""/>
+        <img src="img/gift1.png" alt=""/>
+        <a href="javascript:void(0);" class="p-sign">立即报名</a>
+        <img src="img/phone.png" alt=""/>
+    </div>
+    <div class="commons-content content-9">
+        <img src="img/full_title10.png" alt=""/>
+        <ul class="p-trial">
+            <li>
+                <img src="img/workshop_detail.jpg" alt=""/>
+                <b>2015年8月22日（周日）</b>
+                <a href="javascript:void(0);">免费参加</a>
+            </li>
+            <li>
+                <img src="img/workshop_detail.jpg" alt=""/>
+                <b>2015年8月22日（周日）</b>
+                <a href="javascript:void(0);">免费参加</a>
+            </li>
+        </ul>
+    </div>
+    <div class="commons-content content-10">
+        <img src="img/full_title11.png" alt=""/>
+        <div class="p-questions">
+            <div>
+                <p>
+                    <img src="img/q.png" alt=""/>
+                    <b>创意编程是什么?</b>
+                </p>
+                <p>
+                    <img src="img/a.png" alt=""/>
+                    <em>
+                        学习编程已经不再只是计算机专家或是软件开发人员的专利。来自各个领域的人们现在都想了解编程，因为编程不仅有趣，也是提升自我价值的技能。学习编程最让人兴奋的是能够通过编程去实现自己的创意，这被称为“创意编程”。创意编程已经在新媒体艺术，交互设计，时尚科技， 物联网，机器人等许多尖端领域扮演了重要角色。
+                    </em>
+                </p>
+                <p>
+                    <img src="img/q.png" alt=""/>
+                    <b>创意编程是什么?</b>
+                </p>
+                <p>
+                    <img src="img/a.png" alt=""/>
+                    <em>
+                        学习编程已经不再只是计算机专家或是软件开发人员的专利。来自各个领域的人们现在都想了解编程，因为编程不仅有趣，也是提升自我价值的技能。学习编程最让人兴奋的是能够通过编程去实现自己的创意，这被称为“创意编程”。创意编程已经在新媒体艺术，交互设计，时尚科技， 物联网，机器人等许多尖端领域扮演了重要角色。
+                    </em>
+                </p>
+                <p>
+                    <img src="img/q.png" alt=""/>
+                    <b>创意编程是什么?</b>
+                </p>
+                <p>
+                    <img src="img/a.png" alt=""/>
+                    <em>
+                        学习编程已经不再只是计算机专家或是软件开发人员的专利。来自各个领域的人们现在都想了解编程，因为编程不仅有趣，也是提升自我价值的技能。学习编程最让人兴奋的是能够通过编程去实现自己的创意，这被称为“创意编程”。创意编程已经在新媒体艺术，交互设计，时尚科技， 物联网，机器人等许多尖端领域扮演了重要角色。
+                    </em>
+                </p>
+                <p>
+                    <img src="img/q.png" alt=""/>
+                    <b>创意编程是什么?</b>
+                </p>
+                <p>
+                    <img src="img/a.png" alt=""/>
+                    <em>
+                        学习编程已经不再只是计算机专家或是软件开发人员的专利。来自各个领域的人们现在都想了解编程，因为编程不仅有趣，也是提升自我价值的技能。学习编程最让人兴奋的是能够通过编程去实现自己的创意，这被称为“创意编程”。创意编程已经在新媒体艺术，交互设计，时尚科技， 物联网，机器人等许多尖端领域扮演了重要角色。
+                    </em>
+                </p>
+            </div>
+            <div>
+                <p>
+                    <img src="img/q.png" alt=""/>
+                    <b>创意编程是什么?</b>
+                </p>
+                <p>
+                    <img src="img/a.png" alt=""/>
+                    <em>
+                        学习编程已经不再只是计算机专家或是软件开发人员的专利。来自各个领域的人们现在都想了解编程，因为编程不仅有趣，也是提升自我价值的技能。学习编程最让人兴奋的是能够通过编程去实现自己的创意，这被称为“创意编程”。创意编程已经在新媒体艺术，交互设计，时尚科技， 物联网，机器人等许多尖端领域扮演了重要角色。
+                    </em>
+                </p>
+                <p>
+                    <img src="img/q.png" alt=""/>
+                    <b>创意编程是什么?</b>
+                </p>
+                <p>
+                    <img src="img/a.png" alt=""/>
+                    <em>
+                        学习编程已经不再只是计算机专家或是软件开发人员的专利。来自各个领域的人们现在都想了解编程，因为编程不仅有趣，也是提升自我价值的技能。学习编程最让人兴奋的是能够通过编程去实现自己的创意，这被称为“创意编程”。创意编程已经在新媒体艺术，交互设计，时尚科技， 物联网，机器人等许多尖端领域扮演了重要角色。
+                    </em>
+                </p>
+                <p>
+                    <img src="img/q.png" alt=""/>
+                    <b>创意编程是什么?</b>
+                </p>
+                <p>
+                    <img src="img/a.png" alt=""/>
+                    <em>
+                        学习编程已经不再只是计算机专家或是软件开发人员的专利。来自各个领域的人们现在都想了解编程，因为编程不仅有趣，也是提升自我价值的技能。学习编程最让人兴奋的是能够通过编程去实现自己的创意，这被称为“创意编程”。创意编程已经在新媒体艺术，交互设计，时尚科技， 物联网，机器人等许多尖端领域扮演了重要角色。
+                    </em>
+                </p>
+                <p>
+                    <img src="img/q.png" alt=""/>
+                    <b>创意编程是什么?</b>
+                </p>
+                <p>
+                    <img src="img/a.png" alt=""/>
+                    <em>
+                        学习编程已经不再只是计算机专家或是软件开发人员的专利。来自各个领域的人们现在都想了解编程，因为编程不仅有趣，也是提升自我价值的技能。学习编程最让人兴奋的是能够通过编程去实现自己的创意，这被称为“创意编程”。创意编程已经在新媒体艺术，交互设计，时尚科技， 物联网，机器人等许多尖端领域扮演了重要角色。
+                    </em>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="commons-content content-11">
+        <div class="p-courses">
+            <img src="img/full_title12.png" alt=""/>
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <td></td>
+                    <td>沉浸式课程</td>
+                    <td>基础式课程</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>核心软件</td>
+                    <td>openFrameworks <br/>Processing <br/>Unity</td>
+                    <td>openFrameworks</td>
+                </tr>
+                <tr>
+                    <td>智能硬件</td>
+                    <td>Arduino <br/>Kinect <br/>Leap Motion <br/> Touch Board <br/>Raspberry Pi</td>
+                    <td>Arduion <br/>Kinect <br/>Touch Board</td>
+                </tr>
+                <tr>
+                    <td>
+                        项目
+                    </td>
+                    <td>
+                        互动装置<br/>
+                        无线玩具<br/>
+                        3D光雕投影<br/>
+                        数字化工艺<br/>
+                        时尚可穿戴<br/>
+                        手机应用
+                    </td>
+                    <td>
+                        互动装置
+                    </td>
+                </tr>
+                <tr>
+                    <td>师资力量</td>
+                    <td>程鹏<br/>
+                        张屹南<br/>
+                        Jason Levine<br/>
+                        Marcella Godoy</td>
+                    <td>程鹏<br/>
+                        张屹南<br/>
+                        Jason Levine</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        特邀嘉宾
+                    </td>
+                    <td>
+                        任远，徐维静，黄石，沈婷瑊，<br/>慕慧希,
+                        周博山，许嘉，莫建俊
+                    </td>
+                    <td>
+                        任远，徐维静，黄石，许嘉，
+                    </td>
+                </tr>
+                <tr>
+                    <td>职业支持</td>
+                    <td>
+                        对接创业孵化器<br/>
+                        对接众筹平台<br/>
+                        对接人脉网络<br/>
+                        推荐工作机会
+                    </td>
+                    <td>
+                        对接人脉网络
+                    </td>
+                </tr>
+                <tr>
+                    <td>学生支持</td>
+                    <td>
+                        完善作品集<br/>
+                        申请海外艺术名校
+                    </td>
+                    <td>
+                        作品辅导
+                    </td>
+                </tr>
+                <tr>
+                    <td>课程时间</td>
+                    <td>
+                        <img src="img/clock.png" alt="" width="17%"/> <br/>
+                        8周 <br/>
+                        周一，周三，周五，每天8小时 <br/>
+                        共192小时+
+                    </td>
+                    <td>
+                        <img src="img/clock2.png" alt="" width="17%"/> <br/>
+                        8周 <br/>
+                        每周一天，每天8小时 <br/>
+                        共64小时+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        课程价格
+                    </td>
+                    <td>
+                        <b>价格：15,999元</b>
+                        <a href="javascript:void(0);">
+                            立即报名
+                        </a>
+                    </td>
+                    <td>
+
+                        <b>价格：5,999元</b>
+                        <a href="javascript:void(0);">
+                            立即报名
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <c-footer></c-footer>
+
+    <a href="javascript:void(0);" class="to-top"
+       to-top top-show="vm.topShow" ng-show="vm.topShow">
+        <img src="img/top.png" alt="" width="45px"/>
+    </a>
+</div>
+
+<script>
+    (function () {
+        angular.module('OCApp', [
+                'oc.directives.component',
+                'app.directives.toTop',
+                'oc.directives.floatBar',
+                'app.directives.accordion',
+                'ngAnimate'
+        ])
+                .controller('PartCourseController', PartCourseController)
+                .animation('.js-ani', function ($window, $rootScope) {
+                    return {
+                        addClass: function (ele, className, done) {
+                            if (className === 'ul-show') {
+                                var lis = $(ele).find('li'),
+                                        h = lis.eq(0).innerHeight() * lis.size();
+                                TweenMax.to(ele, 0.5, {
+                                    backgroundColor:'#fff2be',
+                                    height: h + 'px'
+                                });
+                                $window.setTimeout(done, 500);
+                            } else {
+                                done();
+                            }
+                            return function () {
+                                $rootScope.$broadcast('scrollTop:changed');
+                                console.log('ani-end');
+                            }
+                        },
+                        removeClass: function (ele, className, done) {
+                            if (className === 'ul-show') {
+                                TweenMax.to(ele, 0.5, {
+                                    backgroundColor:'#ffffff',
+                                    height:0
+                                });
+                            } else {
+                                done();
+                            }
+                            $window.setTimeout(done, 500);
+                            return function () {
+                                $rootScope.$broadcast('scrollTop:changed');
+                                console.log('ani-end2');
+                            }
+                        }
+                    }
+                });
+
+        function PartCourseController() {
+            var vm = this;
+            vm.topShow = undefined;
+            vm.barItems = [
+                {item:'课程概述', _class:'content-2'},
+                {item:'课程安排', _class:'content-4'},
+                {item:'讲师介绍', _class:'content-6'},
+                {item:'时间/费用', _class:'content-8'},
+                {item:'常见问题', _class:'content-10'}
+            ];
+            vm.expanders = [
+                {
+                    chapter:'单元1-基础',
+                    sections:[
+                        {title:'介绍创意编程软件',lists:[
+                            '什么是编程',
+                            '什么是openFrameworks',
+                            'openFrameworks作品鉴赏'
+                        ]},
+                        {title:'介绍常用智能硬件',lists:[
+                            '什么是电路',
+                            '什么是Arduino',
+                            'Arduino作品鉴赏'
+                        ]}
+                    ]
+                },
+                {
+                    chapter:'单元2-初级创意编程技术',
+                    sections:[
+                        {title:'openFrameworks基础',lists:[
+                            '理解基本的openFrameworks编程语言',
+                            '用openFrameworks控制图形和图像'
+                        ]},
+                        {title:'Arduion基础', lists:[
+                                '理解基本的Arduino编程语言',
+                                '用Arduino连接光敏传感器控制LED'
+                        ]}
+                    ]
+
+                },
+                {
+                    chapter:'单元3 - 中级创意编程技术',
+                    sections:[
+                        {title:'openFrameworks与Arduino连接',lists:[
+                                'openFrameworks与Arduino互相通讯',
+                                '制作简单的互动装置'
+                        ]},
+                        {title:'openFrameworks中级', lists:[
+                                '理解c＋＋',
+                                'openFrameworks插件'
+                        ]}
+                    ]
+                },
+                {
+                    chapter:'单元4 - 高级创意编程技术',
+                    sections:[
+                        {title:'openFrameworks高级内容',lists:[
+                                'openCV',
+                                '人脸识别技术',
+                                '数据可视化',
+                                '生成艺术'
+                        ]},
+                        {
+                            title:'Kinect摄像头',lists:[
+                                '体感识别',
+                                '3D摄影'
+                        ]
+                        }
+                    ]
+                }
+            ];
+        }
+    })();
+</script>
+</body>
+</html>

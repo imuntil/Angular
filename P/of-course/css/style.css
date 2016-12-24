@@ -19,6 +19,10 @@ ul, ol {
 a {
     text-decoration: none;
 }
+a:hover{
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
 .m-container {
     width: 100%;
     height: auto;
@@ -45,8 +49,13 @@ a {
 .menu.menu-holder {
     position: relative;
 }
+.menu.menu-bg{
+    position: relative;
+    background: #000;
+    z-index: 99;
+}
 .menu.index-menu {
-    z-index: 3;
+    z-index: 100;
 }
 .banner-title {
     margin: 0 auto;
@@ -123,7 +132,7 @@ a {
     height: 100%;
 }
 ul.sign-status {
-    display: none;
+    /*display: none;*/
 }
 ul.sign-status li {
     display: block;
@@ -141,8 +150,8 @@ ul.sign-status li a {
     font-size: 2.2em;
 }
 div.sign-status {
-    /*display: none;*/
-    display: block;
+    display: none;
+    /*display: block;*/
     width: 60px;
     /*background: #000;*/
     margin-right: 2%;
@@ -250,18 +259,18 @@ div.sign-status ul li a {
     left: 50%;
     width: 4.5%;
 }
-.content-1 {
+.m-container .content-1 {
     width: 100%;
     height: auto;
     background-color: #ffffff;
 }
-.content-1 img {
+.m-container .content-1 img {
     width: 30%;
     min-width: 300px;
     margin: 0 auto;
     padding: 6% 0 2% 0;
 }
-.content-1 p {
+.m-container .content-1 p {
     display: block;
     width: 90%;
     margin: 0 auto;
@@ -270,12 +279,12 @@ div.sign-status ul li a {
     text-indent: 2em;
     padding-bottom: 5%;
 }
-.content-2 {
+.m-container .content-2 {
     background: url("../img/index_bg.jpg") no-repeat top left #d9dada;
     -webkit-background-size: 100%;
     background-size: 100%;
 }
-.content-2 img {
+.m-container .content-2 img {
     width: 30%;
     margin: 0 auto;
     padding: 20% 0 4%;
@@ -317,41 +326,41 @@ div.sign-status ul li a {
     color: #999;
     font-size: 1.2rem;
 }
-.content-3 {
+.m-container .content-3 {
     width: 100%;
     background: url("../img/index_bg3.jpg") no-repeat top left #f1f1f1;
     -webkit-background-size: 100%;
     background-size: 100%;
     overflow: hidden;
 }
-.content-3>img {
+.m-container .content-3>img {
     margin: 0 auto;
     padding: 6% 0 3%;
     width: 20%;
 }
-.content-3>p {
+.m-container .content-3>p {
     display: block;
     width: 100%;
     text-align: center;
     font-size: 1.6rem;
     line-height: 1.8rem;
 }
-.content-3>ul {
+.m-container .content-3>ul {
     display: block;
     width: 80%;
     margin: 0 auto;
     padding: 4% 0 4% 0;
 }
-.content-3>ul li {
+.m-container .content-3>ul li {
     width: 25%;
     float: left;
     margin: 0 4% 3% 4%;
 }
-.content-3>ul li img {
+.m-container .content-3>ul li img {
     width: 80%;
     margin: 0 auto;
 }
-.content-3>ul li span {
+.m-container .content-3>ul li span {
     font-weight: bold;
     font-size: 2rem;
     width: 100%;
@@ -359,26 +368,29 @@ div.sign-status ul li a {
     display: block;
     margin: 6% 0;
 }
-.content-3>ul li p {
+.m-container .content-3>ul li p {
     font-size: 1.4rem;
     line-height: 2rem;
 }
 
-.content-4 {
+.m-container .content-4 {
     width: 100%;
 }
-.content-4>ul {
+.m-container .content-4>ul {
     width: 44%;
     margin: 0 auto;
     padding: 5% 0;
     overflow: hidden;
 }
-.content-4>ul li {
+.m-container .content-4>ul li {
     display: block;
     float: left;
     width: 40%;
 }
-.content-4>ul li span {
+.m-container .content-4>ul>li:last-child {
+    float: right;
+}
+.m-container .content-4>ul li span {
     display: block;
     font-size: 16px;
     font-size: 1.6rem;
@@ -386,24 +398,24 @@ div.sign-status ul li a {
     padding: 6% 0;
     border-bottom:1px solid #b3b3b3;
 }
-.content-4>ul ul{
+.m-container .content-4>ul ul{
     width: 100%;
     font-size: 14px;
     font-size: 1.4rem;
     padding: 5% 0;
     overflow: hidden;
 }
-.content-4>ul ul li {
+.m-container .content-4>ul ul li {
     clear: both;
     float: left;
     width: 40%;
     line-height: 1.8em;
     padding-left: 2%;
 }
-.content-4>ul ul li.unable {
+.m-container .content-4>ul ul li.unable {
     color: #d2d2d2;
 }
-.content-4>ul a {
+.m-container .content-4>ul a {
     background: #ff4145;
     display: block;
     width: 50%;
@@ -418,17 +430,17 @@ div.sign-status ul li a {
     text-align: center;
 }
 
-.content-5{
+.m-container .content-5{
     position: relative;
     background: url("../img/index_bg2.jpg") no-repeat center center;
     padding-bottom: 4%;
 }
-.content-5 .container img {
+.m-container .content-5 .container img {
     display: block;
     margin: 0 auto;
     padding: 6% 0 2%;
 }
-.content-5 .container input {
+.m-container .content-5 .container input {
     width: 29%;
     border: 0 none;
     display: block;
@@ -436,7 +448,7 @@ div.sign-status ul li a {
     margin: 0 auto;
 
 }
-.content-5 .container a {
+.m-container .content-5 .container a {
     display: block;
     width: 10%;
     background: #ffffff;
@@ -506,4 +518,1922 @@ a.to-top {
     width: 4%;
     right: 5%;
     bottom: 5%;
+}
+
+
+div.form-content {
+    position: relative;
+    padding: 120px 0;
+    background: url("../img/reg_bg.jpg") no-repeat center center;
+}
+.form-content form {
+    background: #FFFFFF;
+    width: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.form-content .form-title {
+    width: 100%;
+    font-size: 24px;
+    font-size: 2.4rem;
+    font-weight: normal;
+    padding: 6% 0 0;
+    text-align: center;
+}
+.form-content .form-hint {
+    width: 100%;
+    font-size: 12px;
+    font-size: 1.2rem;
+    padding-bottom: 4%;
+    text-align: center;
+    color: #b3b3b3;
+}
+.form-content .form-hint a {
+    color: #ff4145;
+}
+.form-content .form-label {
+    width: 70%;
+    margin: 0 auto 1%;
+    color: #323232;
+    font-size: 14px;
+    font-size: 1.4rem;
+    text-align: left;
+    display: block;
+}
+.form-content .form-input {
+    width: 66%;
+    margin: 0 auto 1%;
+    padding: 2%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    background: #F6F6F6;
+    display: block;
+    font-size: 16px;
+    font-size: 1.6rem;
+}
+.form-content .error{
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+    color: #ff0000;
+    font-size: 12px;
+    font-size: 1.2rem;
+    text-align: left;
+    font-style: normal;
+    visibility: hidden;
+}
+.error.err-show {
+    visibility: visible;
+}
+.form-content .sign-btn {
+    width: 25%;
+    background: #ff0000;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-size: 1.6rem;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    display: block;
+    margin: 20px auto;
+}
+.form-content .sign-btn.register-btn {
+    margin: 20px auto 10%;
+}
+.ngdialog p.nd-custom {
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    font-size: 1.5rem;
+    padding: 2% 0;
+}
+
+.fc-container .content-1 {
+    background: url("../img/full_banner.jpg") no-repeat center center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    padding-bottom: 8%;
+    position: relative;
+}
+.fc-container .content-1 img{
+    margin: 0 auto;
+    padding: 13% 0 2%;
+}
+.fc-container .content-1 span {
+    display: block;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    font-size: 2.0rem;
+}
+
+.fixed-menu {
+    background: #323232;
+    width: 100%;
+    height: 55px;
+    line-height: 55px;
+    z-index: 100;
+    position: absolute;
+}
+.fixed-menu>div {
+    width: 900px;
+    margin: 0 auto;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+}
+.fixed-menu>div ul {
+    width: 70%;
+    height: 100%;
+    overflow: hidden;
+    float: left;
+}
+.fixed-menu>div ul li {
+    float: left;
+    height: 100%;
+    line-height: 55px;
+    font-size: 15px;
+    font-size: 1.5rem;
+    width: 14%;
+    text-align: center;
+}
+.fixed-menu>div ul li a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: #FFFFFF;
+}
+.fixed-menu>div ul li a:hover,
+.fixed-menu>div ul li a.on-active {
+    background: #000;
+    opacity: 1;
+}
+.fixed-menu>div>a {
+    float: right;
+    font-size: 13px;
+    font-size: 1.3rem;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 12.5px;
+    text-align: center;
+}
+.fixed-menu .menu-sign{
+    background: #ff4145;
+    margin-left: 1.3%;
+}
+.fixed-menu .menu-download{
+    background: #4b9d19;
+}
+
+.fc-container .content-2 {
+    background: #f7f6f6;
+    padding: 7% 0;
+}
+.fc-container .content-2>img{
+    display: block;
+    margin: 0 auto 5%;
+}
+.fc-container .content-2>ul {
+    width: 71%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.fc-container .content-2 li{
+    float: left;
+    width: 16%;
+    margin-right: 5%;
+}
+.fc-container .content-2 li:last-child,
+ul.teaching li:last-child{
+    margin-right: 0;
+}
+.fc-container .content-2 li img,
+ul.teaching li img{
+    width: 80%;
+    margin: 0 auto 22%;
+}
+.fc-container .content-2 li b,
+ul.teaching li b{
+    display: block;
+    font-size: 15px;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 5%;
+}
+.fc-container .content-2 li em,
+ul.teaching li em{
+    font-style: normal;
+    font-size: 13px;
+    font-size: 1.3rem;
+    display: block;
+    color: #676767;
+    width: 100%;
+    line-height: 2rem;
+}
+
+.fc-container .content-3 {
+    position: relative;
+    background: url("../img/full_bg2.jpg") no-repeat center center;
+}
+.fc-container .content-3>img {
+    display: block;
+    margin: 0 auto;
+    padding: 10% 0 2%;
+    width: 12%;
+}
+.fc-container .content-3>p {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    font-size: 1.5rem;
+}
+.fc-container .content-3 ul {
+    display: block;
+    overflow: hidden;
+    width: 54%;
+    margin: 0 auto;
+    padding: 5% 0;
+}
+.fc-container .content-3 ul li{
+    float: left;
+    width: 28%;
+    margin-right: 8%;
+    position: relative;
+}
+.fc-container .content-3 ul li:last-child {
+    margin-right: 0;
+}
+.fc-container .content-3 li img{
+    width: 100%;
+}
+.fc-container .content-3 li span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.fc-container .content-3 li span b {
+    color: #FFFFFF;
+    font-size: 15px;
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin: 25% 0 7%;
+}
+.fc-container .content-3 li span em {
+    width: 70%;
+    display: block;
+    font-size: 12px;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #FFFFFF;
+    font-style: normal;
+    margin: 0 auto;
+}
+
+.fc-container .content-4{
+    width: 60%;
+    margin: 5% auto;
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+.fc-container .content-4>img {
+    float: left;
+    width: 19%;
+    display: block;
+}
+.fc-container .content-4 .teacher-info {
+    float: right;
+    width: 70%;
+    display: block;
+}
+.teacher-info>img, .teacher-info>p {
+    float: left;
+}
+.teacher-info :first-child{
+    width: 4%;
+    margin-top: 5%;
+    margin-right: 3%;
+}
+.teacher-info>p {
+    width: 86%;
+    margin-top: 5%;
+    font-size: 16px;
+    font-size: 1.6rem;
+    line-height: 2.7rem;
+}
+.teacher-info :nth-child(3) {
+    width: 4%;
+    margin-top: 5%;
+    margin-left: 3%;
+}
+.teacher-info>b {
+    width: 100%;
+    text-align: right;
+    font-size: 15px;
+    font-size: 1.5rem;
+    display: block;
+    padding-top: 3%;
+    clear: both;
+}
+.teacher-info>span{
+    width: 100%;
+    text-align: right;
+    font-size: 12px;
+    font-size: 1.2rem;
+    display: block;
+    margin-top: 1%;
+    clear: both;
+    color: #888787;
+}
+
+
+.fc-container .content-5{
+    position: relative;
+    background: url("../img/full_bg3.jpg") no-repeat center center;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+}
+.fc-container .content-5 img {
+    width: 20%;
+    display: block;
+    margin: 0 auto;
+    padding: 10% 0;
+}
+
+.fc-container .content-6>p {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-size: 1.6rem;
+    color: #323232;
+    margin: 4% 0;
+}
+.fc-container .content-6 .c-schedule {
+    width: 60%;
+    margin: 5% auto;
+    display: block;
+}
+.c-schedule td {
+    color: #1d1d1e;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #FFFFFF;
+}
+.c-schedule td.f1 {
+    background-color: #ffd856;
+    font-family: Arial;
+    font-size: 20px;
+    font-size: 2.0rem;
+    padding: 10px;
+    text-align: center;
+}
+.c-schedule td.s2 {
+    background: #c5e7ff;
+    font-size: 15px;
+    font-size: 1.5rem;
+    width: 28%;
+    padding: 30px;
+}
+.c-schedule td.t3 {
+    background: #EEEEEE;
+    font-size: 13px;
+    font-size: 1.3rem;
+    padding: 30px;
+}
+.c-schedule td.s2.tea-time {
+    background: #ceefb9;
+}
+.c-schedule .tea-time img {
+    width: 30%;
+    margin-left: 10%;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.fc-container .content-7 {
+    position: relative;
+    background: url("../img/index_bg3.jpg") no-repeat top right #f1f1f1;
+    width: 100%;
+}
+.fc-container .content-7>img {
+    width: 12%;
+    margin: 0 auto;
+    padding: 5% 0 2% 0;
+    display: block;
+}
+.fc-container .content-7>p {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-size: 1.6rem;
+}
+
+.fc-container .content-7 ul.teaching {
+    width: 700px;
+    margin: 0 auto;
+    padding: 4% 0 5% 0;
+    overflow: hidden;
+}
+
+ul.teaching li {
+    width: 29%;
+    margin-right: 6%;
+    float: left;
+}
+
+.fc-container .content-8 {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.fc-container .content-8 .c-plan{
+    width: 600px;
+    margin: 5% auto;
+}
+.c-plan td {
+    border-bottom:1px solid #FFFFFF;
+    border-right:1px solid #FFFFFF;
+}
+.c-plan .f1{
+    width: 25%;
+    padding: 10px;
+    background: #ffd856;
+    font-size: 20px;
+    font-size: 2.0rem;
+    text-align: center;
+}
+.c-plan .s2 {
+    padding: 30px;
+    font-size: 18px;
+    font-size: 1.8rem;
+    background: #ffedb2;
+    text-align: left;
+}
+.fc-container .content-8 .download {
+    width: 11%;
+    background: #4b9d19;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-size: 1.2rem;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 25%;
+    margin-bottom: 5%;
+    float: right;
+}
+
+.fc-container .content-9 {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    background: url("../img/full_bg4.jpg") no-repeat top center;
+    padding-bottom:5%;
+}
+.fc-container .content-9>img {
+    width: 20%;
+    margin: 0 auto;
+    padding: 10% 0 4% 0;
+}
+.fc-container .content-9 p {
+    font-size: 16px;
+    font-size: 1.6rem;
+    color: #323232;
+    width: 100%;
+    text-align: center;
+    margin: 2% 0;
+}
+.fc-container .content-9 p.dot {
+    margin: 0;
+}
+
+.fc-container .content-10 {
+    width: 60%;
+    position: relative;
+    margin: 3% auto;
+    overflow: hidden;
+}
+.content-10 .float-left {
+    float: left;
+    width: 45%;
+}
+.content-10 .float-right {
+    float: right;
+    width: 45%;
+}
+.float-left>img,
+.float-right>img{
+    width: 100%;
+    margin-bottom: 3%;
+}
+.project {
+    width: 100%;
+    overflow: hidden;
+}
+.project img{
+    height: 40px;
+    width: 40px;
+    float: left;
+}
+.project span {
+    float: left;
+    width: 70%;
+    margin-left: 2%;
+}
+.project span b {
+    display: block;
+    font-size: 1.5rem;
+}
+.project span em {
+    display: block;
+    font-style: normal;
+    font-size: 1.4rem;
+    color: #323232;
+}
+.introduction {
+    font-size: 1.4rem;
+    margin:3% 0;
+    width: 100%;
+    display: block;
+}
+.founder {
+    overflow: hidden;
+    padding: 3%;
+    background: #f1f1f1;
+}
+.founder span {
+    font-size: 1.5rem;
+    margin-right: 3%;
+}
+.founder em {
+    font-size: 1.4rem;
+    font-style: normal;
+    color: #323232;
+}
+.founder p {
+    color: #323232;
+    font-size: 1.2rem;
+    margin-top: 2%;
+}
+
+.fc-container .content-11 {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    background: url("../img/full_bg5.jpg") no-repeat #e5e5e5;
+}
+.fc-container .content-11>img {
+    width: 14%;
+    margin: 0 auto;
+    padding: 6% 0 1% 0;
+    display: block;
+}
+.fc-container .content-11>p {
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-size: 1.5rem;
+}
+.fc-container .content-11>b {
+    font-size: 2.5rem;
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin: 5% 0 2% 0;
+}
+.fc-container .content-11 ul.f-teachers,
+.fc-container .content-11 ul.f-guests,
+.pc-container .content-6 ul.p-guests,
+.pc-container .content-6 ul.p-teachers{
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+    overflow: hidden;
+}
+.fc-container .content-11 ul.f-guests,
+.pc-container .content-6 ul.p-guests{
+    margin-bottom: 5%;
+}
+ul.f-teachers li,
+ul.p-teachers li,
+ul.f-guests li,
+ul.p-guests li{
+    width: 20%;
+    float: left;
+    margin-right: 6%;
+}
+ul.f-guests li{
+    margin-bottom: 6%;
+}
+ul.f-teachers li:last-child,
+ul.p-teachers li:last-child,
+ul.f-guests li:nth-child(4),
+ul.f-guests li:last-child ,
+ul.p-guests li:last-child{
+    margin: 0;
+}
+ul.f-teachers li img,
+ul.p-teachers li img,
+ul.f-guests li img,
+ul.p-guests li img{
+    display: block;
+    width: 90%;
+    margin: 0 auto 7%;
+}
+ul.f-teachers li p,
+ul.p-teachers li p,
+ul.f-guests li p,
+ul.p-guests li p{
+    font-size: 1.6rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 4%;
+}
+ul.f-teachers li em,
+ul.p-teachers li em,
+ul.f-guests li em,
+ul.p-guests li em{
+    width: 100%;
+    font-size: 1.3rem;
+    color: #636363;
+    text-align: center;
+    margin-bottom: 10%;
+    display: block;
+    font-style: normal;
+}
+ul.f-teachers li span,
+ul.p-teachers li span,
+ul.f-guests li span{
+    color: #323232;
+    width: 100%;
+    text-align: left;
+    font-size: 1.3rem;
+}
+
+.fc-container .content-11 div.f-sp-guest {
+    width: 45%;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+}
+div.f-sp-guest img  {
+    width: 28%;
+    margin-right: 10%;
+    display: block;
+    float: left;
+}
+div.f-sp-guest div {
+    width: 60%;
+    float: right;
+}
+div.f-sp-guest p {
+    font-size: 1.6rem;
+    text-align: left;
+    display: block;
+    margin-bottom: 1%;
+}
+div.f-sp-guest em {
+    color: #636363;
+    font-size: 1.3rem;
+    font-style: normal;
+    display: block;
+    margin-bottom: 1%;
+}
+div.f-sp-guest span {
+    display: block;
+    font-size: 1.3rem;
+    color: #323232;
+}
+
+.fc-container .content-12 {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.fc-container .content-12>img {
+    width: 15%;
+    margin: 5% auto 2%;
+}
+.fc-container .content-12 div.f-gallery{
+    width: 60%;
+    margin: 0 auto 5%;
+    display: block;
+    overflow: hidden;
+}
+div.f-gallery a {
+    float: left;
+    display: block;
+}
+div.f-gallery .p-1,
+div.f-gallery .p-7{
+    width: 49%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+}
+div.f-gallery .p-2,
+div.f-gallery .p-3,
+div.f-gallery .p-g,
+div.f-gallery .p-6{
+    width: 24%;
+    margin: 0 1% 1% 0;
+}
+div.f-gallery .p-g{
+    float: left;
+    width: 25%;
+}
+div.f-gallery .p-6{
+    width: 23%;
+}
+div.f-gallery .p-4 {
+    margin-bottom: 4%;
+}
+
+.fc-container .content-13 {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: url("../img/full_bg6.jpg") no-repeat center center;
+    -webkit-background-size: 110%;
+    background-size: 110%;
+}
+.fc-container .content-13 img {
+    margin: 0 auto;
+}
+.fc-container .content-13 img:first-child {
+    width: 20%;
+    padding-top: 8%;
+}
+.fc-container .content-13 img:nth-child(2) {
+    width: 7%;
+    padding-top: 4%;
+}
+.fc-container .content-13 img:nth-child(3) {
+    width: 50%;
+    padding-top: 2%;
+}
+.fc-container .content-13 img:nth-child(4) {
+    width: 50%;
+    padding-top: 2%;
+}
+.fc-container .content-13 a{
+    background: #ff1415;
+    width: 120px;
+    height: 35px;
+    font-size: 1.2rem;
+    line-height: 35px;
+    color: #FFFFFF;
+    display: block;
+    margin: 2% auto 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+.fc-container .content-13 img:last-child {
+    width: 50%;
+    padding: 3% 0;
+}
+
+.fc-container .content-14 {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.fc-container .content-14>img,
+.pc-container .content-9>img{
+    width: 10%;
+    margin: 0 auto;
+    padding: 5% 0;
+}
+.fc-container .content-14 ul.f-trial,
+.pc-container .content-9 ul.p-trial{
+    width: 55%;
+    overflow: hidden;
+    margin: 0 auto 5%;
+}
+ul.f-trial li,
+ul.p-trial li{
+    width: 45%;
+    float: left;
+}
+ul.f-trial li:first-child,
+ul.p-trial li:first-child{
+    margin-right: 9%;
+}
+ul.f-trial li img,
+ul.p-trial li img{
+    width: 100%;
+    margin-bottom: 3%;
+    border: 1px solid #000000;
+}
+ul.f-trial li b,
+ul.p-trial li b{
+    font-size: 1.6rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 7%;
+}
+ul.f-trial li a,
+ul.p-trial li a{
+    width: 100px;
+    height:30px;
+    background: #000;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 30px;
+    font-size: 1.2rem;
+    margin: 0 auto 5%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: block;
+}
+.fc-container .content-15{
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #c4c4c4;
+}
+.fc-container .content-15>img {
+    width: 12%;
+    margin: 5% auto 5%;
+}
+.fc-container .content-15 div.f-questions {
+    width: 60%;
+    overflow: hidden;
+    margin: 0 auto 6%;
+}
+div.f-questions div {
+    float: left;
+    width: 45%;
+    margin-right: 10%;
+}
+div.f-questions div:last-child{
+    margin: 0;
+}
+div.f-questions p{
+    display: block;
+    overflow: hidden;
+    margin-bottom: 4%;
+}
+div.f-questions p img {
+    width: 5%;
+    float: left;
+}
+div.f-questions p b {
+    width: 90%;
+    display: block;
+    float: left;
+    font-size: 1.5rem;
+    margin-left: 3%;
+    padding-bottom: 3%;
+    border-bottom: 1px solid #000000;
+}
+div.f-questions p em {
+    width: 90%;
+    display: block;
+    float: left;
+    font-style: normal;
+    font-size: 1.4rem;
+    margin: 0 0 10% 3%;
+}
+
+.fc-container .content-last{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.fc-container .content-last div.f-course {
+    width: 60%;
+    overflow: hidden;
+    margin: 6% auto 5%;
+}
+.content-last .f-course>img {
+    width: 25%;
+    margin-top: 0;
+    margin-left: 0;
+    margin-bottom: 5%;
+}
+.f-course table {
+    width: 100%;
+    font-size: 1.7rem;
+    color: #323232;
+    text-align: left;
+}
+.f-course table td {
+    padding: 20px;
+    vertical-align: top;
+}
+.f-course table thead td {
+    border-top: 1px solid #323232;
+    border-bottom: 1px solid #323232;
+}
+.f-course table a {
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    color: #FFFFFF;
+    background: #ff1415;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 2%;
+}
+
+
+.pc-container .commons-content {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+.pc-container .content-1 {
+    width: 100%;
+    position: relative;
+    background: url("../img/part_banner.jpg") no-repeat center center;
+    overflow: hidden;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+}
+.pc-container .content-1>img {
+    width: 40%;
+    margin: 0 auto;
+    padding: 10% 0 2%;
+    display: block;
+}
+.pc-container .content-1>span {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-bottom: 10%;
+    font-size: 2.0rem;
+    color: #FFFFFF;
+}
+
+.pc-container .content-2 {
+    background: #f7f6f6;
+}
+.pc-container .content-2>img {
+    width: 25%;
+    margin: 8% auto 3%;
+}
+.pc-container .content-2 ul {
+    width: 60%;
+    display: block;
+    margin: 0 auto 7%;
+    overflow: hidden;
+}
+.pc-container .content-2 ul li {
+    width: 24%;
+    float: left;
+    margin-right: 14%;
+}
+.pc-container .content-2 ul li:last-child {
+    margin: 0;
+}
+.pc-container .content-2 ul li img {
+    width: 80%;
+    margin: 0 auto 20%;
+}
+.pc-container .content-2 ul li b {
+    font-size: 1.4rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5%;
+    display: block;
+}
+.pc-container .content-2 ul li em {
+    font-style: normal;
+    font-size: 1.3rem;
+    color: #323232;
+
+}
+
+.pc-container .content-3 {
+    background: url("../img/part_bg.jpg") no-repeat center center;
+}
+.pc-container .content-3 .student-1{
+    width: 60%;
+    margin: 0 auto;
+    padding: 10% 0 8%;
+    display: block;
+    overflow: hidden;
+}
+.content-3 .student-1>img{
+    width: 19%;
+    float: left;
+    margin-right: 10%;
+}
+.content-3 .student-1-info {
+    width: 70%;
+    float: right;
+}
+.content-3 .student-1-info :first-child {
+    float: left;
+    margin-top: 5%;
+    margin-right: 3%;
+    width: 4%;
+}
+.content-3 .student-1-info :nth-child(3) {
+    float: right;
+    margin-top: 5%;
+    width: 4%;
+}
+.content-3 .student-1-info p {
+    width: 86%;
+    display: block;
+    margin-top: 5%;
+    font-size: 1.6rem;
+    line-height: 2.5rem;
+    float: left;
+}
+.content-3 .student-1-info b {
+    width: 100%;
+    text-align: right;
+    font-size: 1.4rem;
+    padding-top: 3%;
+    clear: both;
+    display: block;
+}
+.content-3 .student-1-info em {
+    width: 100%;
+    text-align: right;
+    font-size: 1.2rem;
+    font-style: normal;
+    clear: both;
+    display: block;
+    color: #323232;
+    margin-top: 1%;
+}
+
+.pc-container .content-4 {
+    background: url("../img/index_bg3.jpg") no-repeat top right #f1f1f1;
+}
+.pc-container .content-4>img {
+    width: 12%;
+    margin: 0 auto;
+    padding: 5% 0 2%;
+}
+.pc-container .content-4>p {
+    width: 100%;
+    font-size: 1.6rem;
+    text-align: center;
+    display: block;
+}
+.pc-container .content-4 ul.p-teaching {
+    width: 30%;
+    margin: 0 auto;
+    padding: 3% 0 5%;
+    overflow: hidden;
+}
+ul.p-teaching li {
+    width: 40%;
+    margin-right: 20%;
+    float: left;
+}
+ul.p-teaching li:last-child {
+    margin: 0;
+}
+ul.p-teaching li img {
+    width: 80%;
+    margin: 0 auto;
+}
+ul.p-teaching li b {
+    font-size: 1.8rem;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin-top: 8%;
+}
+ul.p-teaching li em {
+    font-size: 1.4rem;
+    font-style: normal;
+    width: 100%;
+    color: #323232;
+    margin-top: 7%;
+    display: inline-block;
+    line-height: 2rem;
+}
+
+.pc-container .content-5 div.p-course {
+    width: 56%;
+    margin: 5% auto 5%;
+    overflow: hidden;
+    display: block;
+}
+.p-course b{
+    width: 100%;
+    padding: 1% 0;
+    text-align: left;
+    display: block;
+    border-bottom: 1px solid #323232;
+    font-size: 1.8rem;
+}
+.p-course .no-border div {
+    border-bottom: 1px solid #e6e6e6;
+}
+.p-course a {
+    width: 100%;
+    padding: 2%;
+    text-align: left;
+    font-size: 1.6rem;
+    display: block;
+    color: #000;
+}
+.p-course a img {
+    float: right;
+    margin-right: 4%;
+    margin-top: 0.5%;
+
+    -webkit-transition: transform 0.3s;
+    -moz-transition: transform 0.3s;
+    -ms-transition: transform 0.3s;
+    -o-transition: transform 0.3s;
+    transition: transform 0.3s;
+
+    transform-origin: 50% 50%;
+}
+.p-course ul {
+    width: 100%;
+    overflow: hidden;
+    list-style-type: disc;
+    list-style-position: inside;
+    padding-left: 4%;
+    background: #FFFFFF;
+
+    display: block;
+}
+.p-course ul li {
+    width: 100%;
+    padding: 2% 0;
+    font-size: 1.6rem;
+}
+
+.p-course .showing a img {
+    transform: rotate(90deg);
+}
+.p-course .js-ani {
+    height: 0;
+}
+/*css动画*/
+/*.p-course ul {*/
+    /*transform-origin: 50% 0;*/
+
+    /*transform: scale(1, 0);*/
+    /*display: none;*/
+/*}*/
+/*.p-course .ul-show-add,*/
+/*.p-course .ul-show-remove {*/
+    /*transition: all 0.3s;*/
+    /*display: block;*/
+/*}*/
+/*.p-course .ul-show {*/
+    /*display: block;*/
+    /*background: #fff2be;*/
+    /*transform: scale(1, 1);*/
+/*}*/
+/*.p-course .ul-show-add.ul-show-add-active{*/
+    /*background: #fff2be;*/
+    /*transform: scale(1, 1);*/
+/*}*/
+/*.p-course .ul-show-remove.ul-show-remove-active{*/
+    /*transform: scale(1, 0);*/
+    /*background: #FFFFFF;*/
+/*}*/
+
+.pc-container .content-5>a {
+    width: 190px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    text-align: center;
+    float: right;
+    margin-right: 22%;
+    margin-bottom: 7%;
+    display: block;
+    background: #4b9d19;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.pc-container .content-6 {
+    background: url("../img/full_bg5.jpg") no-repeat #e5e5e5;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.pc-container .content-6>img {
+    width: 14%;
+    margin: 0 auto;
+    padding: 6% 0 1%;
+}
+.pc-container .content-6>p {
+    width: 100%;
+    text-align: center;
+    font-size: 1.6rem;
+    display: block;
+}
+.pc-container .content-6>b {
+    width: 100%;
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 5% 0 2%;
+    display: block;
+}
+.pc-container .content-6 ul.p-teachers {
+    width: 50%;
+}
+.pc-container .content-6 ul.p-teachers li {
+    width: 29%;
+}
+.pc-container .content-6 .p-sp-guest {
+    width: 50%;
+    display: block;
+    margin: 5% auto;
+    overflow: hidden;
+}
+.p-sp-guest>img{
+    width: 26%;
+    margin-top: 10%;
+    margin-left: 7%;
+    float: left;
+}
+.p-sp-guest div{
+    width: 50%;
+    float: right;
+    margin-right: 7%;
+}
+.p-sp-guest div b {
+    font-size: 2.5rem;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 12%;
+    display: block;
+}
+.p-sp-guest div p {
+    font-size: 1.6rem;
+    display: block;
+    text-align: left;
+    margin-bottom: 2%;
+}
+.p-sp-guest div em {
+    font-style: normal;
+    font-size: 1.3rem;
+    text-align: left;
+    margin-bottom: 2%;
+    color: #323232;
+    display: block;
+}
+.p-sp-guest div p:last-child {
+    font-size: 1.3rem;
+    color: #323232;
+}
+
+.pc-container .content-7>img {
+    width: 14%;
+    margin: 6% auto 3%;
+    display: block;
+}
+.pc-container .content-7 div.p-gallery {
+    width: 60%;
+    display: block;
+    overflow: hidden;
+    margin: 0 auto 6%;
+}
+div.p-gallery .p-groups {
+    display: block;
+    float: left;
+}
+div.p-gallery .p-1 {
+    width: 49%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+}
+div.p-gallery .p-2,
+div.p-gallery .p-3{
+    width: 24%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+}
+div.p-gallery div{
+    width: 25%;
+    margin-right: 1%;
+    float: left;
+}
+div.p-gallery div .p-4 {
+    margin-bottom: 4%;
+}
+div.p-gallery .p-6 {
+    width: 23%;
+    margin-right: 1%;
+}
+div.p-gallery .p-7 {
+    width: 49%;
+    margin-right: 1%;
+}
+
+.pc-container .content-8 {
+    background: url("../img/full_bg6.jpg") no-repeat center center;
+}
+.pc-container .content-8>img:first-child {
+    width: 25%;
+    margin: 0 auto;
+    padding-top: 8%;
+}
+.pc-container .content-8>img:nth-child(2) {
+    width: 6%;
+    margin: 4% auto 0;
+}
+.pc-container .content-8>img:nth-child(3),
+.pc-container .content-8>img:nth-child(6){
+    width: 50%;
+    margin: 2% auto 0;
+}
+.pc-container .content-8>img:nth-child(4),
+.pc-container .content-8>img:nth-child(7){
+    width: 30%;
+    margin: 2% auto 0;
+}
+.pc-container .content-8 a {
+    width: 120px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 1.4rem;
+    color: #FFFFFF;
+    background: #ff1415;
+    display: block;
+    text-align: center;
+    margin: 3% auto 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.pc-container .content-8>img:last-child {
+    width: 50%;
+    margin: 3% auto 3%;
+}
+
+.pc-container .content-10 {
+    background: #c4c4c4;
+}
+.pc-container .content-10>img {
+    width: 13%;
+    margin: 5% auto;
+}
+.pc-container .content-10 .p-questions {
+    width: 60%;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 5%;
+    overflow: hidden;
+}
+.p-questions div{
+    width: 45%;
+    float: left;
+}
+.p-questions div:first-child {
+    margin-right: 10%;
+}
+.p-questions p{
+    width: 100%;
+    margin-bottom: 4%;
+}
+.p-questions img{
+    width: 5%;
+    float: left;
+}
+.p-questions b {
+    display: inline-block;
+    width: 90%;
+    margin-left: 5%;
+    padding-bottom: 3%;
+    border-bottom: 1px solid #323232;
+    font-size: 1.5rem;
+    text-align: left;
+}
+.p-questions em {
+    display: inline-block;
+    width: 90%;
+    margin-left: 5%;
+    font-size: 1.4rem;
+    text-align: left;
+    font-style: normal;
+    color: #323232;
+    padding-bottom: 8%;
+}
+
+.pc-container .content-11 .p-courses {
+    width: 60%;
+    margin: 7% auto;
+}
+.p-courses>img {
+    width: 25%;
+    margin-top: 0;
+    margin-left: 0;
+    margin-bottom: 5%;
+}
+.p-courses table {
+    width: 100%;
+}
+.p-courses table td {
+    font-size: 1.6rem;
+    padding: 20px;
+    vertical-align: top;
+}
+.p-courses thead td {
+    border-top: 1px solid #b7b7b7;
+    border-bottom: 1px solid #b7b7b7;
+}
+.p-courses tbody td a {
+    width: 100px;
+    height: 35px;
+    display: block;
+    line-height: 35px;
+    text-align: center;
+    color: #FFFFFF;
+    background: #ff1415;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    margin-top: 4%;
+}
+
+div.app-form {
+    width: 100%;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    background: url("../img/fill_in_course_bg.jpg") no-repeat top center;
+}
+div.app-form form {
+    width: 35%;
+    min-width: 580px;
+    margin: 3% auto;
+    background: #FFFFFF;
+    display: block;
+}
+div.app-form form h2 {
+    width: 100%;
+    text-align: center;
+    font-weight: normal;
+    padding-top: 2%;
+    display: block;
+    font-size: 2.4rem;
+}
+div.app-form form .c-1 {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #b3b3b3;
+}
+.app-form .c-1 em,
+.app-form .c-10 em,
+.app-form label em{
+    font-style: normal;
+    color: #ff1415;
+}
+.app-form .c-2 {
+    width: 75%;
+    margin: 4% auto 0;
+    border-top: 1px solid #cbcbcb;
+    border-bottom: 1px solid #cbcbcb;
+    padding: 2% 0;
+    display: block;
+    overflow: hidden;
+}
+.app-form .c-2>span {
+    display: block;
+    float: left;
+    padding-left: 3%;
+    margin-right: 3%;
+    font-size: 1.6rem;
+}
+span.c-radio {
+    background: url("../img/default.jpg") no-repeat left center;
+}
+span.c-radio.c-checked {
+    background: url("../img/checked.jpg") no-repeat left center;
+}
+
+.app-form p {
+    width: 90%;
+    margin: 4% auto 0;
+    display: block;
+}
+.app-form p label {
+    width: 24%;
+    text-align: right;
+    font-size: 1.4rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+.app-form p input {
+    margin-left: 2%;
+    height: 17px;
+    background: #F6F6F6;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 1.6rem;
+    vertical-align: middle;
+    width: 35%;
+    padding: 10px;
+}
+.app-form p i {
+    font-style: normal;
+    color: #ff1415;
+    font-size: 1.2rem;
+    margin-left: 2%;
+    vertical-align: middle;
+}
+.app-form p select {
+    margin-left: 2%;
+    height: 35px;
+    width: 15%;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    vertical-align: middle;
+
+}
+.app-form .c-3>span,
+.app-form .c-7>span,
+.app-form .c-8>span
+{
+    font-size: 1.4rem;
+    margin-left: 3%;
+    padding-left: 3%;
+}
+.app-form .c-9 {
+    width: 75%;
+    margin: 5% auto 0;
+    padding: 4% 0 2%;
+    border-top: 1px solid #cbcbcb;
+    display: block;
+    overflow: hidden;
+}
+.app-form .c-9.c-hide * {
+    display: none;
+}
+.app-form .c-9 label {
+    width: 85%;
+    margin: 0 auto;
+    text-align: left;
+    display: block;
+}
+.app-form .c-9 textarea {
+    width: 80%;
+    margin: 1% auto 3%;
+    display: block;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #dbdbdb;
+    resize: none;
+    font-size: 1.6rem;
+}
+.app-form a {
+    width: 120px;
+    height: 35px;
+    line-height: 35px;
+    color: #FFFFFF;
+    background: #ff1415;
+    font-size: 1.6rem;
+    text-align: center;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+.app-form a.shaking,
+a.shaking{
+    -webkit-animation-name: shake;
+    -moz-animation-name: shake;
+    -o-animation-name: shake;
+    animation-name: shake;
+    animation-duration: 500ms;
+}
+.app-form .c-10 {
+    width: 100%;
+    display: block;
+    padding: 3% 0;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.user-center {
+    width: 61%;
+    margin: 3% auto;
+    overflow: hidden;
+    display: block;
+}
+.user-center .navigator {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    border-bottom: 1px solid #dbdbdb;
+}
+.navigator li {
+    float: left;
+    margin: 0 2%;
+    width: 10%;
+    padding: 10px;
+}
+.navigator li a {
+    font-size: 1.6rem;
+    color: #323232;
+    text-align: center;
+}
+.user-center .view-container,
+.view-container form,
+.view-container .modify-password{
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+.view-container form>p {
+    width: 70%;
+    margin: 3% auto 0;
+    display: block;
+}
+.view-container form>p label {
+    width: 25%;
+    text-align: right;
+    font-size: 1.5rem;
+    display: inline-block;
+    vertical-align: middle;
+
+}
+.view-container form>p input {
+    width: 35%;
+    height: 17px;
+    padding: 10px;
+    font-size: 1.5rem;
+    text-align: left;
+    vertical-align: middle;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    margin-left: 2%;
+    background: #F6F6F6;
+}
+.view-container .p-1 b {
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin-left: 2%;
+}
+.view-container .p-1 a {
+    font-size: 1.2rem;
+    color: #ff1415;
+    margin-left: 2%;
+    text-decoration: underline;
+}
+/*.view-container .p-1 .modify {*/
+    /*display: inline-block;*/
+/*}*/
+/*.view-container .p-1 .editing {*/
+    /*display: none;*/
+/*}*/
+.view-container .p-5 em {
+    color: #ff1415;
+    margin-right: 1%;
+    vertical-align: middle;
+    font-style: normal;
+}
+.view-container form>a,
+.modify-password>a{
+    width: 160px;
+    height: 36px;
+    margin: 5% auto;
+    display: block;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 36px;
+    color: #FFFFFF;
+    background: #ff1415;
+    border-radius: 5px;
+}
+
+.user-form span.c-radio {
+    font-size: 1.4rem;
+    margin-left: 2%;
+    padding-left: 2%;
+}
+.user-form .p-5 select {
+    height: 35px;
+    width: 14%;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    /* background: #f6f6f6; */
+    margin-left: 2%;
+    vertical-align: middle;
+}
+
+.user-form .user-avatar {
+    position: absolute;
+    width: 130px;
+    height: 160px;
+    top: 5%;
+    right: 15%;
+}
+.user-form .user-avatar>div {
+    width: 130px;
+    height: 130px;
+    border-radius: 75px;
+    overflow: hidden;
+}
+.user-form .user-avatar>a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: underline;
+    color: #ff1415;
+    font-size: 1.4rem;
+    margin-top: 6%;
+}
+
+.modify-password p {
+    width: 100%;
+    display: block;
+    margin-bottom: 3%;
+}
+.modify-password p label {
+    width: 40%;
+    text-align: right;
+    font-size: 1.5rem;
+    display: inline-block;
+}
+.modify-password p input {
+    width: 25%;
+    height: 17px;
+    padding: 10px;
+    border: 1px solid #dbdbdb;
+    background: #f6f6f6;
+    border-radius: 5px;
+    margin-left: 2%;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.6rem;
+}
+
+form.modify-password>a {
+    margin-left: 35%;
+}
+form.modify-password span {
+    width: 35%;
+    height: 16px;
+    display: inline-block;
+    overflow: hidden;
+    margin-left: 28%;
+    margin-top: 1%;
+}
+.modify-password span em {
+    width: 70%;
+    margin: 0 auto;
+    color: #ff0000;
+    font-size: 12px;
+    font-size: 1.2rem;
+    text-align: left;
+    font-style: normal;
+}
+
+.about-container {
+    width:40%;
+    display: block;
+    overflow: hidden;
+    margin: 3% auto;
+    position: relative;
+    z-index: 10;
+}
+.about-container>span {
+    width: 24%;
+    font-size: 1.8rem;
+    background: #000;
+    color: #FFFFFF;
+    text-align: left;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 2%;
+    margin-bottom: 4%;
+}
+.about-container>p {
+    width: 100%;
+    text-indent: 3rem;
+    font-size: 1.5rem;
+    line-height: 2.0rem;
+    margin-bottom: 10%;
+}
+.about-container .works {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+.about-container .works>img {
+    width: 12%;
+    display: block;
+    float: left;
+}
+.about-container .works .video-info {
+    width: 80%;
+    float: left;
+    display: block;
+    margin-left: 8%;
+}
+.video-info div {
+    width: 100%;
+    height: 350px;
+    background: #000;
+    margin-bottom: 5%;
+}
+.video-info p {
+    width: 100%;
+    text-indent: 3rem;
+    font-size: 1.5rem;
+    line-height: 2.0rem;
+    margin-bottom: 10%;
+}
+.bg-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+.bg-container img {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+.bg-container img:nth-child(1) {
+    animation: fade1 24s linear 0s infinite;
+}
+.bg-container img:nth-child(2) {
+    animation: fade2 24s linear 0s infinite;
+}
+.bg-container img:nth-child(3) {
+    animation: fade3 24s linear 0s infinite;
+}
+@keyframes fade1 {
+    0% {
+        opacity: 0;
+    }
+    17% {
+        opacity: 1;
+    }
+    34% {
+        opacity: 0;
+    }
+}
+@keyframes fade2 {
+    0% {
+        opacity: 0;
+    }
+    34% {
+        opacity: 0;
+    }
+    51% {
+        opacity: 1;
+    }
+    67% {
+        opacity: 0;
+    }
+}
+@keyframes fade3 {
+    0% {
+        opacity: 0;
+    }
+    67% {
+        opacity: 0;
+    }
+    84% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }

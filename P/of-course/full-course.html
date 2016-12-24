@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="OCApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <script src="../../framework/1.4.7/angular.min.js"></script>
+    <script src="../../jquery.js"></script>
+
+    <script src="directives/c-component.directive.js"></script></head>
+    <script src="directives/to-top.directive.js"></script>
+    <script src="directives/float-bar.directives.js"></script>
+<body ng-controller="FullCourseController as vm">
+<div class="fc-container">
+    <c-header current="2"></c-header>
+    <div class="menu menu-bg"></div>
+    <div class="content-1">
+        <div>
+            <img src="img/full_title.png" alt="" width="37%"/>
+            <span>(8周&nbsp;&nbsp;&nbsp;&nbsp;192课时)</span>
+        </div>
+    </div>
+    <float-bar items="vm.barItems"></float-bar>
+    <div class="content-2">
+        <img src="img/full_title2.png" alt="" width="20%"/>
+        <ul>
+            <li>
+                <img src="img/full2_icon3.png" alt=""/>
+                <b>精心安排的教学课程</b>
+                <em>零基础开始学习创意课程，8周成为创意编程专家。</em>
+            </li>
+            <li>
+                <img src="img/full2_icon.png" alt=""/>
+                <b>全方位的创业支持</b>
+                <em>对接孵化器和众筹平台，把设计创新转换为创业项目。</em>
+            </li>
+            <li>
+                <img src="img/full2_icon2.png" alt=""/>
+                <b>丰富多彩的学生生活</b>
+                <em>完善的课程内容和精彩的交流时间让你的学习生活丰富多彩。</em>
+            </li>
+            <li>
+                <img src="img/full2_icon4.png" alt=""/>
+                <b>完善你的作品集</b>
+                <em>运用创意编程制作三件以上的作品，并加入到你的作品集。</em>
+            </li>
+            <li>
+                <img src="img/full2_icon5.png" alt=""/>
+                <b>经验丰富的教师团队</b>
+                <em>老师团队由国内外最好的创意编程专家组成。</em>
+            </li>
+        </ul>
+    </div>
+    <div class="content-3">
+        <img src="img/full_title3.png" alt=""/>
+        <p>设计创新一直被低估，人们不敢相信设计师能当CEO。但是Airbnb的三个联合创始人里有两位是设计师。
+            <br/>越来越多的企业和投资人开始认可设计师创立的公司。
+        </p>
+        <ul>
+            <li>
+                <img src="img/full3_circle.png" alt=""/>
+                <span>
+                    <b>项目孵化器</b>
+                    <em>OF COURSE与多家创业孵化器合作，让创新项目快速成长。</em>
+                </span>
+            </li>
+            <li>
+                <img src="img/full3_circle.png" alt=""/>
+                <span>
+                    <b>登陆众筹平台</b>
+                    <em>帮助我们学生的产品登录各大众筹平台，筹措启动资金。</em>
+                </span>
+            </li>
+            <li>
+                <img src="img/full3_circle.png" alt=""/>
+                <span>
+                    <b>人脉网络</b>
+                    <em>对接OF COURSE的全球人脉网络并与业内精英见面交流。</em>
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div class="content-4">
+        <img src="img/teacher.png" alt=""/>
+        <div class="teacher-info">
+            <img src="img/quot_l.png" alt=""/>
+            <p>我总觉的学习代码很难而且经常让人崩溃。但是，当我上了几节这里的课程后，我发现写代码其实非常好玩。我只需要简单的几步就可以做出惊人的视觉效果。我强烈推荐OF COURSE！</p>
+            <img src="img/quot_r.png" alt=""/>
+            <b>卢霆希 Nelson Lo</b>
+            <span>时装、跨界别设计师 <br/>中央电视台创意星空冠军设计师</span>
+        </div>
+    </div>
+    <div class="content-5">
+        <img src="img/full_title4.png" alt=""/>
+    </div>
+    <div class="content-6">
+        <p>科学合理的安排学员每天的学习内容，通过教学、动手、提问和交流有效的巩固整个知识体系。
+            <br/>每一个环节都鼓励学员自由开展想象力。
+        </p>
+        <table cellpadding="0" cellspacing="0" class="c-schedule">
+            <tbody>
+            <tr>
+                <td class="f1">9:00-12:00</td>
+                <td class="s2">基础课程学习</td>
+                <td class="t3">学习创意编程，物理运算等基础课程，掌握老师所教授的内容。</td>
+            </tr>
+            <tr>
+                <td class="f1">12:00-13:00</td>
+                <td class="s2">与访问学者共进午餐 <br/>(自由选择)</td>
+                <td class="t3">不定期会有访问学者，创意公司总监等来访。可以选择与他们共进午餐，互相交谈，了解不同行业的点滴。也许你们也能成为朋友。</td>
+            </tr>
+            <tr>
+                <td class="f1">13:00-15:45</td>
+                <td class="s2">制作作品并提问</td>
+                <td class="t3">针对上午学习的内容，巩固所学的知识。学员可以自由拟订主题设计制作一个初步的作品。</td>
+            </tr>
+            <tr>
+                <td class="f1">15:45-16:00</td>
+                <td class="s2 tea-time">
+                    下午茶 <img src="img/tea.png" alt=""/>
+                </td>
+                <td class="t3">课间休息必不可少。OF COURSE为学员准备了美味的甜点和饮料，大家放松一下，在放上一曲舒缓的音乐。</td>
+            </tr>
+            <tr>
+                <td class="f1">16:00-17:00</td>
+                <td class="s2">每日回顾</td>
+                <td class="t3">老师会对一天所学的知识进行一个总结与回顾，点评学生中优秀的想法与实践作品。</td>
+            </tr>
+            <tr>
+                <td class="f1">17:00-18:00</td>
+                <td class="s2">互相交流 <br/>(自由选择)</td>
+                <td class="t3">开放式的环境给每个人一个交流的机会，大家或许可以互相交谈聊天，或者约出去吃个晚饭吧。</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="content-4">
+        <img src="img/people2.png" alt=""/>
+        <div class="teacher-info">
+            <img src="img/quot_l.png" alt=""/>
+            <p>我很喜欢上OF COURSE的课，感觉很cool，很有氛围。来的人也都是有共同兴趣的人，所以一起上课感觉很有动力。一天下来，其实还是很饱和的。因为教的内容也比较多，老师教的比较细致，课要一直上到下午，会感觉有些疲惫，但确实感受到课程很充实。</p>
+            <img src="img/quot_r.png" alt=""/>
+            <b>程恺 kAi</b>
+            <span>Apple产品设计实习生 <br/>人人网GUI设计师</span>
+        </div>
+    </div>
+    <div class="content-7">
+        <img src="img/full_title5.png" alt=""/>
+        <p>你在沉浸式课程中会学到以下内容：</p>
+        <ul class="teaching">
+            <li>
+                <img src="img/full_icon.png" alt=""/>
+                <b>openFrameworks</b>
+                <em>诞生于美国帕森斯设计学院的强大创意编程工具，它能让人们实现传统工具无法实现的神奇互动。</em>
+            </li>
+            <li>
+                <img src="img/full_icon2.png" alt=""/>
+                <b>智能硬件</b>
+                <em>智能硬件是一个新的科技概念，通过软硬件结合的方式，对传统设备进行改造，进而让其拥有智能化的功能。</em>
+            </li>
+            <li>
+                <img src="img/full_icon3.png" alt=""/>
+                <b>数字娱乐</b>
+                <em>对当今主流的商业化开发软件的应用原理及实际案例讲解分析让您掌握3D数字视听互动效果在娱乐产业中的具体创作方法.</em>
+            </li>
+        </ul>
+    </div>
+    <div class="content-8">
+        <table cellspacing="0" cellpadding="0" class="c-plan">
+            <tbody>
+            <tr>
+                <td class="f1">第一周</td>
+                <td class="s2">创意编程基础</td>
+            </tr>
+            <tr>
+                <td class="f1">第二周</td>
+                <td class="s2">演算动画和Arduino基础</td>
+            </tr>
+            <tr>
+                <td class="f1">第三周</td>
+                <td class="s2">生成艺术可参数化设计</td>
+            </tr>
+            <tr>
+                <td class="f1">第四周</td>
+                <td class="s2">交互式影音系统和新媒体演出</td>
+            </tr>
+            <tr>
+                <td class="f1">第五周</td>
+                <td class="s2">声音可视化和移动应用</td>
+            </tr>
+            <tr>
+                <td class="f1">第六周</td>
+                <td class="s2">数据可视化和虚拟现实</td>
+            </tr>
+            <tr>
+                <td class="f1">第七周</td>
+                <td class="s2">着色器基础和可穿戴设备</td>
+            </tr>
+            <tr>
+                <td class="f1">第八周</td>
+                <td class="s2">毕业作品展览</td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="javascript:void(0);" class="download">下载教学大纲</a>
+    </div>
+    <div class="content-9">
+        <img src="img/full_title6.png" alt=""/>
+        <p>在OF COURSE的全职课程中你将制作超过三个高度完成的作品。
+            <br/> 更有机会通过组队合作的方式参与真实公司项目。</p>
+        <p>例如</p>
+
+        <p class="dot">.</p>
+
+        <p class="dot">.</p>
+
+        <p class="dot">.</p>
+    </div>
+    <div class="content-10">
+        <div class="float-left">
+            <img src="img/full9_pic.jpg" alt=""/>
+            <p class="project">
+                <img src="img/full9_icon.jpg" alt=""/>
+                <span>
+                    <b>关爱自闭儿童项目</b>
+                    <em>星缘守护自闭症儿童关爱公益组织</em>
+                </span>
+            </p>
+            <p class="introduction">
+                星缘守护项目是有中华儿童慈善救助基金会与星缘守护公益团队合作开展的公益活动项目。OF COURSE希望学员通过自己所学知识，结合自闭症儿童群体的特殊需求，带给他们一种体验科技的有趣过程。希望自闭症儿童可以再次敞开他们的心窗，去拥抱这个美好的世界。
+            </p>
+            <div class="founder">
+                <span>何宁宁</span><em>董事长、创始人</em>
+                <p>非常高兴和OF COURSE合作。我们共同的期许和愿望是一致的，就是帮助自闭症儿童走出他们狭小的世界，快乐的生活。</p>
+            </div>
+        </div>
+        <div class="float-right">
+            <img src="img/full9_pic2.jpg" alt=""/>
+            <p class="project">
+                <img src="img/full9_icon2.jpg" alt=""/>
+                <span>
+                    <b>音乐可视化项目</b>
+                    <em>看见音乐-中国第一独立音乐品牌</em>
+                </span>
+            </p>
+            <p class="introduction">
+                "看见音乐"是一个创新的存在，是全新互联网独立音乐互动平台，由一伙热爱音乐的互联网人打造。独立音乐无可取代，所以我们更加责无旁贷。独立音乐无处不在，所以我们更加相信未来。我们期望让更多人了解独立音乐的存在，让更多人看见独立音乐的未来。
+            </p>
+            <div class="founder">
+                <span>沈嘉</span><em>CEO</em>
+                <p>相信独立音乐搭载着这些创意创新的科技，可以将音乐的魅力发挥到一个新的境界和水准！非常期待大家的想法与作品。</p>
+            </div>
+        </div>
+    </div>
+    <div class="content-11">
+        <img src="img/full_title7.png" alt=""/>
+        <p>优秀的教师，才能成就优秀的你</p>
+        <b>课程讲师</b>
+        <ul class="f-teachers">
+            <li>
+                <img src="img/teacher2.png" alt=""/>
+                <p>鹏程 Paul Cheng</p>
+                <em>帕森斯设计学院特聘讲师
+                    <br/>OF COURSE创始人
+                </em>
+                <span>毕业于纽约帕森斯设计学院，获得设计与科技硕士学位。他专注于通过多种视觉媒体（如游戏，机器人和互动装置等）研究用电脑技术探索不同文化的差异。</span>
+            </li>
+            <li>
+                <img src="img/teacher3.png" alt=""/>
+                <p>Jason Levine</p>
+                <em>
+                    音乐家，表演家
+                    <br/>计算机诗人
+                </em>
+                <span>杰森·莱文是音乐家，表演家和计算机诗人。秉承连接不同艺术学科的使命，他视计算机语言为沟通不同媒体的通用语言。</span>
+            </li>
+            <li>
+                <img src="img/teacher2.png" alt=""/>
+                <p>鹏程 Paul Cheng</p>
+                <em>帕森斯设计学院特聘讲师
+                    <br/>OF COURSE创始人
+                </em>
+                <span>毕业于纽约帕森斯设计学院，获得设计与科技硕士学位。他专注于通过多种视觉媒体（如游戏，机器人和互动装置等）研究用电脑技术探索不同文化的差异。</span>
+            </li>
+            <li>
+                <img src="img/teacher3.png" alt=""/>
+                <p>Jason Levine</p>
+                <em>
+                    音乐家，表演家
+                    <br/>计算机诗人
+                </em>
+                <span>杰森·莱文是音乐家，表演家和计算机诗人。秉承连接不同艺术学科的使命，他视计算机语言为沟通不同媒体的通用语言。</span>
+            </li>
+        </ul>
+        <b>特邀嘉宾</b>
+        <div class="f-sp-guest">
+            <img src="img/special.png" alt=""/>
+            <div>
+                <p>Steven Travis</p>
+                <em>
+                    帕森斯设计与科技研究生院创始人 <br/>
+                    帕森斯媒体和设计副教授
+                </em>
+            <span>
+                认识Sven的人都知道他是个高个子的光头大汉，喜欢说没有人听得懂的笑话。他总喜欢把音乐的音量开的很高，以至于有时候别人找上门来让他把声音开小。他在威斯康星长大，所以他是绿湾包装工队和威斯康星大学麦迪逊分校橄榄球队的铁粉。他酷爱骑自行车和滑雪。此刻他是素食主义者。
+            </span>
+            </div>
+        </div>
+        <b>嘉宾</b>
+        <ul class="f-guests">
+            <li>
+                <img src="img/guest_renyuan.png" alt=""/>
+                <p>任远</p>
+                <em>
+                    设计师、工程师 <br/>
+                    《Processing互动编程》作者
+                </em>
+            </li>
+            <li>
+                <img src="img/guest_renyuan.png" alt=""/>
+                <p>任远</p>
+                <em>
+                    设计师、工程师 <br/>
+                    《Processing互动编程》作者
+                </em>
+            </li>
+            <li>
+                <img src="img/guest_renyuan.png" alt=""/>
+                <p>任远</p>
+                <em>
+                    设计师、工程师 <br/>
+                    《Processing互动编程》作者
+                </em>
+            </li>
+            <li>
+                <img src="img/guest_renyuan.png" alt=""/>
+                <p>任远</p>
+                <em>
+                    设计师、工程师 <br/>
+                    《Processing互动编程》作者
+                </em>
+            </li>
+            <li>
+                <img src="img/guest_renyuan.png" alt=""/>
+                <p>任远</p>
+                <em>
+                    设计师、工程师 <br/>
+                    《Processing互动编程》作者
+                </em>
+            </li>
+            <li>
+                <img src="img/guest_renyuan.png" alt=""/>
+                <p>任远</p>
+                <em>
+                    设计师、工程师 <br/>
+                    《Processing互动编程》作者
+                </em>
+            </li>
+            <li>
+                <img src="img/guest_renyuan.png" alt=""/>
+                <p>任远</p>
+                <em>
+                    设计师、工程师 <br/>
+                    《Processing互动编程》作者
+                </em>
+            </li>
+            <li>
+                <img src="img/guest_renyuan.png" alt=""/>
+                <p>任远</p>
+                <em>
+                    设计师、工程师 <br/>
+                    《Processing互动编程》作者
+                </em>
+            </li>
+        </ul>
+    </div>
+    <div class="content-12">
+        <img src="img/full_title8.png" alt=""/>
+        <div class="f-gallery">
+            <a href="javascript:void(0);" class="p-1">
+                <img src="img/condition1.jpg" alt="" width="100%"/>
+            </a>
+            <a href="javascript:void(0);" class="p-2">
+                <img src="img/condition2.jpg" alt="" width="100%"/>
+            </a>
+            <a href="javascript:void(0);" class="p-3">
+                <img src="img/condition3.jpg" alt="" width="100%"/>
+            </a>
+            <div class="p-g">
+                <a href="javascript:void(0);" class="p-4">
+                    <img src="img/condition4.jpg" alt="" width="100%"/>
+                </a>
+                <a href="javascript:void(0);" class="p-5">
+                    <img src="img/condition5.jpg" alt="" width="100%"/>
+                </a>
+            </div>
+            <a href="javascript:void(0);" class="p-6">
+                <img src="img/condition6.jpg" alt="" width="100%"/>
+            </a>
+            <a href="javascript:void(0);" class="p-7">
+                <img src="img/condition7.jpg" alt="" width="100%"/>
+            </a>
+        </div>
+    </div>
+    <div class="content-13">
+        <img src="img/full_title9.png" alt=""/>
+        <img src="img/shanghai.png" alt=""/>
+        <img src="img/table.png" alt=""/>
+        <img src="img/gift1.png" alt=""/>
+        <a href="javascript:void(0);">立即报名</a>
+        <img src="img/phone.png" alt=""/>
+    </div>
+    <div class="content-14">
+        <img src="img/full_title10.png" alt=""/>
+        <ul class="f-trial">
+            <li>
+                <img src="img/workshop_detail.jpg" alt=""/>
+                <b>2015年8月22日（周日）</b>
+                <a href="javascript:void(0);">免费参加</a>
+            </li>
+            <li>
+                <img src="img/workshop_detail.jpg" alt=""/>
+                <b>2015年8月22日（周日）</b>
+                <a href="javascript:void(0);">免费参加</a>
+            </li>
+        </ul>
+    </div>
+    <div class="content-15">
+        <img src="img/full_title11.png" alt=""/>
+        <div class="f-questions">
+            <div class="part-1">
+                <p>
+                    <img src="img/q.png" alt=""/>
+                    <b>创意编程是什么？</b>
+                </p>
+                <p>
+                    <img src="img/a.png" alt=""/>
+                    <em>
+                        学习编程已经不再只是计算机专家或是软件开发人员的专利。来自各个领域的人们现在都想了解编程，因为编程不仅有趣，也是提升自我价值的技能。学习编程最让人兴奋的是能够通过编程去实现自己的创意，这被称为“创意编程”。创意编程已经在新媒体艺术，交互设计，时尚科技， 物联网，机器人等许多尖端领域扮演了重要角色。
+                    </em>
+                </p>
+                <p>
+                    <img src="img/q.png" alt=""/>
+                    <b>没有编程经验可以参加这个课程吗？</b>
+                </p>
+                <p>
+                    <img src="img/a.png" alt=""/>
+                    <em>
+                        完全可以。本课程将从编程的基础开始讲起，让新手有足够的时间打好基础。而且，我们的老师团队拥有多年的教学经验，对如何让新手快速掌握创意编程有充足的经验。
+                    </em>
+                </p>
+                <p>
+                    <img src="img/q.png" alt=""/>
+                    <b>你们的教学体系是什么？</b>
+                </p>
+                <p>
+                    <img src="img/a.png" alt=""/>
+                    <em>
+                        OF COURSE的教学体系是美国顶尖设计学院帕森斯的教学体系，我们秉承开放，自由和快速迭代的理念，把创新永远放在第一位。
+                    </em>
+                </p>
+            </div>
+            <div class="part-2">
+                <p>
+                    <img src="img/q.png" alt=""/>
+                    <b>外教会用英文上课吗？听不懂怎么办？</b>
+                </p>
+                <p>
+                    <img src="img/a.png" alt=""/>
+                    <em>
+                        是的，外教会用英文上课。但是，我们会有精通英文的中文助教在场帮助大家，所以不会发生听不懂的情况。
+                    </em>
+                </p>
+                <p>
+                    <img src="img/q.png" alt=""/>
+                    <b>可以退款吗？</b>
+                </p>
+                <p>
+                    <img src="img/a.png" alt=""/>
+                    <em>
+                        开学前大于7天申请退款，无条件退还全额学费。 开学前7天内申请退款，退还70%学费。 开学后7天内申请退款，退还50%学费。 开学超过7天后申请退款，不再受理退款。
+                    </em>
+                </p>
+                <p>
+                    <img src="img/q.png" alt=""/>
+                    <b>沉浸式课程一个班有多少人？</b>
+                </p>
+                <p>
+                    <img src="img/a.png" alt=""/>
+                    <em>
+                        一共15人，名额有限，速速报名哦！有更多问题？请联系我们 info@ofcourse.io
+                    </em>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="content-last">
+        <div class="f-course">
+            <img src="img/full_title12.png" alt=""/>
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <td></td>
+                    <td>沉浸式课程</td>
+                    <td>基础式课程</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>核心软件</td>
+                    <td>openFrameworks <br/>Processing <br/>Unity</td>
+                    <td>openFrameworks</td>
+                </tr>
+                <tr>
+                    <td>智能硬件</td>
+                    <td>Arduino <br/>Kinect <br/>Leap Motion <br/> Touch Board <br/>Raspberry Pi</td>
+                    <td>Arduion <br/>Kinect <br/>Touch Board</td>
+                </tr>
+                <tr>
+                    <td>
+                        项目
+                    </td>
+                    <td>
+                        互动装置<br/>
+                        无线玩具<br/>
+                        3D光雕投影<br/>
+                        数字化工艺<br/>
+                        时尚可穿戴<br/>
+                        手机应用
+                    </td>
+                    <td>
+                        互动装置
+                    </td>
+                </tr>
+                <tr>
+                    <td>师资力量</td>
+                    <td>程鹏<br/>
+                        张屹南<br/>
+                        Jason Levine<br/>
+                        Marcella Godoy</td>
+                    <td>程鹏<br/>
+                        张屹南<br/>
+                        Jason Levine</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        特邀嘉宾
+                    </td>
+                    <td>
+                        任远，徐维静，黄石，沈婷瑊，<br/>慕慧希,
+                        周博山，许嘉，莫建俊
+                    </td>
+                    <td>
+                        任远，徐维静，黄石，许嘉，
+                    </td>
+                </tr>
+                <tr>
+                    <td>职业支持</td>
+                    <td>
+                        对接创业孵化器<br/>
+                        对接众筹平台<br/>
+                        对接人脉网络<br/>
+                        推荐工作机会
+                    </td>
+                    <td>
+                        对接人脉网络
+                    </td>
+                </tr>
+                <tr>
+                    <td>学生支持</td>
+                    <td>
+                        完善作品集<br/>
+                        申请海外艺术名校
+                    </td>
+                    <td>
+                        作品辅导
+                    </td>
+                </tr>
+                <tr>
+                    <td>课程时间</td>
+                    <td>
+                        <img src="img/clock.png" alt="" width="17%"/> <br/>
+                        8周 <br/>
+                        周一，周三，周五，每天8小时 <br/>
+                        共192小时+
+                    </td>
+                    <td>
+                        <img src="img/clock2.png" alt="" width="17%"/> <br/>
+                        8周 <br/>
+                        每周一天，每天8小时 <br/>
+                        共64小时+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        课程价格
+                    </td>
+                    <td>
+                        <b>价格：15,999元</b>
+                        <a href="javascript:void(0);">
+                            立即报名
+                        </a>
+                    </td>
+                    <td>
+
+                        <b>价格：5,999元</b>
+                        <a href="javascript:void(0);">
+                            立即报名
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <c-footer></c-footer>
+
+    <a href="javascript:void(0);" class="to-top"
+       to-top top-show="vm.topShow" ng-show="vm.topShow">
+        <img src="img/top.png" alt="" width="45px"/>
+    </a>
+</div>
+
+<script>
+    angular.module('OCApp', [
+            'oc.directives.component',
+            'app.directives.toTop',
+            'oc.directives.floatBar'
+    ])
+            .controller('FullCourseController', FullCourseController);
+
+    function FullCourseController() {
+        var vm = this;
+        vm.topShow = undefined;
+        vm.barItems = [
+            {item:'课程概述', _class:'content-2'},
+            {item:'职业支持', _class:'content-3'},
+            {item:'学员生活', _class:'content-5'},
+            {item:'教学大纲', _class:'content-7'},
+            {item:'完善作品', _class:'content-9'},
+            {item:'讲师介绍', _class:'content-11'},
+            {item:'时间/费用', _class:'content-13'}
+        ]
+    }
+</script>
+</body>
+</html>

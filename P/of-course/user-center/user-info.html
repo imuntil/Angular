@@ -1,0 +1,75 @@
+<form action="" name="userInfoForm" class="user-form">
+    <br/>
+    <br/>
+    <div class="user-avatar">
+        <div ng-show="vm.uploader.queue.length === 0">
+            <img src="img/header.png" alt="" width="100%"/>
+        </div>
+        <div ng-show="vm.uploader.queue.length > 0"
+             ng-repeat="item in vm.uploader.queue" ng-thumb="item"
+             thumb-size="'{height:200}'" base64s="vm.base64s">
+
+        </div>
+        <a href="javascript:void(0)" style="overflow: hidden;position:relative;">
+            <input type="file" uploader="vm.uploader"
+                   nv-file-select="" accept="image/*"
+                   style="position: absolute;right: 0;top: 0;font-size: 100px;opacity: 0;"/>
+            修改头像
+        </a>
+    </div>
+    <p class="p-1">
+        <label for="email">电子邮箱：</label>
+        <b class="modify" ng-show="!vm.editing">{{vm.user.email}}</b>
+        <a class="modify" href="javascript:void(0);"
+           ng-show="!vm.editing"
+           ng-click="vm.editing = true">修改邮箱</a>
+        <input type="email" id="email"
+               ng-model="vm.user.email"
+               ng-show="vm.editing"
+               class="editing"/>
+        <a class="cancel editing"
+           ng-show="vm.editing"
+           ng-click="vm.editing = false"
+           href="javascript:void(0);">取消</a>
+    </p>
+    <p class="p-2">
+        <label for="nickname">昵称：</label>
+        <input type="text" id="nickname"
+               ng-model="vm.user.nickname"/>
+    </p>
+    <p class="p-3">
+        <label>性别：</label>
+        <custom-radio value="'男'" ng-model="vm.user.gender">男</custom-radio>
+        <custom-radio value="'女'" ng-model="vm.user.gender">女</custom-radio>
+    </p>
+    <p class="p-4">
+        <label for="mobile">手机：</label>
+        <input type="text" id="mobile" ng-model="vm.user.mobile"/>
+    </p>
+    <p class="p-5">
+        <label>
+            <em>*</em>所在地区：
+        </label>
+        <select ng-model="vm.province" ng-options="data.province for data in vm.citiesData"
+        name="province"
+        required>
+        <option value="">省份</option>
+        </select>
+        <select ng-model="vm.city" ng-options="city for city in vm.province.cities"
+        name="city"
+        required>
+        <option value="">城市</option>
+        </select>
+    </p>
+    <p class="p-6">
+        <label>工作情况：</label>
+        <custom-radio value="'在职'" ng-model="vm.user.condition">在职</custom-radio>
+        <custom-radio value="'不在职'" ng-model="vm.user.condition">不在职</custom-radio>
+        <custom-radio value="'学生'" ng-model="vm.user.condition">学生</custom-radio>
+    </p>
+    <p class="p-7">
+        <label for="QQ">qq：</label>
+        <input type="text" id="QQ" ng-model="vm.user.QQ"/>
+    </p>
+    <a href="javascript:void(0);">保存</a>
+</form>

@@ -1,0 +1,9 @@
+<div ng-class="{'showing':showMe}">
+    <a href="javascript:void(0);" ng-click="toggle()">
+        {{section.title}}
+        <img src="img/list_icon2.png" alt=""/>
+    </a>
+    <ul class="js-ani" ng-class="{'ul-show':showMe}">
+        <li ng-repeat="list in section.lists track by $index">{{list}}</li>
+    </ul>
+</div>

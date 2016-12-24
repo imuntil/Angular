@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="OCApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../Tools/ng-dialog/ngDialog.min.css"/>
+    <link rel="stylesheet" href="../../Tools/ng-dialog/ngDialog-theme-default.min.css"/>
+    <link rel="stylesheet" href="../../Tools/ng-dialog/ngDialog-theme-plain.min.css"/>
+    <link rel="stylesheet" href="../../Tools/animate.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <script src="../../framework/1.4.7/angular.min.js"></script>
+    <script src="../../ui-router/angular-ui-router.min.js"></script>
+    <script src="../../Tools/ng-dialog/ngDialog.min.js"></script>
+    <script src="../../Tools/angular-file-upload.min.js"></script>
+    <script src="directives/iu-thumb.directive.js"></script>
+
+    <script src="directives/c-component.directive.js"></script></head>
+    <script src="directives/custom-radio.directive.js"></script>
+    <script src="../paking/directives/phone-number-validate.directive.js"></script>
+    <script src="../../Tools/ng-dialog/ngDialog.min.js"></script>
+
+    <script src="services/cities.service.js"></script>
+    <script src="services/dialog-layer.service.js"></script>
+    <script src="services/user-action.services.js"></script>
+
+    <script src="user-center/user-info.controller.js"></script>
+    <script src="user-center/modify-password.controller.js"></script>
+
+</head>
+<body>
+    <c-header></c-header>
+    <div class="menu menu-bg"></div>
+    <div class="user-center">
+        <ul class="navigator">
+            <li>
+                <a href="javascript:void(0);" ui-sref="userInfo">个人资料</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" ui-sref="modifyPassword">修改密码</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" ui-sref="myCourse">我的课程</a>
+            </li>
+        </ul>
+        <div class="view-container" ui-view>
+
+        </div>
+    </div>
+    <c-footer></c-footer>
+    <script>
+        "use strict";
+        angular.module('OCApp', [
+                'oc.directives.component',
+                'ui.router',
+
+                'oc.UserInfoController',
+                'oc.ModifyController'
+        ])
+                .config(UserCenterRouter);
+
+        UserCenterRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
+        function UserCenterRouter($stateProvider, $urlRouterProvider) {
+            $urlRouterProvider.otherwise('/modifyPassword');
+            $stateProvider
+                    .state('userInfo', {
+                        url:'/userInfo',
+                        templateUrl:'user-center/user-info.html',
+                        controller:'UserInfoController as vm'
+                    })
+                    .state('modifyPassword', {
+                        url:'/modifyPassword',
+                        templateUrl:'user-center/modify-password.html',
+                        controller:'ModifyController as vm'
+                    })
+                    .state('myCourse', {
+                        url:'/myCourse',
+                        templateUrl:'<div></div>'
+                    })
+
+        }
+    </script>
+</body>
+</html>

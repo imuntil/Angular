@@ -1,0 +1,25 @@
+<form novalidate name="LF">
+    <h2 class="form-title">登录您的账号</h2>
+    <p class="form-hint">
+        还没有账号？
+        <a href="javascript:void(0);" ui-sref="register">马上注册</a>
+    </p>
+    <label for="email" class="form-label">电子邮箱</label>
+    <input type="email" id="email" class="form-input" required
+           name="email" ng-model="vm.email"/>
+    <em class="error"
+        ng-class="{'err-show':LF.email.$invalid && LF.email.$dirty}">
+        请正确输入电子邮箱
+    </em>
+    <label for="password" class="form-label">密码</label>
+    <input type="password" class="form-input" id="password" required
+           p-v
+           name="password" ng-model="vm.password"/>
+    <em class="error" ng-class="{'err-show':LF.password.$invalid && LF.password.$dirty}">
+        请正确输入密码
+    </em>
+    <a href="javascript:void(0);"
+       ng-click="vm.userLogin(LF.$valid)"
+       class="sign-btn">登录</a>
+    <p class="form-hint"><a href="javascript:void(0);">忘记密码</a></p>
+</form>
